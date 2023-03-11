@@ -7,12 +7,10 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import com.example.game.Game;
-import com.example.game.GameEngine;
-
 public class MainCharacter extends Character {
     // constructor
-    public MainCharacter(int x, int y, int speed) {
-        super(x, y, speed);
+    public MainCharacter(int x, int y) {
+        super(x, y);
         getPlayerSprite();
         direction = "down";
     }
@@ -24,12 +22,13 @@ public class MainCharacter extends Character {
     public String getDirection(){
         return direction;
     }
+
     @Override
     public void moveUp() {
         // move the character up by one cell
         // update the x coordinate and score accordingly
         direction = "up";
-        y -= speed;
+        y -= 1;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class MainCharacter extends Character {
         // move the character down by one cell
         // update the x coordinate and score accordingly
         direction = "down";
-        y += speed;
+        y += 1;
     }
 
     @Override
@@ -45,7 +44,7 @@ public class MainCharacter extends Character {
         // move the character left by one cell
         // update the y coordinate and score accordingly
         direction = "left";
-        x -= speed;
+        x -= 1;
     }
 
     @Override
@@ -53,7 +52,7 @@ public class MainCharacter extends Character {
         // move the character right by one cell
         // update the y coordinate and score accordingly
         direction = "right";
-        x += speed;
+        x += 1;
     }
 
     @Override

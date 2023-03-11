@@ -4,12 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import com.example.game.Game;
-import com.example.game.GameEngine;
 
 public abstract class Character {
     public int x; // x coordinate of the character
-    public int y; // y coordinate of the character
-    public int speed; // speed of the character
+    public int y; // y coordinate of the character // speed of the character
     // protected int score; // current score of the character
     //Sprite Animations
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
@@ -19,10 +17,9 @@ public abstract class Character {
     public int spriteMovement = 1;
 
     // constructor
-    public Character(int x, int y, int speed) {
+    public Character(int x, int y) {
         this.x = x;
         this.y = y;
-        this.speed = speed;
     }
 
     // move the character up by one cell
@@ -62,10 +59,6 @@ public abstract class Character {
         return y;
     }
 
-    // get the speed of the character
-    public int getSpeed() {
-        return speed;
-    }
 }
 
 

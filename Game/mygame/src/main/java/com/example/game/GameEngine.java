@@ -16,20 +16,23 @@ public class GameEngine extends JPanel implements Runnable{
   final int scale = 3;
 //Screen Dimensions
   public final int cellSize = originalCellSize * scale;
-  final int maxScreenCol = 20;
-  final int maxScreenRow = 20;
-  final int screenWidth = cellSize * maxScreenCol;
-  final int screenHeight = cellSize * maxScreenRow;
+  public final int maxScreenCol = 20;
+  public final int maxScreenRow = 20;
+  public final int screenWidth = cellSize * maxScreenCol;
+  public final int screenHeight = cellSize * maxScreenRow;
 
   //Abstract Factory
   private GameObjectFactory gameObjectFactory;
   private MainCharacter mainChar;
+
 
   public String direction;
 
   //Keyboard Input
   Game keyBoard = new Game();
   Thread gameThread;
+
+  GameWorld gameWorld = new GameWorld(this);
 
   public GameEngine(GameObjectFactory factoryMethod) {
     //Set the Screen Size
@@ -51,6 +54,7 @@ public class GameEngine extends JPanel implements Runnable{
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     //Calling Main Character
+    gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d, cellSize);
     g2d.dispose();
   }
@@ -73,10 +77,12 @@ public class GameEngine extends JPanel implements Runnable{
       repaint();
       try{
         double remainingTime = nextDraw - System.nanoTime();
+        remainingTime = remainingTime/1000000;
         if(remainingTime < 0){
           remainingTime = 0;
         }
         Thread.sleep((long) remainingTime/1000000); //casting
+        nextDraw += timePerTick;
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
