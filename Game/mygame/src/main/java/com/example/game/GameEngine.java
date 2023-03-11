@@ -51,8 +51,7 @@ public class GameEngine extends JPanel implements Runnable{
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     //Calling Main Character
-    mainChar.draw(g2d);
-
+    mainChar.draw(g2d, cellSize);
     g2d.dispose();
   }
 
@@ -81,7 +80,6 @@ public class GameEngine extends JPanel implements Runnable{
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
-
     }
   }
 

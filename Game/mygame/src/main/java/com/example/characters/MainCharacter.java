@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import com.example.game.Game;
+import com.example.game.GameEngine;
 
 public class MainCharacter extends Character {
     // constructor
@@ -74,7 +75,7 @@ public class MainCharacter extends Character {
         }
     }
     @Override
-    public void draw(Graphics2D graphics) {
+    public void draw(Graphics2D graphics, int cellSize) {
         BufferedImage image = null;
         switch(direction){
             case "up":
@@ -113,7 +114,7 @@ public class MainCharacter extends Character {
                 image = down1;
                 break;
         }
-        graphics.drawImage(image, x, y,48, 48, null);
+        graphics.drawImage(image, x, y, cellSize, cellSize, null);
         // graphics.setColor(Color.red);
         // graphics.fillRect(x, y, 48, 48);
     }
