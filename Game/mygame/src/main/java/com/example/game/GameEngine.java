@@ -1,5 +1,102 @@
 package com.example.game;
 
-public class GameEngine {
-  
+import javax.swing.JPanel;
+
+import com.example.characters.MainCharacter;
+
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+public class GameEngine extends JPanel implements Runnable{
+  //Set the Screen Size
+  final int originalCellSize = 16; //20x20 Cells
+  final int scale = 3;
+//Screen Dimensions
+  public final int cellSize = originalCellSize * scale;
+  final int maxScreenCol = 20;
+  final int maxScreenRow = 20;
+  final int screenWidth = cellSize * maxScreenCol;
+  final int screenHeight = cellSize * maxScreenRow;
+
+  public String direction;
+  MainCharacter mainChar = new MainCharacter(100, 100, 1); //Main Character Object
+
+  //Keyboard Input
+  Game keyBoard = new Game();
+  Thread gameThread;
+
+  public GameEngine() {
+    //Set the Screen Size
+    setPreferredSize(new Dimension(screenWidth, screenHeight));
+    this.setBackground(Color.black);
+    this.setDoubleBuffered(true);
+    this.addKeyListener(keyBoard);
+    setFocusable(true);
+    requestFocus();
+  }
+
+  public void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    Graphics2D g2d = (Graphics2D) g;
+    //Calling Main Character
+    mainChar.draw(g2d);
+
+    g2d.dispose();
+  }
+
+  public void startGameThread(){
+    gameThread = new Thread(this);
+    gameThread.start();
+  }
+
+  @Override
+  public void run() {
+    double timePerTick = 1000000000 / 60;
+    double nextDraw = System.nanoTime() + timePerTick;
+
+    while (gameThread != null) {
+      long currTime = System.currentTimeMillis();
+      System.out.println(currTime);
+      System.out.println("Game Thread is running");
+      update();
+      repaint();
+      try{
+        double remainingTime = nextDraw - System.nanoTime();
+        if(remainingTime < 0){
+          remainingTime = 0;
+        }
+        Thread.sleep((long) remainingTime/1000000); //casting
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+
+    }
+  }
+
+  public void update() {
+    if (keyBoard.upPressed == true) {
+      mainChar.moveUp();
+    }
+    if (keyBoard.downPressed == true) {
+      mainChar.moveDown();
+    }
+    if (keyBoard.leftPressed == true) {
+      mainChar.moveLeft();
+    }
+    if (keyBoard.rightPressed == true) {
+      mainChar.moveRight();
+    }
+    mainChar.spriteCounter++;
+    if (mainChar.spriteCounter > 30) {
+      if(mainChar.spriteMovement == 1){
+        mainChar.spriteMovement = 2;
+      } 
+      else if(mainChar.spriteMovement == 2){
+        mainChar.spriteMovement = 1;
+      }
+      mainChar.spriteCounter = 0;
+    }
+  }
 }
