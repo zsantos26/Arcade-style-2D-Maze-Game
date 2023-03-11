@@ -5,30 +5,30 @@ import com.example.characters.MovingEnemy;
 import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
 
-public class EnemyFactory implements GameObjectFactory {
+public class AbstractFactory implements GameObjectFactory {
 
     @Override
     public MainCharacter createMainCharacter() {
-        return null; // implementation for main character not provided
+        return new MainCharacter(0,0,0);
     }
 
     @Override
     public MovingEnemy createMovingEnemy() {
-        return new MovingEnemy(2,2,3);
+        return new MovingEnemy(3,3,10);
     }
 
     @Override
     public StaticEnemy createStaticEnemy() {
-        return new StaticEnemy(19,19,49);
+        return new StaticEnemy(10,10,20);
     }
 
     @Override
     public StaticRewards createStaticRewards() {
-        return null; // implementation for static rewards not provided
+        return new StaticRewards(20, 3, 4);
     }
 
     @Override
     public BonusRewards createBonusRewards() {
-        return null; // implementation for bonus rewards not provided
+        return new BonusRewards(50, 5, 5, 2);
     }
 }
