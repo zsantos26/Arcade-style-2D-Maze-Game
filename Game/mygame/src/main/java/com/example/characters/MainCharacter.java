@@ -1,7 +1,5 @@
 package com.example.characters;
-import com.example.game.GameEngine;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
@@ -117,5 +115,4 @@ public class MainCharacter extends Character {
         // graphics.setColor(Color.red);
         // graphics.fillRect(x, y, 48, 48);
     }
-    
 }

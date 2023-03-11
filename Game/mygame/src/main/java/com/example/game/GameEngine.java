@@ -2,6 +2,7 @@ package com.example.game;
 
 import javax.swing.JPanel;
 
+import com.example.abstractfactory.GameObjectFactory;
 import com.example.characters.MainCharacter;
 
 import java.awt.Dimension;
@@ -20,15 +21,24 @@ public class GameEngine extends JPanel implements Runnable{
   final int screenWidth = cellSize * maxScreenCol;
   final int screenHeight = cellSize * maxScreenRow;
 
+  //Abstract Factory
+  private GameObjectFactory gameObjectFactory;
+  private MainCharacter mainChar;
+
   public String direction;
-  MainCharacter mainChar = new MainCharacter(100, 100, 1); //Main Character Object
 
   //Keyboard Input
   Game keyBoard = new Game();
   Thread gameThread;
 
-  public GameEngine() {
+  public GameEngine(GameObjectFactory gameObjectFactory) {
     //Set the Screen Size
+    screenSetUp();
+    this.gameObjectFactory = gameObjectFactory;
+    this.mainChar = gameObjectFactory.createMainCharacter();
+  }
+
+  public void screenSetUp(){
     setPreferredSize(new Dimension(screenWidth, screenHeight));
     this.setBackground(Color.black);
     this.setDoubleBuffered(true);

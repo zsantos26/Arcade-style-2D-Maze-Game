@@ -9,7 +9,7 @@ public class AbstractFactory implements GameObjectFactory {
 
     @Override
     public MainCharacter createMainCharacter() {
-        return new MainCharacter(0,0,0);
+        return new MainCharacter(100, 100, 1);
     }
 
     @Override
