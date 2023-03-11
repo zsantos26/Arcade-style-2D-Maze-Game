@@ -3,58 +3,64 @@ package com.example.characters;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
-
 import javax.imageio.ImageIO;
-
-import com.example.game.Game;
+import com.example.game.GameInput;
 public class MainCharacter extends Character {
-    // constructor
+    // constructor for the MainCharacter class
     public MainCharacter(int x, int y) {
         super(x, y);
         getPlayerSprite();
-        direction = "down";
+        direction = "down"; // set the initial direction of the character
     }
 
+    // set direction of the character
     public void setDirection(String direction) {
         this.direction = direction;
     }
 
+    // get direction of the character
     public String getDirection(){
         return direction;
     }
 
+    /*
+    This method is called when the player presses a key to move the character
+     */
     @Override
-    public void moveUp() {
+    public void moveUp(int cellSize) {
         // move the character up by one cell
         // update the x coordinate and score accordingly
         direction = "up";
-        y -= 12;
+        y -= 48;
     }
 
     @Override
-    public void moveDown() {
+    public void moveDown(int cellSize) {
         // move the character down by one cell
         // update the x coordinate and score accordingly
         direction = "down";
-        y += 12;
+        y += 48;
     }
 
     @Override
-    public void moveLeft() {
+    public void moveLeft(int cellSize) {
         // move the character left by one cell
         // update the y coordinate and score accordingly
         direction = "left";
-        x -= 12;
+        x -= 48;
     }
 
     @Override
-    public void moveRight() {
+    public void moveRight(int cellSize) {
         // move the character right by one cell
         // update the y coordinate and score accordingly
         direction = "right";
-        x += 12;
+        x += 48;
     }
 
+    /*
+    This method is called when the character is created to load the character's sprite
+     */
     @Override
     public void getPlayerSprite() {
         try{
@@ -73,6 +79,10 @@ public class MainCharacter extends Character {
             System.out.println("Error loading images: " + e.getMessage());
         }
     }
+
+    /*
+    This method is called every frame to update the character's state
+     */
     @Override
     public void draw(Graphics2D graphics, int cellSize) {
         BufferedImage image = null;
@@ -118,18 +128,21 @@ public class MainCharacter extends Character {
         // graphics.fillRect(x, y, 48, 48);
     }
 
-    public void update(Game keyBoard){
+    /*
+    * This method is called every frame to update the character's position
+     */
+    public void update(GameInput keyBoard, int cellSize){
         if (keyBoard.upPressed == true) {
-            moveUp();
+            moveUp(cellSize);
         }
         if (keyBoard.downPressed == true) {
-            moveDown();
+            moveDown(cellSize);
         }
         if (keyBoard.leftPressed == true) {
-            moveLeft();
+            moveLeft(cellSize);
         }
         if (keyBoard.rightPressed == true) {
-            moveRight();
+            moveRight(cellSize);
         }
         spriteCounter++;
         if (spriteCounter > 30) {
