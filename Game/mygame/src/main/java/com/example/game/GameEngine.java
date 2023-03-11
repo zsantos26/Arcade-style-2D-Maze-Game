@@ -70,7 +70,7 @@ public class GameEngine extends JPanel implements Runnable{
     double nextDraw = System.nanoTime() + timePerTick;
 
     while (gameThread != null) {
-      long currTime = System.currentTimeMillis();
+      long currTime = System.nanoTime();
       System.out.println(currTime);
       System.out.println("Game Thread is running");
       update();
@@ -81,7 +81,7 @@ public class GameEngine extends JPanel implements Runnable{
         if(remainingTime < 0){
           remainingTime = 0;
         }
-        Thread.sleep((long) remainingTime/1000000); //casting
+        Thread.sleep((long) remainingTime); //casting
         nextDraw += timePerTick;
       } catch (InterruptedException e) {
         e.printStackTrace();

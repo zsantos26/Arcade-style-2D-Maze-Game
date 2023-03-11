@@ -28,7 +28,7 @@ public class MainCharacter extends Character {
         // move the character up by one cell
         // update the x coordinate and score accordingly
         direction = "up";
-        y -= 1;
+        y -= 12;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class MainCharacter extends Character {
         // move the character down by one cell
         // update the x coordinate and score accordingly
         direction = "down";
-        y += 1;
+        y += 12;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class MainCharacter extends Character {
         // move the character left by one cell
         // update the y coordinate and score accordingly
         direction = "left";
-        x -= 1;
+        x -= 12;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class MainCharacter extends Character {
         // move the character right by one cell
         // update the y coordinate and score accordingly
         direction = "right";
-        x += 1;
+        x += 12;
     }
 
     @Override
