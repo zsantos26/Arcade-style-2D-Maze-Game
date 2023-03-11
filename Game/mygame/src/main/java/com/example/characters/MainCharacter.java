@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
+import com.example.game.Game;
+
 public class MainCharacter extends Character {
     // constructor
     public MainCharacter(int x, int y, int speed) {
@@ -114,5 +116,30 @@ public class MainCharacter extends Character {
         graphics.drawImage(image, x, y,48, 48, null);
         // graphics.setColor(Color.red);
         // graphics.fillRect(x, y, 48, 48);
+    }
+
+    public void update(Game keyBoard){
+        if (keyBoard.upPressed == true) {
+            moveUp();
+        }
+        if (keyBoard.downPressed == true) {
+            moveDown();
+        }
+        if (keyBoard.leftPressed == true) {
+            moveLeft();
+        }
+        if (keyBoard.rightPressed == true) {
+            moveRight();
+        }
+        spriteCounter++;
+        if (spriteCounter > 30) {
+            if(spriteMovement == 1){
+                spriteMovement = 2;
+            }
+            else if(spriteMovement == 2){
+                spriteMovement = 1;
+            }
+            spriteCounter = 0;
+        }
     }
 }

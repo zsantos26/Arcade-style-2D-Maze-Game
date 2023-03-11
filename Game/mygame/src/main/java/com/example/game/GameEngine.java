@@ -31,10 +31,10 @@ public class GameEngine extends JPanel implements Runnable{
   Game keyBoard = new Game();
   Thread gameThread;
 
-  public GameEngine(GameObjectFactory gameObjectFactory) {
+  public GameEngine(GameObjectFactory factoryMethod) {
     //Set the Screen Size
     screenSetUp();
-    this.gameObjectFactory = gameObjectFactory;
+    this.gameObjectFactory = factoryMethod;
     this.mainChar = gameObjectFactory.createMainCharacter();
   }
 
@@ -86,27 +86,6 @@ public class GameEngine extends JPanel implements Runnable{
   }
 
   public void update() {
-    if (keyBoard.upPressed == true) {
-      mainChar.moveUp();
-    }
-    if (keyBoard.downPressed == true) {
-      mainChar.moveDown();
-    }
-    if (keyBoard.leftPressed == true) {
-      mainChar.moveLeft();
-    }
-    if (keyBoard.rightPressed == true) {
-      mainChar.moveRight();
-    }
-    mainChar.spriteCounter++;
-    if (mainChar.spriteCounter > 30) {
-      if(mainChar.spriteMovement == 1){
-        mainChar.spriteMovement = 2;
-      } 
-      else if(mainChar.spriteMovement == 2){
-        mainChar.spriteMovement = 1;
-      }
-      mainChar.spriteCounter = 0;
-    }
+    mainChar.update(keyBoard);
   }
 }

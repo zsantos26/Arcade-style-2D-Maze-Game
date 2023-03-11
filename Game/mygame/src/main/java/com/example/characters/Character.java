@@ -3,6 +3,8 @@ package com.example.characters;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import com.example.game.Game;
+
 public abstract class Character {
     public int x; // x coordinate of the character
     public int y; // y coordinate of the character
@@ -40,7 +42,10 @@ public abstract class Character {
 
     public abstract String getDirection();
 
+    public abstract void update(Game keyBoard);
+
     public abstract void draw(Graphics2D graphics);
+    
     // update the character's score by the given amount
     // public void updateScore(int amount) {
     //     score += amount;
