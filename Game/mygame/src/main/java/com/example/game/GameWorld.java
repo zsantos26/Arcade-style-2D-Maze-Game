@@ -15,13 +15,10 @@ public class GameWorld {
 
   public GameWorld(GameEngine gameEngine) {
     this.gameBarrier = gameEngine;
-    cell = new Cells[10];
+    cell = new Cells[15];
     mapCells = new int[gameBarrier.maxScreenCol][gameBarrier.maxScreenRow];
     drawMap("/maps/Map_AQ.txt");
     getCellImage();
-    // for (int i = 0; i < cell.length; i++) {
-    //   cell[i] = new Cells();
-    // }
   }
 
   public void getCellImage(){
@@ -44,10 +41,27 @@ public class GameWorld {
       cell[5] =  new Cells();
       cell[5].image = ImageIO.read(getClass().getResourceAsStream("/images/AQ_OUTTERWALL/SFU AQ WALL RIGHT BOTTOM-1.png"));
 
+      cell[6] =  new Cells(); //water
+      cell[6].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water-1.png"));
+
+      cell[7] =  new Cells(); //tree
+      cell[7].image = ImageIO.read(getClass().getResourceAsStream("/images/background/tree-1.png"));
+
+      cell[8] =  new Cells(); //grass
+      cell[8].image = ImageIO.read(getClass().getResourceAsStream("/images/background/grass-1.png"));
+
+      cell[9] =  new Cells(); //hedge
+      cell[9].image = ImageIO.read(getClass().getResourceAsStream("/images/background/hedge.png"));
+
+      cell[10] = new Cells(); //bush
+      cell[10].image = ImageIO.read(getClass().getResourceAsStream("/images/background/bush.png"));
+
+
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
+
   public void drawMap(String filePath){
     try{
       InputStream is = getClass().getResourceAsStream(filePath);
