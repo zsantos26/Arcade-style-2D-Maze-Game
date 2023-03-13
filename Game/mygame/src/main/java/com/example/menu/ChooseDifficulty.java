@@ -31,7 +31,7 @@ public class ChooseDifficulty extends JFrame implements ActionListener {
         headerLabel.setForeground(Color.WHITE);
         headerPanel.add(headerLabel);
         headerPanel.setMinimumSize(new Dimension(Integer.MAX_VALUE, 70));
-        
+
 
         // Create 4 JButton objects. Assign these to the 4 variables declared earlier.
         easyButton = new JButton("Easy");
@@ -45,14 +45,14 @@ public class ChooseDifficulty extends JFrame implements ActionListener {
         easyButton.setBackground(new Color(166, 25, 46));
         easyButton.setForeground(Color.WHITE);
         easyButton.setFocusPainted(false);  // Set focus painted quality to false so if selected, button border is not highlighted
-        easyButton.addActionListener(this); 
+        easyButton.addActionListener(this);
 
         mediumButton.setUI(new MetalButtonUI());
         mediumButton.setPreferredSize(new Dimension(130, 50));
         mediumButton.setBackground(new Color(166, 25, 46));
         mediumButton.setForeground(Color.WHITE);
         mediumButton.setFocusPainted(false);  // Set focus painted quality to false so if selected, button border is not highlighted
-        mediumButton.addActionListener(this);  
+        mediumButton.addActionListener(this);
 
         hardButton.setUI(new MetalButtonUI());
         hardButton.setPreferredSize(new Dimension(130, 50));
@@ -60,7 +60,7 @@ public class ChooseDifficulty extends JFrame implements ActionListener {
         hardButton.setForeground(Color.WHITE);
         hardButton.setFocusPainted(false);  // Set focus painted quality to false so if selected, button border is not highlighted
         hardButton.addActionListener(this);
-        
+
         // Set visuals for the back button.Background colours correspond to SFU secondary colours. Text (foreground) colours correspond to SFU white. 
         backButton.setPreferredSize(new Dimension(100, 50));
         backButton.setBackground(new Color(166, 25, 46));
@@ -76,7 +76,7 @@ public class ChooseDifficulty extends JFrame implements ActionListener {
         buttonPanel.add(mediumButton);
         buttonPanel.add(hardButton);
         buttonPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, 60));
-        
+
         // Create the button panel for the back button and add back button to panel.
         JPanel backPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         backPanel.setBackground(new Color(204, 6, 51));  // Sett backPanel background to match content panel backround colours
