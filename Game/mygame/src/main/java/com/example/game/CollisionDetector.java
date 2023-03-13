@@ -6,35 +6,41 @@ public class CollisionDetector {
     this.gameBarrier = gameEngine;
   }
   public void checkCells(MainCharacter character){
-    int charLeftMapX = 960 + 8;
-    int charRightMapX = 960 + 8 + 32;
-    int charTopMapY = 960 + 16;
-    int charBottomMapY = 960 + 16 + 32;
-
-    int charLeftCol = charLeftMapX/gameBarrier.cellSize;
-    int charRightCol = charRightMapX/gameBarrier.cellSize;
-    int charTopRow = charTopMapY/gameBarrier.cellSize;
-    int charBottomRow = charBottomMapY/gameBarrier.cellSize;
-
-    int cellNum1, cellNum2;
+    int characterX = (int) (character.x/gameBarrier.cellSize);
+    int characterY = (int) (character.y/gameBarrier.cellSize);
 
     switch(character.direction){
       case "up":
-        charTopRow = (charTopMapY - gameBarrier.cellSize)/gameBarrier.cellSize;
-        cellNum1 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charTopRow];
-        cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charTopRow];
-        if(gameBarrier.gameWorld.levelOne.cell[cellNum1].collision == true || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision == true){
+        if (gameBarrier.gameWorld.levelOne.mapCells[characterX][characterY-1] == 1){
           character.collisionOn = true;
+        }
+        else{
+          character.collisionOn = false;
         }
         break;
       case "down":
-        character.collisionOn = true;
+        if(gameBarrier.gameWorld.levelOne.mapCells[characterX][characterY+1] == 1){
+          character.collisionOn = true;
+        }
+        else{
+          character.collisionOn = false;
+        }
         break;
       case "left":
-
+        if(gameBarrier.gameWorld.levelOne.mapCells[characterX-1][characterY] == 1){
+          character.collisionOn = true;
+        }
+        else{
+          character.collisionOn = false;
+        }
         break;
       case "right":
-
+        if(gameBarrier.gameWorld.levelOne.mapCells[characterX+1][characterY] == 1){
+          character.collisionOn = true;
+        }
+        else{
+          character.collisionOn = false;
+        }
         break;
       default:
         break;
