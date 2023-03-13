@@ -4,13 +4,25 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+
+import com.example.game.GameEngine;
 import com.example.game.GameInput;
+
+import javafx.scene.shape.Rectangle;
 public class MainCharacter extends Character {
+    GameEngine gameBarrier;
+
     // constructor for the MainCharacter class
-    public MainCharacter(int x, int y) {
+    public MainCharacter(int x, int y, GameEngine gameEngine) {
         super(x, y);
+        if (gameEngine == null) {
+            throw new IllegalArgumentException("gameEngine cannot be null");
+        }
+        this.gameBarrier = gameEngine;
         getPlayerSprite();
         direction = "down"; // set the initial direction of the character
+
+        hitBox = new Rectangle(8,16,gameEngine.cellSize-16,gameEngine.cellSize-16);
     }
 
     // set direction of the character
@@ -27,35 +39,35 @@ public class MainCharacter extends Character {
     This method is called when the player presses a key to move the character
      */
     @Override
-    public void moveUp(int cellSize) {
+    public void moveUp() {
         // move the character up by one cell
         // update the x coordinate and score accordingly
         direction = "up";
-        y -= 48;
+
     }
 
     @Override
-    public void moveDown(int cellSize) {
+    public void moveDown() {
         // move the character down by one cell
         // update the x coordinate and score accordingly
         direction = "down";
-        y += 48;
+
     }
 
     @Override
-    public void moveLeft(int cellSize) {
+    public void moveLeft() {
         // move the character left by one cell
         // update the y coordinate and score accordingly
         direction = "left";
-        x -= 48;
+
     }
 
     @Override
-    public void moveRight(int cellSize) {
+    public void moveRight() {
         // move the character right by one cell
         // update the y coordinate and score accordingly
         direction = "right";
-        x += 48;
+
     }
 
     /*
@@ -84,7 +96,7 @@ public class MainCharacter extends Character {
     This method is called every frame to update the character's state
      */
     @Override
-    public void draw(Graphics2D graphics, int cellSize) {
+    public void draw(Graphics2D graphics) {
         BufferedImage image = null;
         switch(direction){
             case "up":
@@ -123,7 +135,7 @@ public class MainCharacter extends Character {
                 image = down1;
                 break;
         }
-        graphics.drawImage(image, x, y, cellSize, cellSize, null);
+        graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
         // graphics.setColor(Color.red);
         // graphics.fillRect(x, y, 48, 48);
     }
@@ -131,19 +143,40 @@ public class MainCharacter extends Character {
     /*
     * This method is called every frame to update the character's position
      */
-    public void update(GameInput keyBoard, int cellSize){
+    public void update(GameInput keyBoard){
         if (keyBoard.upPressed == true) {
-            moveUp(cellSize);
+            moveUp();
         }
         if (keyBoard.downPressed == true) {
-            moveDown(cellSize);
+            moveDown();
         }
         if (keyBoard.leftPressed == true) {
-            moveLeft(cellSize);
+            moveLeft();
         }
         if (keyBoard.rightPressed == true) {
-            moveRight(cellSize);
+            moveRight();
         }
+        collisionOn = false;
+        gameBarrier.collisionDetector.checkCells(this);
+
+        if (collisionOn == false){
+            switch(direction){
+                case "up":
+                    y -= gameBarrier.cellSize;
+                    break;
+                case "down":
+                    y += gameBarrier.cellSize;
+                    break;
+                case "left":
+                    x -= gameBarrier.cellSize;
+                    break;
+                case "right":
+                    x += gameBarrier.cellSize;
+                    break;
+                default:
+                    break;
+            }
+    }
         spriteCounter++;
         if (spriteCounter > 30) {
             if(spriteMovement == 1){

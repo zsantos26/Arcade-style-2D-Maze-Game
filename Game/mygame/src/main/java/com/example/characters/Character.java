@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import com.example.game.GameInput;
 
+import javafx.scene.shape.Rectangle;
+
 public abstract class Character {
     public int x; // x coordinate of the character
     public int y; // y coordinate of the character // speed of the character
@@ -15,6 +17,10 @@ public abstract class Character {
     public int spriteCounter = 0;
     public int spriteMovement = 1;
 
+    public Rectangle hitBox;
+    public boolean collisionOn = false;
+
+
     // constructor
     public Character(int x, int y) {
         this.x = x;
@@ -22,13 +28,13 @@ public abstract class Character {
     }
 
     // move the character up by one cell
-    public abstract void moveUp(int cellSize);
+    public abstract void moveUp();
     // move the character down by one cell
-    public abstract void moveDown(int cellSize);
+    public abstract void moveDown();
     // move the character left by one cell
-    public abstract void moveLeft(int cellSize);
+    public abstract void moveLeft();
     // move the character right by one cell
-    public abstract void moveRight(int cellSize);
+    public abstract void moveRight();
     // get the sprite of the character
     public abstract void getPlayerSprite();
     // set the direction of the character
@@ -36,9 +42,9 @@ public abstract class Character {
     // get the direction of the character
     public abstract String getDirection();
     // update the character based on the keyboard input
-    public abstract void update(GameInput keyBoard, int cellSize);
+    public abstract void update(GameInput keyBoard);
     // draw the character on the screen
-    public abstract void draw(Graphics2D graphics, int cellSize);
+    public abstract void draw(Graphics2D graphics);
 
     // update the character's score by the given amount
     // public void updateScore(int amount) {

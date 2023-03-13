@@ -26,7 +26,7 @@ public class GameEngine extends JPanel implements Runnable{
   //Keyboard Input
   GameInput keyBoard = new GameInput();
   Thread gameThread;
-
+  public CollisionDetector collisionDetector = new CollisionDetector(this);
   GameWorld gameWorld = new GameWorld(this);
 
   /*
@@ -36,7 +36,7 @@ public class GameEngine extends JPanel implements Runnable{
     //Set the Screen Size
     screenSetUp();
     this.gameObjectFactory = factoryMethod;
-    this.mainChar = gameObjectFactory.createMainCharacter();
+    this.mainChar = gameObjectFactory.createMainCharacter(this);
   }
 
   /*
@@ -59,7 +59,7 @@ public class GameEngine extends JPanel implements Runnable{
     Graphics2D g2d = (Graphics2D) g;
     //Calling MainCharacter class to draw the character
     gameWorld.draw(g2d, cellSize);
-    mainChar.draw(g2d, cellSize);
+    mainChar.draw(g2d);
     g2d.dispose();
   }
 
@@ -73,7 +73,7 @@ public class GameEngine extends JPanel implements Runnable{
   */
   @Override
   public void run() {
-    int FPS = 5;
+    int FPS = 20;
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
 
@@ -101,6 +101,6 @@ public class GameEngine extends JPanel implements Runnable{
   Update the game every frame by calling the update method in the MainCharacter class
   */
   public void update() {
-    mainChar.update(keyBoard, cellSize);
+    mainChar.update(keyBoard);
   }
 }

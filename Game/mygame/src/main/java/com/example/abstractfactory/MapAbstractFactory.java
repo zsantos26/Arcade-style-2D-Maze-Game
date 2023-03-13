@@ -1,11 +1,13 @@
 package com.example.abstractfactory;
-
+import com.example.game.GameEngine;
 import com.example.game.LevelOne;
 
 public class MapAbstractFactory implements GameLevelFactory{
+  GameObjectFactory gameObjectFactory;
+  GameEngine gameBarrier = new GameEngine(gameObjectFactory);
   @Override
   public LevelOne createLevelOne() {
-    return new LevelOne();
+    return new LevelOne(gameBarrier);
   }
   
   // @Override
