@@ -72,7 +72,7 @@ public class ChooseDifficulty extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 65, 10)); // Use FlowLayout and center buttons
         buttonPanel.setBackground(new Color(204, 6, 51));  // Set buttonPanel background to match contentPanel background colours
         // Add difficulty buttons to buttonPanel
-        buttonPanel.add(btnEasy);
+        buttonPanel.add(easyButton);
         buttonPanel.add(mediumButton);
         buttonPanel.add(hardButton);
         buttonPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, 60));
