@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 
 public class GameEngine extends JPanel implements Runnable{
   //Set the Screen Size
-  final int originalCellSize = 16; //20x20 Cells
+  final int originalCellSize = 16; //20x19 Cells
   final int scale = 3;
   //Screen Dimensions
   public final int cellSize = originalCellSize * scale;
