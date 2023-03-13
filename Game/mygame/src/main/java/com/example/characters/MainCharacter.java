@@ -19,10 +19,11 @@ public class MainCharacter extends Character {
             throw new IllegalArgumentException("gameEngine cannot be null");
         }
         this.gameBarrier = gameEngine;
-        getPlayerSprite();
-        direction = "down"; // set the initial direction of the character
 
         hitBox = new Rectangle(8,16,gameEngine.cellSize-16,gameEngine.cellSize-16);
+
+        direction = "down"; // set the initial direction of the character
+        getPlayerSprite();
     }
 
     // set direction of the character
@@ -147,13 +148,13 @@ public class MainCharacter extends Character {
         if (keyBoard.upPressed == true) {
             moveUp();
         }
-        if (keyBoard.downPressed == true) {
+        else if (keyBoard.downPressed == true) {
             moveDown();
         }
-        if (keyBoard.leftPressed == true) {
+        else if (keyBoard.leftPressed == true) {
             moveLeft();
         }
-        if (keyBoard.rightPressed == true) {
+        else if (keyBoard.rightPressed == true) {
             moveRight();
         }
         collisionOn = false;

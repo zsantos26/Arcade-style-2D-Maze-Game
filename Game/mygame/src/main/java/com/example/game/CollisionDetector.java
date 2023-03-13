@@ -23,12 +23,12 @@ public class CollisionDetector {
         charTopRow = (charTopMapY - gameBarrier.cellSize)/gameBarrier.cellSize;
         cellNum1 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charTopRow];
         cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charTopRow];
-        if(gameBarrier.gameWorld.cell[cellNum1].collision == true || gameBarrier.gameWorld.cell[cellNum2].collision == true){
+        if(gameBarrier.gameWorld.levelOne.cell[cellNum1].collision == true || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision == true){
           character.collisionOn = true;
         }
         break;
       case "down":
-
+        character.collisionOn = true;
         break;
       case "left":
 
