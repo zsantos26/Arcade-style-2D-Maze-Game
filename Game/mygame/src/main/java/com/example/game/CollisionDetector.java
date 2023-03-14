@@ -79,6 +79,7 @@ public class CollisionDetector {
             }
             break;
       default:
+        if(character.getX()>0 && character.getX()<gameBarrier.maxScreenCol && character.getY()>0 && character.getY()<gameBarrier.maxScreenRow){
           cellNum = gameBarrier.gameWorld.levelOne.mapCells[(character.getX()-gameBarrier.cellSize)/gameBarrier.cellSize][(character.getY()-gameBarrier.cellSize)/gameBarrier.cellSize];
           if (gameBarrier.gameWorld.levelOne.cell[cellNum].collision) {
             character.collisionOn = true;
@@ -89,6 +90,7 @@ public class CollisionDetector {
             return false;
           }
         }
+    }
     return false;
   }
 }
