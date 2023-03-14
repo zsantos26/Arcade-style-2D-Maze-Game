@@ -11,6 +11,6 @@ public interface GameObjectFactory {
     public MainCharacter createMainCharacter(GameEngine gameEngine);
     public MovingEnemy createMovingEnemy();
     public StaticEnemy createStaticEnemy();
-    public StaticRewards createStaticRewards();
+    public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector);
     public BonusRewards createBonusRewards(GameEngine gameEngine, CollisionDetector collisionDetector);
 }
