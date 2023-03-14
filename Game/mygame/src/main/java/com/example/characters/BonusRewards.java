@@ -90,7 +90,6 @@ public class BonusRewards extends Character {
                 visible = true;
                 duration  = random.nextInt(20); // Between 200 - 400
                 setRewardAmount(100);  // Set new bonus reward amount to 100;
-
                 do{
                     x = random.nextInt(20);
                     y = random.nextInt(20);
@@ -98,8 +97,7 @@ public class BonusRewards extends Character {
                     y = y * gameBarrier.cellSize;
                     System.out.println("X: " + x + " Y: " + y);
                     System.out.println("IT RELOCATE");
-                }
-                while (collisionDetector.checkCells(this)==true);
+                }while(collisionDetector.checkCells(this)==true);
             }
             else {
                 System.out.println("X: " + x + " Y: " + y);
