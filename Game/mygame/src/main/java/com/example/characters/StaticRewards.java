@@ -57,26 +57,23 @@ public class StaticRewards extends Character {
 
     public void update() {
         visible = true;
-                duration  = random.nextInt(20); // Between 200 - 400
-                setRewardAmount(100);  // Set new bonus reward amount to 100;
+        setRewardAmount(100);  // Set new bonus reward amount to 100;
 
-                do{
-                    x = random.nextInt(20);
-                    y = random.nextInt(20);
-                    x = x * gameBarrier.cellSize;
-                    y = y * gameBarrier.cellSize;
-                    System.out.println("X: " + x + " Y: " + y);
-                    System.out.println("IT RELOCATE");
-                }
-                while (collisionDetector.checkCells(this)==true);
+        do{
+            x = random.nextInt(20);
+            y = random.nextInt(20);
+            x = x * gameBarrier.cellSize;
+            y = y * gameBarrier.cellSize;
+        }
+        while (collisionDetector.checkCells(this)==true);
     }
 
 
 
-    public void getBonusRewardsSprite() {
+    public void getStaticRewardsSprite() {
         try{
-            bonusReward = ImageIO.read(getClass().getResourceAsStream("/images/book/specialRewards.png"));
-
+            staticReward1 = ImageIO.read(getClass().getResourceAsStream("/images/book/specialRewards.png"));
+            staticReward2 = ImageIO.read(getClass().getResourceAsStream("/images/book/specialRewards.png"));
         }catch(IOException e){
             System.out.println("FAIL FIL FAIL");
             e.printStackTrace();
