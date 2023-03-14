@@ -23,6 +23,14 @@ public abstract class Rewards {
         return y;
     }
 
+    public void setX(int newX) {
+        this.x = newX;
+    }
+    
+    public void setY(int newY) {
+        this.y = newY;
+    }
+
     public void setRewardAmount(int amount) {
         rewardAmount = amount;
     }
