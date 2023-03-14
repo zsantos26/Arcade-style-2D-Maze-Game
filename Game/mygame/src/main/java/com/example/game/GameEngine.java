@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import com.example.abstractfactory.GameObjectFactory;
 import com.example.characters.BonusRewards;
 import com.example.characters.MainCharacter;
+import com.example.characters.StaticRewards;
+
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -24,6 +26,7 @@ public class GameEngine extends JPanel implements Runnable{
   private GameObjectFactory gameObjectFactory;
   private MainCharacter mainChar;
   private BonusRewards bonusRewards;
+  private StaticRewards staticRewards;
 
   //Keyboard Input
   GameInput keyBoard = new GameInput();
