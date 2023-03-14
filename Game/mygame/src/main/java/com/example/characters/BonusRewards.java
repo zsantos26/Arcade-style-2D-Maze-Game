@@ -26,7 +26,7 @@ public class BonusRewards extends Rewards {
     }
 
     public int getRandomTimeBetweenBonus() {
-        return randomTimeBetweenBonus; 
+        return randomTimeBetweenBonus;
     }
 
     public boolean isExpired() {
