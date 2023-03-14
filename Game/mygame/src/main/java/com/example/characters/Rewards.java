@@ -22,8 +22,31 @@ public abstract class Rewards {
     public int getY() {
         return y;
     }
+
+    public void setX(int newX) {
+        this.x = newX;
+    }
     
-    public abstract void claimReward();
+    public void setY(int newY) {
+        this.y = newY;
+    }
+
+    public void setRewardAmount(int amount) {
+        rewardAmount = amount;
+    }
+    
+    public boolean onReward(int charX, int charY) {
+        return x == charX && x == charY;
+    }
+
+    public int claimReward() {
+        int scoreEarned = getRewardAmount();
+        setRewardAmount(0);
+        
+        return scoreEarned;
+    }
+
+    
 }
 
 
