@@ -1,12 +1,13 @@
 package com.example.game;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
-public class Leveltwo {
+public class LevelTwo {
     GameEngine gameBarrier;
     Cells[] cell;
     public int mapCells [][];
@@ -18,7 +19,6 @@ public class Leveltwo {
         drawMap("/maps/Map_Class.txt");
         getCellImage();
     }
-
     public void getCellImage(){
         try{
             cell[0] =  new Cells();
@@ -131,3 +131,5 @@ public class Leveltwo {
         }
     }
 }
+
+
