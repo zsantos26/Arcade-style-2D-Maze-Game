@@ -29,7 +29,14 @@ public class AbstractFactory implements GameObjectFactory {
     }
 
     @Override
-    public StaticRewards createStaticRewards() {
+    public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
+        this.gameBarrier = gameEngine;
+        this.colli = collisionDetector;
+        Random random = new Random();
+        int x = random.nextInt(20);
+        int y = random.nextInt(20);
+        x = x * gameEngine.cellSize;
+        y = y * gameEngine.cellSize;
         return new StaticRewards(20, 3, 4);
     }
 

@@ -27,8 +27,10 @@ public class RewardsFactory implements GameObjectFactory {
     }
 
     @Override
-    public StaticRewards createStaticRewards() {
-        return new StaticRewards(0,0,0);
+    public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
+        this.gameBarrier = gameEngine;
+        this.colli = collisionDetector;
+        return new BonusRewards(50, 0, 912 gameBarrier, colli);
     }
 
     @Override
