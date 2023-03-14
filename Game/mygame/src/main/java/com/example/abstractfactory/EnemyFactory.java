@@ -25,7 +25,7 @@ public class EnemyFactory implements GameObjectFactory {
     }
 
     @Override
-    public StaticRewards createStaticRewards() {
+    public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
         return null; // implementation for static rewards not provided
     }
 

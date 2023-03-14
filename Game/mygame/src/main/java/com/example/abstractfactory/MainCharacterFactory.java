@@ -29,7 +29,7 @@ public class MainCharacterFactory implements GameObjectFactory {
     }
     
     @Override
-    public StaticRewards createStaticRewards() {
+    public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
         // not implemented in this factory
         return null;
     }
