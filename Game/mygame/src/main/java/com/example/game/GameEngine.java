@@ -43,6 +43,7 @@ public class GameEngine extends JPanel implements Runnable{
     this.gameObjectFactory = factoryMethod;
     this.mainChar = gameObjectFactory.createMainCharacter(this);
     this.bonusRewards = gameObjectFactory.createBonusRewards(this, collisionDetector);
+    this.staticRewards = gameObjectFactory.createStaticRewards(this, collisionDetector);
   }
 
   /*
