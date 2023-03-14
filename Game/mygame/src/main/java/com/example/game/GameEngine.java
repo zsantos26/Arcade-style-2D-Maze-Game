@@ -5,6 +5,7 @@ import com.example.abstractfactory.GameObjectFactory;
 import com.example.characters.BonusRewards;
 import com.example.characters.MainCharacter;
 import com.example.characters.StaticRewards;
+import java.util.Random;
 
 import java.awt.Dimension;
 import java.awt.Color;
@@ -33,6 +34,7 @@ public class GameEngine extends JPanel implements Runnable{
   Thread gameThread;
   public CollisionDetector collisionDetector = new CollisionDetector(this);
   GameWorld gameWorld = new GameWorld(this);
+  Random random = new Random();
 
   /*
   Constructor for GameEngine class that takes in a GameObjectFactory
@@ -68,6 +70,7 @@ public class GameEngine extends JPanel implements Runnable{
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
     bonusRewards.draw(g2d);
+    staticRewards.draw(g2d);
     staticRewards.draw(g2d);
     g2d.dispose();
   }
@@ -117,6 +120,7 @@ public class GameEngine extends JPanel implements Runnable{
   public void update() {
     mainChar.update(keyBoard);
     bonusRewards.update();
+    staticRewards.update();
     staticRewards.update();
   }
 }
