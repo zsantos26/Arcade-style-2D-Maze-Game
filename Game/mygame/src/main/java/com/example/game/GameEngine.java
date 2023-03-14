@@ -67,6 +67,7 @@ public class GameEngine extends JPanel implements Runnable{
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
     bonusRewards.draw(g2d);
+    staticRewards.draw(g2d);
     g2d.dispose();
   }
 
@@ -115,5 +116,6 @@ public class GameEngine extends JPanel implements Runnable{
   public void update() {
     mainChar.update(keyBoard);
     bonusRewards.update();
+    staticRewards.update();
   }
 }
