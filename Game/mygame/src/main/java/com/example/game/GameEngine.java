@@ -73,7 +73,7 @@ public class GameEngine extends JPanel implements Runnable{
   */
   @Override
   public void run() {
-    int FPS = 10;
+    int FPS = 5;
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
 
@@ -81,8 +81,13 @@ public class GameEngine extends JPanel implements Runnable{
       long currTime = System.nanoTime();
       // System.out.println(currTime);
       // System.out.println("Game Thread is running");
-      update();
-      repaint();
+      if(keyBoard.upPressed == false && keyBoard.leftPressed == false && keyBoard.rightPressed == false && keyBoard.downPressed == false){
+        repaint();
+      }
+      else{
+        update();
+        repaint();
+      }
       try{
         double remainingTime = nextDraw - System.nanoTime();
         remainingTime = remainingTime/1000000;

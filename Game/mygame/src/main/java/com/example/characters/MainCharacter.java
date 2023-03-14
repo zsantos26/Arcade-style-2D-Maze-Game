@@ -148,18 +148,20 @@ public class MainCharacter extends Character {
     * This method is called every frame to update the character's position
      */
     public void update(GameInput keyBoard){
-        if (keyBoard.upPressed == true) {
-            moveUp();
-        }
-        else if (keyBoard.downPressed == true) {
-            moveDown();
-        }
-        else if (keyBoard.leftPressed == true) {
-            moveLeft();
-        }
-        else if (keyBoard.rightPressed == true) {
-            moveRight();
-        }
+
+            if (keyBoard.upPressed == true) {
+                moveUp();
+            }
+            else if (keyBoard.downPressed == true) {
+                moveDown();
+            }
+            else if (keyBoard.leftPressed == true) {
+                moveLeft();
+            }
+            else if (keyBoard.rightPressed == true) {
+                moveRight();
+            }
+
         collisionOn = false;
         gameBarrier.collisionDetector.checkCells(this);
 
@@ -191,15 +193,11 @@ public class MainCharacter extends Character {
             }
             spriteCounter = 0;
         }
-
-        //  If main character is on a reward, add rewardAmount to score and set rewardAmount to 0
-        // for (Rewards reward : rewardsList ) {   //  Loop through each object in rewardsList
-        //     if (reward.OnReward(x, y)) {  // Determine if user x and y are both the same as reward x and y.
-        //         int scoreAdd = reward.claimReward();
-        //         score += scoreAdd;  // Add rewardAmount to main character's score
-
-        //     }
-        // }    
+        try {
+            Thread.sleep(50); // Add a delay of 50 milliseconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
     }
 }
