@@ -6,13 +6,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+
+import com.example.characters.StaticRewards;
+
 import java.awt.Graphics2D;
 
 public class LevelOne {
   GameEngine gameBarrier;
   Cells[] cell;
   public int mapCells [][];
-  ArrayList<int[]> staticRewardsLocations = new ArrayList<int[]>();
+  ArrayList<StaticRewards> staticRewardsLocations = new ArrayList<StaticRewards>();
 
   public LevelOne(GameEngine gameEngine) {
     this.gameBarrier = gameEngine;
