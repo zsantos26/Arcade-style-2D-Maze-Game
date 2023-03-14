@@ -98,6 +98,10 @@ public class BonusRewards extends Character {
                     System.out.println("X: " + x + " Y: " + y);
                     System.out.println("IT RELOCATE");
                 }while(collisionDetector.checkCells(this)==true);
+                if(duration == 0){
+                    expired = false;
+                    visible = true;
+                }
             }
             else {
                 System.out.println("X: " + x + " Y: " + y);
