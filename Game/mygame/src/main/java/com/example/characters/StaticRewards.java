@@ -54,15 +54,8 @@ public class StaticRewards extends Character {
 
     public void update() {
         visible = true;
-        setRewardAmount(100);  // Set new bonus reward amount to 100;
-
-        do{
-            x = random.nextInt(20);
-            y = random.nextInt(20);
-            x = x * gameBarrier.cellSize;
-            y = y * gameBarrier.cellSize;
-        }
-        while (collisionDetector.checkCells(this)==true);
+        int amount = random.nextInt(200);
+        setRewardAmount(amount);  // Set new bonus reward amount to 100;
     }
 
 
