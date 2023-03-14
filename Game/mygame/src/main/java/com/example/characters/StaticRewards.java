@@ -53,7 +53,16 @@ public class StaticRewards extends Character {
     }
 
     public void update() {
+        //Still thinking if I should make the Static Rewards Fixed or Randomly Spawned?????
         visible = true;
+        if(collisionDetector.checkCells(this)==true){
+            x = random.nextInt(20);
+            y = random.nextInt(20);
+            x = x * gameBarrier.cellSize;
+            y = y * gameBarrier.cellSize;
+            System.out.println("X: " + x + " Y: " + y);
+            System.out.println("IT RELOCATE");
+        }
         int amount = random.nextInt(200);
         setRewardAmount(amount);  // Set new bonus reward amount to 100;
     }
