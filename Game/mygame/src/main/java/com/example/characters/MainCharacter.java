@@ -9,6 +9,9 @@ import com.example.game.GameEngine;
 import com.example.game.GameInput;
 
 import javafx.scene.shape.Rectangle;
+
+import com.example.characters.Rewards;  // For reward.OnReward(x, y)) and reward.claimReward();
+
 public class MainCharacter extends Character {
     GameEngine gameBarrier;
 
@@ -177,7 +180,7 @@ public class MainCharacter extends Character {
                 default:
                     break;
             }
-    }
+        }
         spriteCounter++;
         if (spriteCounter > 30) {
             if(spriteMovement == 1){
@@ -188,5 +191,15 @@ public class MainCharacter extends Character {
             }
             spriteCounter = 0;
         }
+
+        //  If main character is on a reward, add rewardAmount to score and set rewardAmount to 0
+        for (Rewards reward : rewardsList ) {   //  Loop through each object in rewardsList
+            if (reward.OnReward(x, y)) {  // Determine if user x and y are both the same as reward x and y.
+                int scoreAdd = reward.claimReward();
+                score += scoreAdd;  // Add rewardAmount to main character's score
+
+            }
+        }    
+        
     }
 }
