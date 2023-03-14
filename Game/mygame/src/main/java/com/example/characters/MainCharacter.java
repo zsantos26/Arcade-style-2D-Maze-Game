@@ -10,14 +10,14 @@ import com.example.game.GameInput;
 
 import javafx.scene.shape.Rectangle;
 
-import com.example.characters.Rewards;  // For reward.OnReward(x, y)) and reward.claimReward();
+// import com.example.characters.Rewards;  // For reward.OnReward(x, y)) and reward.claimReward();
 
 public class MainCharacter extends Character {
     GameEngine gameBarrier;
 
     // constructor for the MainCharacter class
     public MainCharacter(int x, int y, GameEngine gameEngine) {
-        super(x, y);
+        super(x, y, "down");
         if (gameEngine == null) {
             throw new IllegalArgumentException("gameEngine cannot be null");
         }
@@ -25,24 +25,13 @@ public class MainCharacter extends Character {
 
         hitBox = new Rectangle(8,16,gameEngine.cellSize-16,gameEngine.cellSize-16);
 
-        direction = "down"; // set the initial direction of the character
+        // direction = "down"; // set the initial direction of the character
         getPlayerSprite();
-    }
-
-    // set direction of the character
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    // get direction of the character
-    public String getDirection(){
-        return direction;
     }
 
     /*
     This method is called when the player presses a key to move the character
      */
-    @Override
     public void moveUp() {
         // move the character up by one cell
         // update the x coordinate and score accordingly
@@ -50,7 +39,6 @@ public class MainCharacter extends Character {
 
     }
 
-    @Override
     public void moveDown() {
         // move the character down by one cell
         // update the x coordinate and score accordingly
@@ -58,7 +46,6 @@ public class MainCharacter extends Character {
 
     }
 
-    @Override
     public void moveLeft() {
         // move the character left by one cell
         // update the y coordinate and score accordingly
@@ -66,7 +53,6 @@ public class MainCharacter extends Character {
 
     }
 
-    @Override
     public void moveRight() {
         // move the character right by one cell
         // update the y coordinate and score accordingly
@@ -77,7 +63,6 @@ public class MainCharacter extends Character {
     /*
     This method is called when the character is created to load the character's sprite
      */
-    @Override
     public void getPlayerSprite() {
         try{
             up1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_back_leftfoot-1.png"));
@@ -99,7 +84,6 @@ public class MainCharacter extends Character {
     /*
     This method is called every frame to update the character's state
      */
-    @Override
     public void draw(Graphics2D graphics) {
         BufferedImage image = null;
         switch(direction){
@@ -148,7 +132,6 @@ public class MainCharacter extends Character {
     * This method is called every frame to update the character's position
      */
     public void update(GameInput keyBoard){
-
             if (keyBoard.upPressed == true) {
                 moveUp();
             }
@@ -198,6 +181,6 @@ public class MainCharacter extends Character {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
+
     }
 }

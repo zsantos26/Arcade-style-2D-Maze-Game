@@ -78,7 +78,7 @@ public class GameEngine extends JPanel implements Runnable{
     double nextDraw = System.nanoTime() + timePerTick;
 
     while (gameThread != null) {
-      long currTime = System.nanoTime();
+      // long currTime = System.nanoTime();
       // System.out.println(currTime);
       // System.out.println("Game Thread is running");
       if(keyBoard.upPressed == false && keyBoard.leftPressed == false && keyBoard.rightPressed == false && keyBoard.downPressed == false){

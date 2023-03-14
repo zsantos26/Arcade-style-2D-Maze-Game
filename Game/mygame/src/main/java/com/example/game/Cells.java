@@ -1,6 +1,6 @@
 package com.example.game;
 
-import com.example.game.GameEngine;
+// import com.example.game.GameEngine;
 import java.awt.image.BufferedImage;
 
 public class Cells {

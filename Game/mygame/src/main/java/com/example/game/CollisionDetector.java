@@ -1,15 +1,15 @@
 package com.example.game;
-import com.example.characters.MainCharacter;
+import com.example.characters.Character;
 public class CollisionDetector {
   GameEngine gameBarrier;
   public CollisionDetector(GameEngine gameEngine) {
     this.gameBarrier = gameEngine;
   }
-  public void checkCells(MainCharacter character){
-    int charLeftX = character.x;
-    int charRightX = character.x;
-    int charTopY = character.y;
-    int charBottomY = character.y;
+  public Boolean checkCells(Character character){
+    int charLeftX = character.getX();
+    int charRightX = character.getX();
+    int charTopY = character.getY();
+    int charBottomY = character.getY();
 
     int charLeftCol = charLeftX / gameBarrier.cellSize;
     int charRightCol = charRightX / gameBarrier.cellSize;
@@ -27,8 +27,10 @@ public class CollisionDetector {
             cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charTopRow];
             if (gameBarrier.gameWorld.levelOne.cell[cellNum1].collision || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision) {
                 character.collisionOn = true;
+                return true;
             } else {
                 character.collisionOn = false;
+                return false;
             }
       }
         break;
@@ -41,8 +43,10 @@ public class CollisionDetector {
             cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charBottomRow];
             if (gameBarrier.gameWorld.levelOne.cell[cellNum1].collision || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision) {
                 character.collisionOn = true;
+                return true;
             } else {
                 character.collisionOn = false;
+                return false;
             }
           }
         break;
@@ -53,9 +57,11 @@ public class CollisionDetector {
             cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charBottomRow];
             if(gameBarrier.gameWorld.levelOne.cell[cellNum1].collision == true || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision == true){
               character.collisionOn = true;
+              return true;
             }
             } else {
                 character.collisionOn = true;
+                return true;
             }
             break;
       case "right":
@@ -68,10 +74,12 @@ public class CollisionDetector {
             }
             } else {
                 character.collisionOn = true;
+                return true;
             }
             break;
       default:
         break;
     }
+    return false;
   }
 }

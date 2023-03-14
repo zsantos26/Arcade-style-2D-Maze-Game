@@ -5,22 +5,23 @@ import java.util.Random;
 import com.example.game.CollisionDetector;
 
 
-public class BonusRewards extends Rewards {
+public class BonusRewards extends Character {
     private int duration;
     private boolean expired;
     private int randomTimeBetweenBonus;  // Number of ticks before next bonus appears
+    private int rewardAmount;
     private Random random;
     private CollisionDetector collisionDetector;
 
     public BonusRewards(int rewardAmount, int x, int y, int duration, CollisionDetector collisionDetector) {
-        super(rewardAmount, x, y);
+        super(x, y, "down");
         this.duration = duration;
         this.expired = false;
         this.randomTimeBetweenBonus = 0;
         this.random = new Random();
         this.collisionDetector = collisionDetector;
     }
-    
+
     public int getDuration() {
         return duration;
     }
@@ -31,6 +32,24 @@ public class BonusRewards extends Rewards {
 
     public boolean isExpired() {
         return expired;
+    }
+
+    public int getRewardAmount() {
+        return rewardAmount;
+    }
+
+    public void setRewardAmount(int amount) {
+        rewardAmount = amount;
+    }
+
+    public boolean onReward(int charX, int charY) {
+        return x == charX && x == charY;
+    }
+
+    public int claimReward() {
+        int scoreEarned = getRewardAmount();
+        setRewardAmount(0);
+        return scoreEarned;
     }
 
     public void update() {
@@ -51,7 +70,7 @@ public class BonusRewards extends Rewards {
 
                 x = random.nextInt(100);
                 y = random.nextInt(100);
-                while (collisionDetector.detectCollision(x, y)) {
+                while (collisionDetector.checkCells(this)) {
                     x = random.nextInt(100);
                     y = random.nextInt(100);
                 }
