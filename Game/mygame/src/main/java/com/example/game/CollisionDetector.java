@@ -16,7 +16,7 @@ public class CollisionDetector {
     int charTopRow = charTopY / gameBarrier.cellSize;
     int charBottomRow = charBottomY / gameBarrier.cellSize;
 
-    int cellNum1, cellNum2;
+    int cellNum1, cellNum2, cellNum3, cellNum4;
     switch(character.direction){
       case "up":
       if (charTopRow >= 0 && charTopRow < gameBarrier.maxScreenRow &&
@@ -78,8 +78,33 @@ public class CollisionDetector {
             }
             break;
       default:
+        charLeftCol = (charLeftX - gameBarrier.cellSize) / gameBarrier.cellSize;
+        charRightCol = (charRightX + gameBarrier.cellSize) / gameBarrier.cellSize;
+        charTopRow = (charTopY - gameBarrier.cellSize) / gameBarrier.cellSize;
+        charBottomRow = (charBottomY + gameBarrier.cellSize) / gameBarrier.cellSize;
+        if (charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol &&
+            charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol &&
+            charTopRow >= 0 && charTopRow < gameBarrier.maxScreenRow &&
+            charBottomRow >= 0 && charBottomRow < gameBarrier.maxScreenRow) {
+          cellNum1 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charTopRow];
+          cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charTopRow];
+          cellNum3 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charBottomRow];
+          cellNum4 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charBottomRow];
+          if (gameBarrier.gameWorld.levelOne.cell[cellNum1].collision ||
+              gameBarrier.gameWorld.levelOne.cell[cellNum2].collision ||
+              gameBarrier.gameWorld.levelOne.cell[cellNum3].collision ||
+              gameBarrier.gameWorld.levelOne.cell[cellNum4].collision) {
+            character.collisionOn = true;
+            return true;
+          }
+          else {
+            character.collisionOn = false;
+            return false;
+          }
+        }
         break;
     }
     return false;
   }
 }
+

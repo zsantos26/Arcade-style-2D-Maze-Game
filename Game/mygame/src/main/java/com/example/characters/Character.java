@@ -10,7 +10,7 @@ public abstract class Character {
     public String direction;
     // protected int score; // current score of the character
     //Sprite Animations
-    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2, bonusReward;
 
     public int spriteCounter = 0;
     public int spriteMovement = 1;

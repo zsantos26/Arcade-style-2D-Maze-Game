@@ -5,9 +5,12 @@ import com.example.characters.MainCharacter;
 import com.example.characters.MovingEnemy;
 import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
+import com.example.game.CollisionDetector;
 import com.example.game.GameEngine;
 
 public class RewardsFactory implements GameObjectFactory {
+    GameEngine gameBarrier;
+    CollisionDetector colli;
     @Override
     public MainCharacter createMainCharacter(GameEngine gameEngine) {
         return null; // implementation for main character not provided
@@ -29,7 +32,9 @@ public class RewardsFactory implements GameObjectFactory {
     }
 
     @Override
-    public BonusRewards createBonusRewards() {
-        return new BonusRewards(20,0,0,2);
+    public BonusRewards createBonusRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
+        this.gameBarrier = gameEngine;
+        this.colli = collisionDetector;
+        return new BonusRewards(50, 0, 912, 4, gameBarrier, colli);
     }
 }

@@ -2,6 +2,7 @@ package com.example.game;
 
 import javax.swing.JPanel;
 import com.example.abstractfactory.GameObjectFactory;
+import com.example.characters.BonusRewards;
 import com.example.characters.MainCharacter;
 import java.awt.Dimension;
 import java.awt.Color;
@@ -22,6 +23,7 @@ public class GameEngine extends JPanel implements Runnable{
   //Abstract Factory
   private GameObjectFactory gameObjectFactory;
   private MainCharacter mainChar;
+  private BonusRewards bonusRewards;
 
   //Keyboard Input
   GameInput keyBoard = new GameInput();
@@ -37,6 +39,7 @@ public class GameEngine extends JPanel implements Runnable{
     screenSetUp();
     this.gameObjectFactory = factoryMethod;
     this.mainChar = gameObjectFactory.createMainCharacter(this);
+    this.bonusRewards = gameObjectFactory.createBonusRewards(this, collisionDetector);
   }
 
   /*
@@ -60,6 +63,7 @@ public class GameEngine extends JPanel implements Runnable{
     //Calling MainCharacter class to draw the character
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
+    bonusRewards.draw(g2d);
     g2d.dispose();
   }
 
@@ -107,5 +111,6 @@ public class GameEngine extends JPanel implements Runnable{
   */
   public void update() {
     mainChar.update(keyBoard);
+    bonusRewards.update();
   }
 }

@@ -75,7 +75,6 @@ public class MainCharacter extends Character {
             right2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_right_walking-1.png"));
 
         }catch(IOException e){
-            System.out.println("FAIL FIL FAIL");
             e.printStackTrace();
             System.out.println("Error loading images: " + e.getMessage());
         }
