@@ -73,14 +73,14 @@ public class GameEngine extends JPanel implements Runnable{
   */
   @Override
   public void run() {
-    int FPS = 20;
+    int FPS = 10;
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
 
     while (gameThread != null) {
       long currTime = System.nanoTime();
-      System.out.println(currTime);
-      System.out.println("Game Thread is running");
+      // System.out.println(currTime);
+      // System.out.println("Game Thread is running");
       update();
       repaint();
       try{

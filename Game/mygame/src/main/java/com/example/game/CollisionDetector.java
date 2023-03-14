@@ -6,42 +6,70 @@ public class CollisionDetector {
     this.gameBarrier = gameEngine;
   }
   public void checkCells(MainCharacter character){
-    int characterX = (int) (character.x/gameBarrier.cellSize);
-    int characterY = (int) (character.y/gameBarrier.cellSize);
+    int charLeftX = character.x;
+    int charRightX = character.x;
+    int charTopY = character.y;
+    int charBottomY = character.y;
 
+    int charLeftCol = charLeftX / gameBarrier.cellSize;
+    int charRightCol = charRightX / gameBarrier.cellSize;
+    int charTopRow = charTopY / gameBarrier.cellSize;
+    int charBottomRow = charBottomY / gameBarrier.cellSize;
+
+    int cellNum1, cellNum2;
     switch(character.direction){
       case "up":
-        if (gameBarrier.gameWorld.levelOne.mapCells[characterX][characterY-1] == 1){
-          character.collisionOn = true;
-        }
-        else{
-          character.collisionOn = false;
-        }
+      if (charTopRow >= 0 && charTopRow < gameBarrier.maxScreenRow &&
+          charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol &&
+          charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol){
+            charTopRow = (charTopY - gameBarrier.cellSize) / gameBarrier.cellSize;
+            cellNum1 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charTopRow];
+            cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charTopRow];
+            if (gameBarrier.gameWorld.levelOne.cell[cellNum1].collision || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision) {
+                character.collisionOn = true;
+            } else {
+                character.collisionOn = false;
+            }
+      }
         break;
       case "down":
-        if(gameBarrier.gameWorld.levelOne.mapCells[characterX][characterY+1] == 1){
-          character.collisionOn = true;
-        }
-        else{
-          character.collisionOn = false;
-        }
+      if(charBottomRow >= 0 && charBottomRow < gameBarrier.maxScreenRow &&
+          charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol &&
+          charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol){
+            charBottomRow = (charBottomY + gameBarrier.cellSize) / gameBarrier.cellSize;
+            cellNum1 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charBottomRow];
+            cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charBottomRow];
+            if (gameBarrier.gameWorld.levelOne.cell[cellNum1].collision || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision) {
+                character.collisionOn = true;
+            } else {
+                character.collisionOn = false;
+            }
+          }
         break;
       case "left":
-        if(gameBarrier.gameWorld.levelOne.mapCells[characterX-1][characterY] == 1){
-          character.collisionOn = true;
-        }
-        else{
-          character.collisionOn = false;
-        }
-        break;
+        charLeftCol = (charLeftX - gameBarrier.cellSize) / gameBarrier.cellSize;
+        if (charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol) {
+            cellNum1 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charTopRow];
+            cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charLeftCol][charBottomRow];
+            if(gameBarrier.gameWorld.levelOne.cell[cellNum1].collision == true || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision == true){
+              character.collisionOn = true;
+            }
+            } else {
+                character.collisionOn = true;
+            }
+            break;
       case "right":
-        if(gameBarrier.gameWorld.levelOne.mapCells[characterX+1][characterY] == 1){
-          character.collisionOn = true;
-        }
-        else{
-          character.collisionOn = false;
-        }
-        break;
+        charRightCol = (charRightX + gameBarrier.cellSize) / gameBarrier.cellSize;
+        if (charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol) {
+            cellNum1 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charTopRow];
+            cellNum2 = gameBarrier.gameWorld.levelOne.mapCells[charRightCol][charBottomRow];
+            if(gameBarrier.gameWorld.levelOne.cell[cellNum1].collision == true || gameBarrier.gameWorld.levelOne.cell[cellNum2].collision == true){
+                character.collisionOn = true;
+            }
+            } else {
+                character.collisionOn = true;
+            }
+            break;
       default:
         break;
     }
