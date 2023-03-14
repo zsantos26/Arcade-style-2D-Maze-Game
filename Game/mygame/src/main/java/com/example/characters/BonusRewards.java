@@ -12,8 +12,8 @@ public class BonusRewards extends Rewards {
         return duration;
     }
     
-    @Override
-    public void claimReward() {
-        // Remove the reward from the board
-    }
+    // @Override
+    // public void claimReward() {
+    //     // Remove the reward from the board
+    // }
 }

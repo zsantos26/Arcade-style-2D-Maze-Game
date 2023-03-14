@@ -193,13 +193,13 @@ public class MainCharacter extends Character {
         }
 
         //  If main character is on a reward, add rewardAmount to score and set rewardAmount to 0
-        for (Rewards reward : rewardsList ) {   //  Loop through each object in rewardsList
-            if (reward.OnReward(x, y)) {  // Determine if user x and y are both the same as reward x and y.
-                int scoreAdd = reward.claimReward();
-                score += scoreAdd;  // Add rewardAmount to main character's score
+        // for (Rewards reward : rewardsList ) {   //  Loop through each object in rewardsList
+        //     if (reward.OnReward(x, y)) {  // Determine if user x and y are both the same as reward x and y.
+        //         int scoreAdd = reward.claimReward();
+        //         score += scoreAdd;  // Add rewardAmount to main character's score
 
-            }
-        }    
+        //     }
+        // }    
         
     }
 }

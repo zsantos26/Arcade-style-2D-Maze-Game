@@ -12,7 +12,7 @@ public class LevelTwo {
     Cells[] cell;
     public int mapCells [][];
 
-    public Leveltwo(GameEngine gameEngine) {
+    public LevelTwo(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
         cell = new Cells[40];
         mapCells = new int[gameBarrier.maxScreenCol][gameBarrier.maxScreenRow];
