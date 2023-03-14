@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import com.example.game.GameEngine;
 import com.example.game.GameInput;
 
-import javafx.scene.shape.Rectangle;
 
 // import com.example.characters.Rewards;  // For reward.OnReward(x, y)) and reward.claimReward();
 
@@ -23,7 +22,6 @@ public class MainCharacter extends Character {
         }
         this.gameBarrier = gameEngine;
 
-        hitBox = new Rectangle(8,16,gameEngine.cellSize-16,gameEngine.cellSize-16);
 
         // direction = "down"; // set the initial direction of the character
         getPlayerSprite();

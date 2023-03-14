@@ -4,7 +4,7 @@ package com.example.game;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 
@@ -12,6 +12,7 @@ public class LevelOne {
   GameEngine gameBarrier;
   Cells[] cell;
   public int mapCells [][];
+  ArrayList<int[]> staticRewardsLocations = new ArrayList<int[]>();
 
   public LevelOne(GameEngine gameEngine) {
     this.gameBarrier = gameEngine;
