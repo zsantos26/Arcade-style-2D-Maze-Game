@@ -37,7 +37,7 @@ public class AbstractFactory implements GameObjectFactory {
         int y = random.nextInt(20);
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
-        return new StaticRewards(20, 3, 4);
+        return new StaticRewards(100, x, y, gameEngine, collisionDetector);
     }
 
     @Override
