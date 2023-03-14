@@ -11,8 +11,6 @@ import com.example.game.GameEngine;
 
 
 public class StaticRewards extends Character {
-    private int duration;
-    private int randomTimeBetweenBonus;  // Number of ticks before next bonus appears
     private int rewardAmount;
     private Random random;
     private CollisionDetector collisionDetector;
@@ -21,7 +19,6 @@ public class StaticRewards extends Character {
     public StaticRewards(int rewardAmount, int x, int y, GameEngine gameEngine, CollisionDetector collisionDetector) {
         super(x, y,"");
         this.visible = true;
-        this.randomTimeBetweenBonus = 0;
         this.random = new Random();
         this.collisionDetector = collisionDetector;
         this.gameBarrier = gameEngine;
@@ -72,8 +69,8 @@ public class StaticRewards extends Character {
 
     public void getStaticRewardsSprite() {
         try{
-            staticReward1 = ImageIO.read(getClass().getResourceAsStream("/images/book/specialRewards.png"));
-            staticReward2 = ImageIO.read(getClass().getResourceAsStream("/images/book/specialRewards.png"));
+            staticReward1 = ImageIO.read(getClass().getResourceAsStream("/images/book/note.png"));
+            staticReward2 = ImageIO.read(getClass().getResourceAsStream("/images/book/textbook.png"));
         }catch(IOException e){
             System.out.println("FAIL FIL FAIL");
             e.printStackTrace();
@@ -83,12 +80,16 @@ public class StaticRewards extends Character {
 
     public void draw(Graphics2D graphics){
         if(isVisible()){
-            BufferedImage image = bonusReward;
+            BufferedImage image = null;
+            int spriteGenerate = random.nextInt(1);
+            if(spriteGenerate == 0){
+                image = staticReward1;
+            }
+            else{
+                image = staticReward2;
+            }
             graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
         }
     }
-}
-
-
 }
 
