@@ -105,71 +105,54 @@ public class LevelOne {
 
       cell[21] = new Cells(); //road water left
       cell[21].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_left.png"));
-      cell[21].collision = true;
 
       cell[22] = new Cells(); //road water right
       cell[22].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right.png"));
-      cell[22].collision = true;
 
       cell[23] = new Cells(); //road water left
       cell[23].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_left_down.png"));
-      cell[23].collision = true;
 
       cell[24] = new Cells(); //road water right
       cell[24].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_right_down.png"));
-      cell[24].collision = true;
 
       cell[25] = new Cells(); //road water left
       cell[25].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_right_up.png"));
-      cell[25].collision = true;
 
       cell[26] = new Cells(); //road water right
       cell[26].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_left_up.png"));
-      cell[26].collision = true;
 
       cell[27] = new Cells(); //road water right
       cell[27].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_left_down.png"));
-      cell[27].collision = true;
 
       cell[28] = new Cells(); //road water right
       cell[28].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_down.png"));
-      cell[28].collision = true;
 
       cell[29] = new Cells(); //road water right
       cell[29].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_left_up.png"));
-      cell[29].collision = true;
 
       cell[30] = new Cells(); //road water left
       cell[30].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_down.png"));
-      cell[30].collision = true;
 
       cell[31] = new Cells(); //road water right
       cell[31].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_right_down.png"));
-      cell[31].collision = true;
 
       cell[32] = new Cells(); //road water left
       cell[32].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_up.png"));
-      cell[32].collision = true;
 
       cell[33] = new Cells(); //road water right
       cell[33].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_up_2.png"));
-      cell[33].collision = true;
 
       cell[34] = new Cells(); //road water right
       cell[34].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_down_2.png"));
-      cell[34].collision = true;
 
       cell[35] = new Cells(); //road water right
       cell[35].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_down_3.png"));
-      cell[35].collision = true;
 
       cell[36] = new Cells(); //road water right
       cell[36].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_up_3.png"));
-      cell[36].collision = true;
 
       cell[37] = new Cells(); //road water right
       cell[37].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_ground.png"));
-      cell[37].collision = true;
 
       cell[38] = new Cells(); //road water right
       cell[38].image = ImageIO.read(getClass().getResourceAsStream("/images/background/avocado.png"));
