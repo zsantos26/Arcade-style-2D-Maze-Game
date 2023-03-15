@@ -128,7 +128,8 @@ public class MainCharacter extends Character {
     /*
     * This method is called every frame to update the character's position
      */
-    public void update(GameInput keyBoard){
+    public void update(GameInput keyBoard, double elapsed){
+            double distance = elapsed * gameBarrier.cellSize;
             if (keyBoard.upPressed == true) {
                 moveUp();
             }
@@ -148,16 +149,16 @@ public class MainCharacter extends Character {
         if (collisionOn == false){
             switch(direction){
                 case "up":
-                    y -= gameBarrier.cellSize/6;
+                    y -= distance;
                     break;
                 case "down":
-                    y += gameBarrier.cellSize/6;
+                    y += distance;
                     break;
                 case "left":
-                    x -= gameBarrier.cellSize/6;
+                    x -= distance;
                     break;
                 case "right":
-                    x += gameBarrier.cellSize/6;
+                    x += distance;
                     break;
                 default:
                     break;

@@ -14,7 +14,7 @@ import java.awt.Graphics2D;
 
 public class GameEngine extends JPanel implements Runnable{
   //Set the Screen Size
-  final int originalCellSize = 16; //20x19 Cells
+  final int originalCellSize = 16; //20x20 Cells
   final int scale = 3;
   //Screen Dimensions
   public final int cellSize = originalCellSize * scale;
@@ -87,16 +87,20 @@ public class GameEngine extends JPanel implements Runnable{
     int FPS = 60;
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
+    long lastTime = System.nanoTime();
 
     while (gameThread != null) {
       // long currTime = System.nanoTime();
       // System.out.println(currTime);
       // System.out.println("Game Thread is running");
+      long currentTime = System.nanoTime();
+      double elapsed = (currentTime - lastTime) / 1000000000.0; // convert to seconds
+      lastTime = currentTime;
       if(keyBoard.upPressed == false && keyBoard.leftPressed == false && keyBoard.rightPressed == false && keyBoard.downPressed == false){
         repaint();
       }
       else{
-        update();
+        update(elapsed);
         repaint();
       }
       try{
@@ -116,8 +120,8 @@ public class GameEngine extends JPanel implements Runnable{
   /*
   Update the game every frame by calling the update method in the MainCharacter class
   */
-  public void update() {
-    mainChar.update(keyBoard);
+  public void update(double elapsed) {
+    mainChar.update(keyBoard,elapsed);
     bonusRewards.update();
     staticRewards.update();
   }
