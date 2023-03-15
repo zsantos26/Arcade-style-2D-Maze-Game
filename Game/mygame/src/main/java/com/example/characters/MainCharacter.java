@@ -148,23 +148,23 @@ public class MainCharacter extends Character {
         if (collisionOn == false){
             switch(direction){
                 case "up":
-                    y -= gameBarrier.cellSize;
+                    y -= gameBarrier.cellSize/6;
                     break;
                 case "down":
-                    y += gameBarrier.cellSize;
+                    y += gameBarrier.cellSize/6;
                     break;
                 case "left":
-                    x -= gameBarrier.cellSize;
+                    x -= gameBarrier.cellSize/6;
                     break;
                 case "right":
-                    x += gameBarrier.cellSize;
+                    x += gameBarrier.cellSize/6;
                     break;
                 default:
                     break;
             }
         }
         spriteCounter++;
-        if (spriteCounter > 30) {
+        if (spriteCounter > 4) {
             if(spriteMovement == 1){
                 spriteMovement = 2;
             }
