@@ -75,7 +75,7 @@ public class BonusRewards extends Character {
         if (!isExpired() && isVisible()) {
             //  Lower duration left on bonus until it becomes 0;
             duration--;
-            if (duration == 0) {
+            if (duration <= 0) {
                 setRewardAmount(0);
                 expired = true;
                 visible = false;
@@ -98,7 +98,7 @@ public class BonusRewards extends Character {
                     System.out.println("X: " + x + " Y: " + y);
                     System.out.println("IT RELOCATE");
                 }while(collisionDetector.checkCells(this)==true);
-                if(duration == 0){
+                if(duration <= 0){
                     expired = false;
                     visible = true;
                 }
@@ -109,7 +109,6 @@ public class BonusRewards extends Character {
             }
         }
     }
-
 
     public void getBonusRewardsSprite() {
         try{
