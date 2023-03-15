@@ -165,7 +165,7 @@ public class MainCharacter extends Character {
             }
         }
         spriteCounter++;
-        if (spriteCounter > 4) {
+        if (spriteCounter > 0) {
             if(spriteMovement == 1){
                 spriteMovement = 2;
             }
