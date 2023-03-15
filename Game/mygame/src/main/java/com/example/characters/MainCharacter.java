@@ -129,7 +129,7 @@ public class MainCharacter extends Character {
     * This method is called every frame to update the character's position
      */
     public void update(GameInput keyBoard, double elapsed){
-            double distance = elapsed * gameBarrier.cellSize;
+            int distance = gameBarrier.cellSize;
             if (keyBoard.upPressed == true) {
                 moveUp();
             }
@@ -175,7 +175,7 @@ public class MainCharacter extends Character {
             spriteCounter = 0;
         }
         try {
-            Thread.sleep(50); // Add a delay of 50 milliseconds
+            Thread.sleep(200); // Add a delay of 50 milliseconds
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
