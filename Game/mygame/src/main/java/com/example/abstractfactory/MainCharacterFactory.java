@@ -5,7 +5,6 @@ import com.example.characters.MainCharacter;
 import com.example.characters.MovingEnemy;
 import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
-import com.example.game.CollisionDetector;
 import com.example.game.GameEngine;
 
 public class MainCharacterFactory implements GameObjectFactory {
@@ -23,19 +22,19 @@ public class MainCharacterFactory implements GameObjectFactory {
     }
 
     @Override
-    public StaticEnemy createStaticEnemy() {
+    public StaticEnemy createStaticEnemy(GameEngine gameEngine) {
         // not implemented in this factory
         return null;
     }
     
     @Override
-    public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
+    public StaticRewards createStaticRewards(GameEngine gameEngin) {
         // not implemented in this factory
         return null;
     }
 
     @Override
-    public BonusRewards createBonusRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
+    public BonusRewards createBonusRewards(GameEngine gameEngine) {
         // not implemented in this factory
         return null;
     }

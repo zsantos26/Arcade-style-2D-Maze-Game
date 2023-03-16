@@ -22,21 +22,19 @@ public class RewardsFactory implements GameObjectFactory {
     }
 
     @Override
-    public StaticEnemy createStaticEnemy() {
+    public StaticEnemy createStaticEnemy(GameEngine gameEngine) {
         return null; // implementation for static enemy not provided
     }
 
     @Override
     public StaticRewards createStaticRewards(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        this.colli = collisionDetector;
-        return new StaticRewards(50, 0, 912, gameBarrier, colli);
+        return new StaticRewards(50, 0, 912, gameBarrier);
     }
 
     @Override
     public BonusRewards createBonusRewards(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        this.colli = collisionDetector;
-        return new BonusRewards(50, 0, 912, 4, gameBarrier, colli);
+        return new BonusRewards(50, 0, 912, 4, gameBarrier);
     }
 }

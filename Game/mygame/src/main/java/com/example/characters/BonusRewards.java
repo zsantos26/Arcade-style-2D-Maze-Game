@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import java.awt.Graphics2D;
-import com.example.game.CollisionDetector;
 import com.example.game.GameEngine;
 
 
@@ -16,18 +15,16 @@ public class BonusRewards extends Character {
     private int randomTimeBetweenBonus;  // Number of ticks before next bonus appears
     private int rewardAmount;
     private Random random;
-    private CollisionDetector collisionDetector;
     private GameEngine gameBarrier;
     private boolean visible;
 
-    public BonusRewards(int rewardAmount, int x, int y, int duration, GameEngine gameEngine, CollisionDetector collisionDetector) {
+    public BonusRewards(int rewardAmount, int x, int y, int duration, GameEngine gameEngine) {
         super(x, y, "");
         this.duration = duration;
         this.expired = false;
         this.visible = true;
         this.randomTimeBetweenBonus = 0;
         this.random = new Random();
-        this.collisionDetector = collisionDetector;
         this.gameBarrier = gameEngine;
         getBonusRewardsSprite();
     }
@@ -97,7 +94,7 @@ public class BonusRewards extends Character {
                     y = y * gameBarrier.cellSize;
                     System.out.println("X: " + x + " Y: " + y);
                     System.out.println("IT RELOCATE");
-                }while(collisionDetector.checkCells(this)==true);
+                }while(gameBarrier.collisionDetector.checkCells(this)==true);
                 if(duration <= 0){
                     expired = false;
                     visible = true;

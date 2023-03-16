@@ -6,13 +6,12 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import java.awt.Graphics2D;
-import com.example.game.CollisionDetector;
 import com.example.game.GameEngine;
 
 
 public class StaticRewards extends Character {
     private int rewardAmount;
-    private Random random;s
+    private Random random;
     private GameEngine gameBarrier;
     private boolean visible;
     public StaticRewards(int rewardAmount, int x, int y, GameEngine gameEngine) {

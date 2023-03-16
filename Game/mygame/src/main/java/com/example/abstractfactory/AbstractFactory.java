@@ -26,7 +26,13 @@ public class AbstractFactory implements GameObjectFactory {
 
     @Override
     public StaticEnemy createStaticEnemy(GameEngine gameEngine) {
-        return new StaticEnemy(10,10,20, gameEngine);
+        this.gameBarrier = gameEngine;
+        Random random = new Random();
+        int x = random.nextInt(20);
+        int y = random.nextInt(20);
+        x = x * gameEngine.cellSize;
+        y = y * gameEngine.cellSize;
+        return new StaticEnemy(x,y,20, gameEngine);
     }
 
     @Override
