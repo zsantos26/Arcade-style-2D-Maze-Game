@@ -107,7 +107,7 @@ public class GameEngine extends JPanel implements Runnable{
       long currentTime = System.nanoTime();
       double elapsed = (currentTime - lastTime) / 1000000000.0; // convert to seconds
       lastTime = currentTime;
-      if(keyBoard.upPressed == true && keyBoard.leftPressed == true && keyBoard.rightPressed == true && keyBoard.downPressed == true){
+      if(keyBoard.upPressed == true || keyBoard.leftPressed == true || keyBoard.rightPressed == true || keyBoard.downPressed == true){
         mainChar.update(keyBoard, elapsed);
       }
         enemyUpdateTime += elapsed;
