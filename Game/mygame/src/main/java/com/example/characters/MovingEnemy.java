@@ -26,7 +26,7 @@ public String moveTowards(MainCharacter mainchar) {
         // enemy has caught the main character, do something here
         return null;
     }
-    
+
     // determine the direction that the enemy is moving
     if (Math.abs(dx) > Math.abs(dy)) {
         if (dx > 0) {
@@ -43,12 +43,9 @@ public String moveTowards(MainCharacter mainchar) {
     }
 }
 
-
-
-
     public void update(double elapsed, MainCharacter mainChar) {
         int distance = gameBarrier.cellSize;
-        moveTowards(mainChar);
+        direction = moveTowards(mainChar);
         collisionOn = false;
         gameBarrier.collisionDetector.checkCells(this);
         if (collisionOn == false){
