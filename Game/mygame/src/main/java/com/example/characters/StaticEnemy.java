@@ -53,8 +53,8 @@ public class StaticEnemy extends Character {
 
         public void getStaticEnemySprite() {
         try{
-            staticEnemy1 = ImageIO.read(getClass().getResourceAsStream("/images/book/note.png"));
-            staticEnemy2 = ImageIO.read(getClass().getResourceAsStream("/images/book/textbook.png"));
+            staticEnemy1 = ImageIO.read(getClass().getResourceAsStream("/images/cctv/cctv_left-1.png.png"));
+            staticEnemy2 = ImageIO.read(getClass().getResourceAsStream("/images/cctv/cctv-1.png.png"));
         }catch(IOException e){
             System.out.println("FAIL FIL FAIL");
             e.printStackTrace();
