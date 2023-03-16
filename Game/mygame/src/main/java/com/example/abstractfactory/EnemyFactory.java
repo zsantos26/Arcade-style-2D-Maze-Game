@@ -8,6 +8,7 @@ import com.example.game.CollisionDetector;
 import com.example.game.GameEngine;
 
 public class EnemyFactory implements GameObjectFactory {
+    GameEngine gameBarrier;
 
     @Override
     public MainCharacter createMainCharacter(GameEngine gameEngine) {
@@ -15,8 +16,9 @@ public class EnemyFactory implements GameObjectFactory {
     }
 
     @Override
-    public MovingEnemy createMovingEnemy() {
-        return new MovingEnemy(2,2,3);
+    public MovingEnemy createMovingEnemy(GameEngine gameEngine) {
+        this.gameBarrier = gameEngine;
+        return new MovingEnemy(480, 480, 900, gameBarrier);
     }
 
     @Override

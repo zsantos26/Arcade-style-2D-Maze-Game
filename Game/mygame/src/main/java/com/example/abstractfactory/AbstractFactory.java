@@ -19,8 +19,9 @@ public class AbstractFactory implements GameObjectFactory {
     }
 
     @Override
-    public MovingEnemy createMovingEnemy() {
-        return new MovingEnemy(3,3,10);
+    public MovingEnemy createMovingEnemy(GameEngine gameEngine) {
+        this.gameBarrier = gameEngine;
+        return new MovingEnemy(480, 480, 900, gameBarrier);
     }
 
     @Override
