@@ -17,7 +17,7 @@ public class MainCharacterFactory implements GameObjectFactory {
     }
     
     @Override
-    public MovingEnemy createMovingEnemy() {
+    public MovingEnemy createMovingEnemy(GameEngine gameEngine) {
         // not implemented in this factory
         return null;
     }

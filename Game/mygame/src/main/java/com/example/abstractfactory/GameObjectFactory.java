@@ -9,7 +9,7 @@ import com.example.game.GameEngine;
 
 public interface GameObjectFactory {
     public MainCharacter createMainCharacter(GameEngine gameEngine);
-    public MovingEnemy createMovingEnemy();
+    public MovingEnemy createMovingEnemy(GameEngine gameEngine);
     public StaticEnemy createStaticEnemy();
     public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector);
     public BonusRewards createBonusRewards(GameEngine gameEngine, CollisionDetector collisionDetector);
