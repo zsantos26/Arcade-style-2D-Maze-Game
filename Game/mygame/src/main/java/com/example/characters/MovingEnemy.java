@@ -54,21 +54,42 @@ public String moveTowards(MainCharacter mainchar) {
 
 
     public void update(double elapsed, MainCharacter mainChar) {
+        int distance = gameBarrier.cellSize;
         moveTowards(mainChar);
         collisionOn = false;
         gameBarrier.collisionDetector.checkCells(this);
-        if (collisionOn) {
-            // Handle collision with another character or a barrier
-            // ...
+        if (collisionOn == false){
+            switch(direction){
+                case "up":
+                    y -= distance;
+                    break;
+                case "down":
+                    y += distance;
+                    break;
+                case "left":
+                    x -= distance;
+                    break;
+                case "right":
+                    x += distance;
+                    break;
+                default:
+                    break;
+            }
         }
         spriteCounter++;
-        if (spriteCounter > 1) {
-            if (spriteMovement == 1) {
+        if (spriteCounter > 0) {
+            if(spriteMovement == 1){
                 spriteMovement = 2;
-            } else if (spriteMovement == 2) {
+            }
+            else if(spriteMovement == 2){
                 spriteMovement = 1;
             }
             spriteCounter = 0;
+        }
+        try {
+            Thread.sleep(200); // Add a delay of 50 milliseconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
