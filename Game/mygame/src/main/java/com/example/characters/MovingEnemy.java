@@ -26,24 +26,16 @@ public String moveTowards(MainCharacter mainchar) {
         // enemy has caught the main character, do something here
         return null;
     }
-
-    // calculate the normalized direction vector towards the main character
-    double dirX = dx / distance;
-    double dirY = dy / distance;
-
-    // move the enemy towards the main character
-    x += dirX * gameBarrier.cellSize;
-    y += dirY * gameBarrier.cellSize;
-
+    
     // determine the direction that the enemy is moving
-    if (Math.abs(dirX) > Math.abs(dirY)) {
-        if (dirX > 0) {
+    if (Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 0) {
             return "right";
         } else {
             return "left";
         }
     } else {
-        if (dirY > 0) {
+        if (dy > 0) {
             return "down";
         } else {
             return "up";
