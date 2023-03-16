@@ -98,14 +98,14 @@ public String moveTowards(MainCharacter mainchar) {
      */
     public void getMovingEnemySprite() {
         try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_back_leftfoot-1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_back_right-1.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/mainfront_leftfoot-1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/mainfront_rightfoot-1.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_left_stopmotion-1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_left_walking-1.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_right_stopmotion-1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_right_walking-1.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackright-1.png.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
 
         }catch(IOException e){
             e.printStackTrace();
