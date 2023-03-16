@@ -97,6 +97,9 @@ public class GameEngine extends JPanel implements Runnable{
     double nextDraw = System.nanoTime() + timePerTick;
     long lastTime = System.nanoTime();
 
+    double enemyUpdateTime = 0; // initialize enemy update time
+    double enemyUpdateInterval = 1.0; // set enemy update interval to 1 second
+
     while (gameThread != null) {
       // long currTime = System.nanoTime();
       // System.out.println(currTime);
@@ -105,12 +108,15 @@ public class GameEngine extends JPanel implements Runnable{
       double elapsed = (currentTime - lastTime) / 1000000000.0; // convert to seconds
       lastTime = currentTime;
       if(keyBoard.upPressed == false && keyBoard.leftPressed == false && keyBoard.rightPressed == false && keyBoard.downPressed == false){
-        repaint();
+        mainChar.update(keyBoard, elapsed);
       }
-      else{
-        update(elapsed);
+        enemyUpdateTime += elapsed;
+        if (enemyUpdateTime >= enemyUpdateInterval) {
+            movingEnemy.update(enemyUpdateTime, mainChar);
+            enemyUpdateTime = 0;
+        }
+
         repaint();
-      }
       try{
         double remainingTime = nextDraw - System.nanoTime();
         remainingTime = remainingTime/1000000;
