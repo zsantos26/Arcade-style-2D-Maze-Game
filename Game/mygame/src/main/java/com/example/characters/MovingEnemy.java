@@ -17,8 +17,8 @@ public class MovingEnemy extends Character {
 
 public String moveTowards(MainCharacter mainchar) {
     // calculate distance between the enemy and the main character
-    double dx = mainchar.getX() - x;
-    double dy = mainchar.getY() - y;
+    int dx = mainchar.getX() - x;
+    int dy = mainchar.getY() - y;
     double distance = Math.sqrt(dx * dx + dy * dy);
 
     // check if enemy is already adjacent to the main character
@@ -99,7 +99,7 @@ public String moveTowards(MainCharacter mainchar) {
      */
     public void getMovingEnemySprite() {
         try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackright-1.png.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
             down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
             down2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
