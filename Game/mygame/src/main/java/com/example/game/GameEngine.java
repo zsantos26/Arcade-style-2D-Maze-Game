@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import com.example.abstractfactory.GameObjectFactory;
 import com.example.characters.BonusRewards;
 import com.example.characters.MainCharacter;
+import com.example.characters.MovingEnemy;
 import com.example.characters.StaticRewards;
 import java.util.Random;
 
@@ -32,6 +33,7 @@ public class GameEngine extends JPanel implements Runnable{
   private MainCharacter mainChar;
   private BonusRewards bonusRewards;
   private StaticRewards staticRewards;
+  private MovingEnemy movingEnemy;
 
   //Keyboard Input
   GameInput keyBoard = new GameInput();
@@ -50,6 +52,7 @@ public class GameEngine extends JPanel implements Runnable{
     this.mainChar = gameObjectFactory.createMainCharacter(this);
     this.bonusRewards = gameObjectFactory.createBonusRewards(this, collisionDetector);
     this.staticRewards = gameObjectFactory.createStaticRewards(this, collisionDetector);
+    this.movingEnemy = gameObjectFactory.createMovingEnemy(this);
   }
 
   /*
@@ -73,6 +76,7 @@ public class GameEngine extends JPanel implements Runnable{
     //Calling MainCharacter class to draw the character
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
+    movingEnemy.draw(g2d);
     bonusRewards.draw(g2d);
     staticRewards.draw(g2d);
     g2d.dispose();
@@ -126,6 +130,7 @@ public class GameEngine extends JPanel implements Runnable{
   */
   public void update(double elapsed) {
     mainChar.update(keyBoard,elapsed);
+    movingEnemy.update(elapsed, mainChar);
     bonusRewards.update();
     staticRewards.update();
   }
