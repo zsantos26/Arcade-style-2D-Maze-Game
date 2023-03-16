@@ -14,26 +14,42 @@ public class MovingEnemy extends Character {
         this.gameBarrier = gameEngine;  // This is the gameBarrier object
     }
 
-    public void moveTowards(MainCharacter mainchar) {
-        // calculate distance between the enemy and the main character
-        double dx = mainchar.getX() - x;
-        double dy = mainchar.getY() - y;
-        double distance = Math.sqrt(dx * dx + dy * dy);
+public String moveTowards(MainCharacter mainchar) {
+    // calculate distance between the enemy and the main character
+    double dx = mainchar.getX() - x;
+    double dy = mainchar.getY() - y;
+    double distance = Math.sqrt(dx * dx + dy * dy);
 
-        // check if enemy is already adjacent to the main character
-        if (distance <= gameBarrier.cellSize) {
-            // enemy has caught the main character, do something here
-            return;
-        }
-
-        // calculate the normalized direction vector towards the main character
-        double dirX = dx / distance;
-        double dirY = dy / distance;
-
-        // move the enemy towards the main character
-        x += dirX * gameBarrier.cellSize;
-        y += dirY * gameBarrier.cellSize;
+    // check if enemy is already adjacent to the main character
+    if (distance <= gameBarrier.cellSize) {
+        // enemy has caught the main character, do something here
+        return null;
     }
+
+    // calculate the normalized direction vector towards the main character
+    double dirX = dx / distance;
+    double dirY = dy / distance;
+
+    // move the enemy towards the main character
+    x += dirX * gameBarrier.cellSize;
+    y += dirY * gameBarrier.cellSize;
+
+    // determine the direction that the enemy is moving
+    if (Math.abs(dirX) > Math.abs(dirY)) {
+        if (dirX > 0) {
+            return "right";
+        } else {
+            return "left";
+        }
+    } else {
+        if (dirY > 0) {
+            return "down";
+        } else {
+            return "up";
+        }
+    }
+}
+
 
 
 
