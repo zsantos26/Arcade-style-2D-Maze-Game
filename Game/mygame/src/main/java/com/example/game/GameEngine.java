@@ -23,6 +23,10 @@ public class GameEngine extends JPanel implements Runnable{
   public final int screenWidth = cellSize * maxScreenCol;
   public final int screenHeight = cellSize * maxScreenRow;
 
+  public final int maxMap = 3;
+  public final int currentMap=0;
+
+
   //Abstract Factory
   private GameObjectFactory gameObjectFactory;
   private MainCharacter mainChar;
