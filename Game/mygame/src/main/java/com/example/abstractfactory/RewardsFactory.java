@@ -17,7 +17,7 @@ public class RewardsFactory implements GameObjectFactory {
     }
 
     @Override
-    public MovingEnemy createMovingEnemy() {
+    public MovingEnemy createMovingEnemy(GameEngine gameEngine) {
         return null; // implementation for moving enemy not provided
     }
 

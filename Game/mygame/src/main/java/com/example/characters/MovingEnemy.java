@@ -3,6 +3,9 @@ package com.example.characters;
 import com.example.game.GameEngine;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class MovingEnemy extends Character {
     GameEngine gameBarrier;
@@ -15,7 +18,27 @@ public class MovingEnemy extends Character {
         // implementation to move towards the main character
     }
 
-        /*
+    /*
+    This method is called when the character is created to load the character's sprite
+     */
+    public void getMovingEnemySprite() {
+        try{
+            up1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_back_leftfoot-1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_back_right-1.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/mainfront_leftfoot-1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/mainfront_rightfoot-1.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_left_stopmotion-1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_left_walking-1.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_right_stopmotion-1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_right_walking-1.png"));
+
+        }catch(IOException e){
+            e.printStackTrace();
+            System.out.println("Error loading images: " + e.getMessage());
+        }
+    }
+
+    /*
     This method is called every frame to update the enemy's state
      */
     public void draw(Graphics2D graphics) {
