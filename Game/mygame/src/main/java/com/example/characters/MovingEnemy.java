@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class MovingEnemy extends Character {
+    private int damageAmount;
     GameEngine gameBarrier;
     public MovingEnemy(int x, int y, int damage, GameEngine gameEngine) {
         super(x, y, "down");
@@ -15,33 +16,41 @@ public class MovingEnemy extends Character {
         getMovingEnemySprite();
     }
 
-public String moveTowards(MainCharacter mainchar) {
-    // calculate distance between the enemy and the main character
-    int dx = mainchar.getX() - x;
-    int dy = mainchar.getY() - y;
-    double distance = Math.sqrt(dx * dx + dy * dy);
-
-    // check if enemy is already adjacent to the main character
-    if (distance <= gameBarrier.cellSize) {
-        // enemy has caught the main character, do something here
-        return null;
+    public int getDamageAmount() {
+        return damageAmount;
     }
 
-    // determine the direction that the enemy is moving
-    if (Math.abs(dx) > Math.abs(dy)) {
-        if (dx > 0) {
-            return "right";
-        } else {
-            return "left";
+    public void setDamageAmount(int amount) {
+        damageAmount = amount;
+    }
+
+    public String moveTowards(MainCharacter mainchar) {
+        // calculate distance between the enemy and the main character
+        int dx = mainchar.getX() - x;
+        int dy = mainchar.getY() - y;
+        double distance = Math.sqrt(dx * dx + dy * dy);
+
+        // check if enemy is already adjacent to the main character
+        if (distance <= gameBarrier.cellSize) {
+            // enemy has caught the main character, do something here
+            return null;
         }
-    } else {
-        if (dy > 0) {
-            return "down";
+
+        // determine the direction that the enemy is moving
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 0) {
+                return "right";
+            } else {
+                return "left";
+            }
         } else {
-            return "up";
+            if (dy > 0) {
+                return "down";
+            } else {
+                return "up";
+            }
         }
     }
-}
 
     public void update(double elapsed, MainCharacter mainChar) {
         int distance = gameBarrier.cellSize;

@@ -121,8 +121,6 @@ public class MainCharacter extends Character {
                 break;
         }
         graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
-        // graphics.setColor(Color.red);
-        // graphics.fillRect(x, y, 48, 48);
     }
 
     /*
