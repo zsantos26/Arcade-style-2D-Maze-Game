@@ -12,6 +12,7 @@ public class MovingEnemy extends Character {
     public MovingEnemy(int x, int y, int damage, GameEngine gameEngine) {
         super(x, y, "down");
         this.gameBarrier = gameEngine;  // This is the gameBarrier object
+        getMovingEnemySprite();
     }
 
 public String moveTowards(MainCharacter mainchar) {
