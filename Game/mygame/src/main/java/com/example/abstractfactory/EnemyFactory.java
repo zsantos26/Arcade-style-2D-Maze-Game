@@ -22,17 +22,17 @@ public class EnemyFactory implements GameObjectFactory {
     }
 
     @Override
-    public StaticEnemy createStaticEnemy() {
-        return new StaticEnemy(19,19,49);
+    public StaticEnemy createStaticEnemy(GameEngine gameEngine) {
+        return new StaticEnemy(19,19,49, gameEngine);
     }
 
     @Override
-    public StaticRewards createStaticRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
+    public StaticRewards createStaticRewards(GameEngine gameEngine) {
         return null; // implementation for static rewards not provided
     }
 
     @Override
-    public BonusRewards createBonusRewards(GameEngine gameEngine, CollisionDetector collisionDetector) {
+    public BonusRewards createBonusRewards(GameEngine gameEngine) {
         return null; // implementation for bonus rewards not provided
     }
 }

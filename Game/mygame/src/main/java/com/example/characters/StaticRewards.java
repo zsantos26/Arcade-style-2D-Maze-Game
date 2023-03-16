@@ -12,15 +12,13 @@ import com.example.game.GameEngine;
 
 public class StaticRewards extends Character {
     private int rewardAmount;
-    private Random random;
-    private CollisionDetector collisionDetector;
+    private Random random;s
     private GameEngine gameBarrier;
     private boolean visible;
-    public StaticRewards(int rewardAmount, int x, int y, GameEngine gameEngine, CollisionDetector collisionDetector) {
+    public StaticRewards(int rewardAmount, int x, int y, GameEngine gameEngine) {
         super(x, y,"");
         this.visible = true;
         this.random = new Random();
-        this.collisionDetector = collisionDetector;
         this.gameBarrier = gameEngine;
         getStaticRewardsSprite();
     }
@@ -55,7 +53,7 @@ public class StaticRewards extends Character {
     public void update() {
         //Still thinking if I should make the Static Rewards Fixed or Randomly Spawned?????
         visible = true;
-        if(collisionDetector.checkCells(this)==true){
+        if(gameBarrier.collisionDetector.checkCells(this)==true){
             x = random.nextInt(20);
             y = random.nextInt(20);
             x = x * gameBarrier.cellSize;
