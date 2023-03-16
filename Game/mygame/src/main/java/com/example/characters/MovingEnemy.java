@@ -14,34 +14,27 @@ public class MovingEnemy extends Character {
         this.gameBarrier = gameEngine;  // This is the gameBarrier object
     }
 
-    public void moveTowards(MainCharacter mainChar) {
-        int mainCharX = mainChar.getX() + gameBarrier.cellSize / 2;
-        int mainCharY = mainChar.getY() + gameBarrier.cellSize / 2;
-        int enemyX = x + gameBarrier.cellSize / 2;
-        int enemyY = y + gameBarrier.cellSize / 2;
+    public void moveTowards(MainCharacter mainchar) {
+        // calculate distance between the enemy and the main character
+        double dx = mainchar.getX() - x;
+        double dy = mainchar.getY() - y;
+        double distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Calculate the distance between the enemy and the main character
-        double distance = Math.sqrt(Math.pow(mainCharX - enemyX, 2) + Math.pow(mainCharY - enemyY, 2));
-
-        // If the distance is less than or equal to the speed, move the enemy to the main character's cell
-        if (distance <= gameBarrier .cellSize) {
-            x = mainCharX - gameBarrier.cellSize / 2;
-            y = mainCharY - gameBarrier.cellSize / 2;
+        // check if enemy is already adjacent to the main character
+        if (distance <= gameBarrier.cellSize) {
+            // enemy has caught the main character, do something here
             return;
         }
 
-        // Calculate the x and y components of the direction vector from the enemy to the main character
-        double dx = (mainCharX - enemyX) / distance;
-        double dy = (mainCharY - enemyY) / distance;
+        // calculate the normalized direction vector towards the main character
+        double dirX = dx / distance;
+        double dirY = dy / distance;
 
-        // Move the enemy in the direction of the main character by the speed
-        x += (int) (dx * gameBarrier.cellSize);
-        y += (int) (dy * gameBarrier.cellSize);
-
-        // Round the enemy's position to the nearest cell
-        x = (x / gameBarrier.cellSize) * gameBarrier.cellSize;
-        y = (y / gameBarrier.cellSize) * gameBarrier.cellSize;
+        // move the enemy towards the main character
+        x += dirX * gameBarrier.cellSize;
+        y += dirY * gameBarrier.cellSize;
     }
+
 
 
     public void update(double elapsed, MainCharacter mainChar) {
@@ -53,7 +46,7 @@ public class MovingEnemy extends Character {
             // ...
         }
         spriteCounter++;
-        if (spriteCounter > 4) {
+        if (spriteCounter > 1) {
             if (spriteMovement == 1) {
                 spriteMovement = 2;
             } else if (spriteMovement == 2) {
