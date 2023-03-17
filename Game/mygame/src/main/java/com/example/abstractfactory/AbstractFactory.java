@@ -58,6 +58,6 @@ public class AbstractFactory implements GameObjectFactory {
         int y = random.nextInt(20);
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
-        return new BonusRewards(50, x, y, 2, gameEngine);
+        return new BonusRewards(200, x, y, 2, gameEngine);
     }
 }
