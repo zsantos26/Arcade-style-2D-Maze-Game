@@ -26,7 +26,8 @@ public class GameEngine extends JPanel implements Runnable {
   public final int screenHeight = cellSize * maxScreenRow;
 
   public final int maxMap = 3;
-  public final int currentMap = 0;
+  public int currentMap = 0;
+  public int gameState;
 
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
@@ -43,6 +44,7 @@ public class GameEngine extends JPanel implements Runnable {
   GameWorld gameWorld = new GameWorld(this);
   Random random = new Random();
   public UI ui = new UI(this);
+  //public EventHandler eventHandler = new EventHandler(this);
   public boolean gameOver = false;
   public long gameTime;
 

@@ -36,8 +36,8 @@ public class AbstractFactory implements GameObjectFactory {
     @Override
     public StaticRewards createStaticRewards(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        int x = 13;
-        int y = 13;
+        int x = 14;
+        int y = 14;
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         return new StaticRewards(100, x, y, gameEngine);
