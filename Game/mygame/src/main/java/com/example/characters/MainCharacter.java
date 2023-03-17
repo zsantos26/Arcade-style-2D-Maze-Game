@@ -8,10 +8,9 @@ import javax.imageio.ImageIO;
 import com.example.game.GameEngine;
 import com.example.game.GameInput;
 
-// import com.example.characters.Rewards;  // For reward.OnReward(x, y)) and reward.claimReward();
-
 public class MainCharacter extends Character {
     GameEngine gameBarrier;
+    StaticRewards staticRewards;
     public int score = 0;
 
     // constructor for the MainCharacter class
@@ -32,13 +31,6 @@ public class MainCharacter extends Character {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public void claimReward() {
-        // if (gameBarrier.collisionDetector.checkCells(this) == true) {
-        // reward.claimReward();
-        // }
-
     }
 
     /*

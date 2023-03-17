@@ -8,27 +8,27 @@ import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import com.example.game.GameEngine;
 
-
 public class StaticRewards extends Character {
     private int rewardAmount;
     private Random random;
     private GameEngine gameBarrier;
-    private boolean visible;
+    private boolean isCollected;
+
     public StaticRewards(int rewardAmount, int x, int y, GameEngine gameEngine) {
-        super(x, y,"");
-        this.visible = true;
+        super(x, y, "");
+        this.isCollected = true;
         this.random = new Random();
         this.gameBarrier = gameEngine;
         getStaticRewardsSprite();
     }
 
     // getters and setters for the visible field
-    public boolean isVisible() {
-        return visible;
+    public boolean isCollected() {
+        return isCollected;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
+    public void setCollecter(boolean collected) {
+        this.isCollected = collected;
     }
 
     public int getRewardAmount() {
@@ -43,52 +43,68 @@ public class StaticRewards extends Character {
         return x == charX && y == charY;
     }
 
-    public int claimReward() {
+    public void claimReward(MainCharacter mainChar) {
         int scoreEarned = getRewardAmount();
-        setRewardAmount(0);
-        return scoreEarned;
+        int dx = mainChar.getX() - x;
+        int dy = mainChar.getY() - y;
+        double distance = Math.sqrt(dx * dx + dy * dy);
+
+        // check if enemy is already adjacent to the main character
+        if (distance < gameBarrier.cellSize) {
+            mainChar.score += scoreEarned;
+            System.out.println("Score: " + mainChar.score);
+            isCollected = true;
+            spawning();
+        }
     }
 
-    public void update() {
-        //Still thinking if I should make the Static Rewards Fixed or Randomly Spawned?????
-        visible = true;
-        if(gameBarrier.collisionDetector.checkCells(this)==true){
+    public void update(MainCharacter mainChar) {
+        // Still thinking if I should make the Static Rewards Fixed or Randomly
+        // Spawned?????
+        int amount = random.nextInt(200);
+        setRewardAmount(amount); // Set new bonus reward amount to 100;
+        claimReward(mainChar);
+        isCollected = false;
+
+    }
+
+    public void spawning() {
+        x = random.nextInt(20);
+        y = random.nextInt(20);
+        x = x * gameBarrier.cellSize;
+        y = y * gameBarrier.cellSize;
+        System.out.println("X: " + x + " Y: " + y);
+        System.out.println("IT RELOCATE");
+        while (gameBarrier.collisionDetector.checkCells(this) == true) {
+            System.out.println("COLLISION DETECTED");
             x = random.nextInt(20);
             y = random.nextInt(20);
             x = x * gameBarrier.cellSize;
             y = y * gameBarrier.cellSize;
-            System.out.println("X: " + x + " Y: " + y);
+            System.out.println("Relocate : " + x + " Y: " + y);
             System.out.println("IT RELOCATE");
         }
-        int amount = random.nextInt(200);
-        setRewardAmount(amount);  // Set new bonus reward amount to 100;
     }
 
-
-
     public void getStaticRewardsSprite() {
-        try{
+        try {
             staticReward1 = ImageIO.read(getClass().getResourceAsStream("/images/book/note.png"));
             staticReward2 = ImageIO.read(getClass().getResourceAsStream("/images/book/textbook.png"));
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("FAIL FIL FAIL");
             e.printStackTrace();
             System.out.println("Error loading images: " + e.getMessage());
         }
     }
 
-    public void draw(Graphics2D graphics){
-        if(isVisible()){
-            BufferedImage image = null;
-            int spriteGenerate = random.nextInt(1);
-            if(spriteGenerate == 0){
-                image = staticReward1;
-            }
-            else{
-                image = staticReward2;
-            }
-            graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
+    public void draw(Graphics2D graphics) {
+        BufferedImage image = null;
+        int spriteGenerate = random.nextInt(1);
+        if (spriteGenerate == 0) {
+            image = staticReward1;
+        } else {
+            image = staticReward2;
         }
+        graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
     }
 }
-

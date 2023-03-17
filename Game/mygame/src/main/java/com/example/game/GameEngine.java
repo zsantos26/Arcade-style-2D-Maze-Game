@@ -133,7 +133,7 @@ public class GameEngine extends JPanel implements Runnable {
       if (updateTime >= updateInterval) {
         movingEnemy.update(updateTime, mainChar);
         updateTime = 0;
-        update();
+        update(mainChar);
       }
       repaint();
       try {
@@ -154,9 +154,9 @@ public class GameEngine extends JPanel implements Runnable {
    * Update the game every frame by calling the update method in the MainCharacter
    * class
    */
-  public void update() {
+  public void update(MainCharacter mainChar) {
     bonusRewards.update();
-    staticRewards.update();
+    staticRewards.update(mainChar);
     staticEnemy.update();
   }
 }
