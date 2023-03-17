@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-
+import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 import com.example.game.GameEngine;
 
 public class StaticEnemy extends Character {
@@ -51,7 +52,7 @@ public class StaticEnemy extends Character {
         setDamageAmount(amount);  // Set new bonus reward amount to 100;
     }
 
-        public void getStaticEnemySprite() {
+    public void getStaticEnemySprite() {
         try{
             staticEnemy1 = ImageIO.read(getClass().getResourceAsStream("/images/cctv/cctv_left-1.png.png"));
             staticEnemy2 = ImageIO.read(getClass().getResourceAsStream("/images/cctv/cctv-1.png.png"));
@@ -59,6 +60,20 @@ public class StaticEnemy extends Character {
             System.out.println("FAIL FIL FAIL");
             e.printStackTrace();
             System.out.println("Error loading images: " + e.getMessage());
+        }
+    }
+
+    public void draw(Graphics2D graphics){
+        if(isVisible()){
+            BufferedImage image = null;
+            int spriteGenerate = random.nextInt(1);
+            if(spriteGenerate == 0){
+                image = staticEnemy1;
+            }
+            else{
+                image = staticEnemy2;
+            }
+            graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
         }
     }
 }

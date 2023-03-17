@@ -5,6 +5,7 @@ import com.example.abstractfactory.GameObjectFactory;
 import com.example.characters.BonusRewards;
 import com.example.characters.MainCharacter;
 import com.example.characters.MovingEnemy;
+import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
 import java.util.Random;
 
@@ -34,6 +35,7 @@ public class GameEngine extends JPanel implements Runnable{
   private BonusRewards bonusRewards;
   private StaticRewards staticRewards;
   private MovingEnemy movingEnemy;
+  private StaticEnemy staticEnemy;
 
   //Keyboard Input
   GameInput keyBoard = new GameInput();
@@ -53,6 +55,7 @@ public class GameEngine extends JPanel implements Runnable{
     this.bonusRewards = gameObjectFactory.createBonusRewards(this);
     this.staticRewards = gameObjectFactory.createStaticRewards(this);
     this.movingEnemy = gameObjectFactory.createMovingEnemy(this);
+    this.staticEnemy = gameObjectFactory.createStaticEnemy(this);
   }
 
   /*
@@ -77,6 +80,7 @@ public class GameEngine extends JPanel implements Runnable{
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
     movingEnemy.draw(g2d);
+    staticEnemy.draw(g2d);
     bonusRewards.draw(g2d);
     staticRewards.draw(g2d);
     g2d.dispose();
@@ -97,8 +101,11 @@ public class GameEngine extends JPanel implements Runnable{
     double nextDraw = System.nanoTime() + timePerTick;
     long lastTime = System.nanoTime();
 
-    double enemyUpdateTime = 0; // initialize enemy update time
-    double enemyUpdateInterval = 0.2; // set enemy update interval to 1 second
+    double updateTime = 0; // initialize enemy update time
+    double updateInterval = 1; // set enemy update interval to 1 second
+
+    double timeSinceLastMove = 0; // initialize time since last move
+    double movementInterval = 0.05; // set movement interval to 0.1 seconds
 
     while (gameThread != null) {
       // long currTime = System.nanoTime();
@@ -108,15 +115,19 @@ public class GameEngine extends JPanel implements Runnable{
       double elapsed = (currentTime - lastTime) / 1000000000.0; // convert to seconds
       lastTime = currentTime;
       if(keyBoard.upPressed == true || keyBoard.leftPressed == true || keyBoard.rightPressed == true || keyBoard.downPressed == true){
-        mainChar.update(keyBoard, elapsed);
-      }
-        enemyUpdateTime += elapsed;
-        if (enemyUpdateTime >= enemyUpdateInterval) {
-            movingEnemy.update(enemyUpdateTime, mainChar);
-            enemyUpdateTime = 0;
+        timeSinceLastMove += elapsed;
+        if (timeSinceLastMove >= movementInterval) {
+          mainChar.update(keyBoard);
+          timeSinceLastMove = 0;
         }
-
-        repaint();
+      }
+      updateTime += elapsed;
+      if (updateTime >= updateInterval) {
+        movingEnemy.update(updateTime, mainChar);
+        updateTime = 0;
+        update();
+      }
+      repaint();
       try{
         double remainingTime = nextDraw - System.nanoTime();
         remainingTime = remainingTime/1000000;
@@ -134,10 +145,9 @@ public class GameEngine extends JPanel implements Runnable{
   /*
   Update the game every frame by calling the update method in the MainCharacter class
   */
-  public void update(double elapsed) {
-    mainChar.update(keyBoard,elapsed);
-    movingEnemy.update(elapsed, mainChar);
+  public void update() {
     bonusRewards.update();
     staticRewards.update();
+    staticEnemy.update();
   }
 }

@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
 
 public class GameWorld {
   GameEngine gameBarrier;

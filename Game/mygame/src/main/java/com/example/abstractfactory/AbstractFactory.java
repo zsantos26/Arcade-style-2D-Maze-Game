@@ -6,7 +6,6 @@ import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
 import com.example.game.CollisionDetector;
 import com.example.game.GameEngine;
-import java.util.Random;
 
 
 public class AbstractFactory implements GameObjectFactory {
@@ -27,9 +26,8 @@ public class AbstractFactory implements GameObjectFactory {
     @Override
     public StaticEnemy createStaticEnemy(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        Random random = new Random();
-        int x = random.nextInt(20);
-        int y = random.nextInt(20);
+        int x = 10;
+        int y = 10;
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         return new StaticEnemy(x,y,20, gameEngine);
@@ -38,9 +36,8 @@ public class AbstractFactory implements GameObjectFactory {
     @Override
     public StaticRewards createStaticRewards(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        Random random = new Random();
-        int x = random.nextInt(20);
-        int y = random.nextInt(20);
+        int x = 13;
+        int y = 13;
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         return new StaticRewards(100, x, y, gameEngine);
@@ -49,9 +46,8 @@ public class AbstractFactory implements GameObjectFactory {
     @Override
     public BonusRewards createBonusRewards(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        Random random = new Random();
-        int x = random.nextInt(20);
-        int y = random.nextInt(20);
+        int x = 10;
+        int y = 7;
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         return new BonusRewards(50, x, y, 2, gameEngine);
