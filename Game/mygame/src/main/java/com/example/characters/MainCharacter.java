@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import com.example.game.GameEngine;
 import com.example.game.GameInput;
 
-
 // import com.example.characters.Rewards;  // For reward.OnReward(x, y)) and reward.claimReward();
 
 public class MainCharacter extends Character {
@@ -22,13 +21,12 @@ public class MainCharacter extends Character {
         }
         this.gameBarrier = gameEngine;
 
-
         // direction = "down"; // set the initial direction of the character
         getPlayerSprite();
     }
 
     /*
-    This method is called when the player presses a key to move the character
+     * This method is called when the player presses a key to move the character
      */
     public void moveUp() {
         // move the character up by one cell
@@ -59,10 +57,11 @@ public class MainCharacter extends Character {
     }
 
     /*
-    This method is called when the character is created to load the character's sprite
+     * This method is called when the character is created to load the character's
+     * sprite
      */
     public void getPlayerSprite() {
-        try{
+        try {
             up1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_back_leftfoot-1.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_back_right-1.png"));
             down1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/mainfront_leftfoot-1.png"));
@@ -72,47 +71,43 @@ public class MainCharacter extends Character {
             right1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_right_stopmotion-1.png"));
             right2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_right_walking-1.png"));
 
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error loading images: " + e.getMessage());
         }
     }
 
     /*
-    This method is called every frame to update the character's state
+     * This method is called every frame to update the character's state
      */
     public void draw(Graphics2D graphics) {
         BufferedImage image = null;
-        switch(direction){
+        switch (direction) {
             case "up":
-                if(spriteMovement == 1){
+                if (spriteMovement == 1) {
                     image = up1;
-                }
-                else if(spriteMovement == 2){
+                } else if (spriteMovement == 2) {
                     image = up2;
                 }
                 break;
             case "down":
-                if(spriteMovement == 1){
+                if (spriteMovement == 1) {
                     image = down1;
-                }
-                else if(spriteMovement == 2){
+                } else if (spriteMovement == 2) {
                     image = down2;
                 }
                 break;
             case "left":
-                if(spriteMovement == 1){
+                if (spriteMovement == 1) {
                     image = left1;
-                }
-                else if(spriteMovement == 2){
+                } else if (spriteMovement == 2) {
                     image = left2;
                 }
                 break;
             case "right":
-                if(spriteMovement == 1){
+                if (spriteMovement == 1) {
                     image = right1;
-                }
-                else if(spriteMovement == 2){
+                } else if (spriteMovement == 2) {
                     image = right2;
                 }
                 break;
@@ -124,29 +119,25 @@ public class MainCharacter extends Character {
     }
 
     /*
-    * This method is called every frame to update the character's position
+     * This method is called every frame to update the character's position
      */
-    public void update(GameInput keyBoard){
-            int distance = gameBarrier.cellSize;
-            int movements = 3;
-            if (keyBoard.upPressed == true) {
-                moveUp();
-            }
-            else if (keyBoard.downPressed == true) {
-                moveDown();
-            }
-            else if (keyBoard.leftPressed == true) {
-                moveLeft();
-            }
-            else if (keyBoard.rightPressed == true) {
-                moveRight();
-            }
+    public void update(GameInput keyBoard) {
+        int distance = gameBarrier.cellSize;
+        if (keyBoard.upPressed == true) {
+            moveUp();
+        } else if (keyBoard.downPressed == true) {
+            moveDown();
+        } else if (keyBoard.leftPressed == true) {
+            moveLeft();
+        } else if (keyBoard.rightPressed == true) {
+            moveRight();
+        }
 
         collisionOn = false;
         gameBarrier.collisionDetector.checkCells(this);
 
-        if (collisionOn == false){
-            switch(direction){
+        if (collisionOn == false) {
+            switch (direction) {
                 case "up":
                     y -= distance;
                     break;
@@ -165,10 +156,9 @@ public class MainCharacter extends Character {
         }
         spriteCounter++;
         if (spriteCounter > 0) {
-            if(spriteMovement == 1){
+            if (spriteMovement == 1) {
                 spriteMovement = 2;
-            }
-            else if(spriteMovement == 2){
+            } else if (spriteMovement == 2) {
                 spriteMovement = 1;
             }
             spriteCounter = 0;

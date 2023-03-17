@@ -8,11 +8,10 @@ import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import com.example.game.GameEngine;
 
-
 public class BonusRewards extends Character {
     private int duration;
     private boolean expired;
-    private int randomTimeBetweenBonus;  // Number of ticks before next bonus appears
+    private int randomTimeBetweenBonus; // Number of ticks before next bonus appears
     private int rewardAmount;
     private Random random;
     private GameEngine gameBarrier;
@@ -70,7 +69,7 @@ public class BonusRewards extends Character {
 
     public void update() {
         if (!isExpired() && isVisible()) {
-            //  Lower duration left on bonus until it becomes 0;
+            // Lower duration left on bonus until it becomes 0;
             duration--;
             if (duration <= 0) {
                 setRewardAmount(0);
@@ -79,47 +78,55 @@ public class BonusRewards extends Character {
                 randomTimeBetweenBonus = random.nextInt(10);
 
             }
-            System.out.println("XPIRED: " + expired + " DURATION: " + duration + " RANDOM: " + randomTimeBetweenBonus);
-        }
-        else {
+            System.out.println("EXPIRED: " + expired + " DURATION: " + duration + " RANDOM: " + randomTimeBetweenBonus);
+        } else {
             if (randomTimeBetweenBonus == 0) {
                 expired = false;
                 visible = true;
-                duration  = random.nextInt(20); // Between 200 - 400
-                setRewardAmount(100);  // Set new bonus reward amount to 100;
-                do{
-                    x = random.nextInt(20);
-                    y = random.nextInt(20);
-                    x = x * gameBarrier.cellSize;
-                    y = y * gameBarrier.cellSize;
-                    System.out.println("X: " + x + " Y: " + y);
-                    System.out.println("IT RELOCATE");
-                }while(gameBarrier.collisionDetector.checkCells(this)==true);
-                if(duration <= 0){
+                duration = random.nextInt(20); // Between 200 - 400
+                setRewardAmount(100); // Set new bonus reward amount to 100;
+                spawning();
+                if (duration <= 0) {
                     expired = false;
                     visible = true;
                 }
-            }
-            else {
+            } else {
                 System.out.println("X: " + x + " Y: " + y);
                 randomTimeBetweenBonus--;
             }
         }
     }
 
+    public void spawning() {
+        x = random.nextInt(20);
+        y = random.nextInt(20);
+        x = x * gameBarrier.cellSize;
+        y = y * gameBarrier.cellSize;
+        System.out.println("Spawned new location");
+        while (gameBarrier.collisionDetector.checkCells(this) == true) {
+            System.out.println("COLLISION DETECTED");
+            x = random.nextInt(20);
+            y = random.nextInt(20);
+            x = x * gameBarrier.cellSize;
+            y = y * gameBarrier.cellSize;
+            System.out.println("Relocate : " + x + " Y: " + y);
+            System.out.println("IT RELOCATE");
+        }
+    }
+
     public void getBonusRewardsSprite() {
-        try{
+        try {
             bonusReward = ImageIO.read(getClass().getResourceAsStream("/images/book/specialRewards.png"));
 
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("FAIL FIL FAIL");
             e.printStackTrace();
             System.out.println("Error loading images: " + e.getMessage());
         }
     }
 
-    public void draw(Graphics2D graphics){
-        if(isVisible()){
+    public void draw(Graphics2D graphics) {
+        if (isVisible()) {
             BufferedImage image = bonusReward;
             graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
         }
