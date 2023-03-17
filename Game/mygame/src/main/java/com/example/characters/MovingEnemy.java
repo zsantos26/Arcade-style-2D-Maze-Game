@@ -204,7 +204,7 @@ public class MovingEnemy extends Character {
      */
     public void getMovingEnemySprite() {
         try {
-            //Just tested
+            //if it is too hard to make two enemies we can go for one of it
             //For AQ
             up1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
