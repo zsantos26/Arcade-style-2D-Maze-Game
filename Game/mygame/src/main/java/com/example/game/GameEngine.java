@@ -44,6 +44,7 @@ public class GameEngine extends JPanel implements Runnable {
   GameWorld gameWorld = new GameWorld(this);
   Random random = new Random();
   public UI ui = new UI(this);
+
   //public EventHandler eventHandler = new EventHandler(this);
   public boolean gameOver = false;
   public long gameTime;
