@@ -1,4 +1,4 @@
-package groupid;
+package com.example.menu;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
