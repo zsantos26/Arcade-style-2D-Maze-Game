@@ -43,7 +43,7 @@ public class GameEngine extends JPanel implements Runnable {
   GameWorld gameWorld = new GameWorld(this);
   Random random = new Random();
   public UI ui = new UI(this);
-
+  public boolean gameOver = false;
   public long gameTime;
 
   /*
@@ -158,5 +158,9 @@ public class GameEngine extends JPanel implements Runnable {
     bonusRewards.update();
     staticRewards.update(mainChar);
     staticEnemy.update();
+  }
+
+  public void gameOver() {
+    ui.gameOver = true;
   }
 }
