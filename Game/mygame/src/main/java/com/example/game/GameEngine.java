@@ -159,7 +159,7 @@ public class GameEngine extends JPanel implements Runnable {
   public void update(MainCharacter mainChar) {
     bonusRewards.update(mainChar);
     staticRewards.update(mainChar);
-    staticEnemy.update();
+    staticEnemy.update(mainChar);
   }
 
   public void gameOver() {
