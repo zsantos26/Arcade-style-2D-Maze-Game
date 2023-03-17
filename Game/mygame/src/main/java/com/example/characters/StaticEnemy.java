@@ -60,14 +60,14 @@ public class StaticEnemy extends Character {
     }
 
     public void punishment(MainCharacter mainChar) {
-        int scoreEarned = getDamageAmount();
+        int damageReceived = getDamageAmount();
         int dx = mainChar.getX() - x;
         int dy = mainChar.getY() - y;
         double distance = Math.sqrt(dx * dx + dy * dy);
 
         // check if enemy is already adjacent to the main character
         if (distance < gameBarrier.cellSize) {
-            mainChar.score -= scoreEarned;
+            mainChar.score -= damageReceived;
             System.out.println("Score: " + mainChar.score);
             isDetected = true;
             spawning();
@@ -88,8 +88,6 @@ public class StaticEnemy extends Character {
             System.out.println("X: " + x + " Y: " + y);
             System.out.println("IT RELOCATE FOR STATIC");
         }
-        int amount = random.nextInt(200);
-        setDamageAmount(amount); // Set new bonus reward amount to 100;
     }
 
     public void getStaticEnemySprite() {
@@ -104,15 +102,13 @@ public class StaticEnemy extends Character {
     }
 
     public void draw(Graphics2D graphics) {
-        if (isVisible()) {
-            BufferedImage image = null;
-            int spriteGenerate = random.nextInt(1);
-            if (spriteGenerate == 0) {
-                image = staticEnemy1;
-            } else {
-                image = staticEnemy2;
-            }
-            graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
+        BufferedImage image = null;
+        int spriteGenerate = random.nextInt(1);
+        if (spriteGenerate == 0) {
+            image = staticEnemy1;
+        } else {
+            image = staticEnemy2;
         }
+        graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
     }
 }
