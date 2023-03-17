@@ -9,15 +9,15 @@ public abstract class Character {
     protected int y; // y coordinate of the character // speed of the character
     public String direction;
     // protected int score; // current score of the character
-    //Sprite Animations
-    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2, bonusReward, staticReward1, staticReward2, staticEnemy1, staticEnemy2;
+    // Sprite Animations
+    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2, bonusReward, staticReward1,
+            staticReward2, staticEnemy1, staticEnemy2;
 
     public int spriteCounter = 0;
     public int spriteMovement = 1;
 
     public Rectangle hitBox;
     public boolean collisionOn = false;
-
 
     // constructor
     public Character(int x, int y, String direction) {
@@ -32,15 +32,10 @@ public abstract class Character {
     }
 
     // get direction of the character
-    public String getDirection(){
+    public String getDirection() {
         return direction;
     }
 
-
-    // update the character's score by the given amount
-    // public void updateScore(int amount) {
-    //     score += amount;
-    // }
     public void setX(int newX) {
         this.x = newX;
     }
@@ -59,5 +54,3 @@ public abstract class Character {
         return y;
     }
 }
-
-

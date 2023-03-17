@@ -12,6 +12,7 @@ import com.example.game.GameInput;
 
 public class MainCharacter extends Character {
     GameEngine gameBarrier;
+    public int score = 0;
 
     // constructor for the MainCharacter class
     public MainCharacter(int x, int y, GameEngine gameEngine) {
@@ -23,6 +24,21 @@ public class MainCharacter extends Character {
 
         // direction = "down"; // set the initial direction of the character
         getPlayerSprite();
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void claimReward() {
+        // if (gameBarrier.collisionDetector.checkCells(this) == true) {
+        // reward.claimReward();
+        // }
+
     }
 
     /*

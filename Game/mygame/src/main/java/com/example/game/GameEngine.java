@@ -30,7 +30,7 @@ public class GameEngine extends JPanel implements Runnable {
 
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
-  private MainCharacter mainChar;
+  public MainCharacter mainChar;
   private BonusRewards bonusRewards;
   private StaticRewards staticRewards;
   private MovingEnemy movingEnemy;

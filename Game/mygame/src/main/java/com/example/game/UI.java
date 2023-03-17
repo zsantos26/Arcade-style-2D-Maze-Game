@@ -16,7 +16,7 @@ public class UI {
   public void draw(Graphics2D g) {
     g.setFont(times_new_roman_40);
     g.setColor(Color.WHITE);
-    g.drawString("Score: ", 50, 50);
+    g.drawString("Score: " + gameBarrier.mainChar.getScore(), 50, 50);
   }
 
 }
