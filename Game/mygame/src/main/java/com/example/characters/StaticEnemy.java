@@ -7,7 +7,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 
-import com.example.Main;
 import com.example.game.GameEngine;
 
 public class StaticEnemy extends Character {
@@ -42,12 +41,22 @@ public class StaticEnemy extends Character {
         damageAmount = amount;
     }
 
+    // getters and setters for the visible field
+    public boolean isDetected() {
+        return isDetected;
+    }
+
+    public void setDetected(boolean detect) {
+        this.isDetected = detect;
+    }
+
     public void update(MainCharacter mainChar) {
         // Still thinking if I should make the Static Rewards Fixed or Randomly
         // Spawned?????
         int amount = random.nextInt(200);
         setDamageAmount(amount);
         punishment(mainChar);
+        isDetected = false;
     }
 
     public void punishment(MainCharacter mainChar) {
