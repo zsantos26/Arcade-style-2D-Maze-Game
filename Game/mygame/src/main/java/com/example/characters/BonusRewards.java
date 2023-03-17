@@ -81,7 +81,7 @@ public class BonusRewards extends Character {
         // check if enemy is already adjacent to the main character
         if (distance < gameBarrier.cellSize) {
             mainChar.score += scoreEarned;
-            System.out.println("Score: " + mainChar.score);
+            System.out.println("Score after Bonus: " + mainChar.score);
             isCollected = true;
             spawning();
         }

@@ -43,8 +43,8 @@ public class UI {
       int yText = gameBarrier.screenHeight / 2 - textLength2 / 2;
       int xTime = gameBarrier.screenWidth / 2 - textLength3 / 2;
       int yTime = gameBarrier.screenHeight / 2 - textLength3 / 2;
-      g.drawString(scoreText, xText, yText - 90);
-      g.drawString(timeText, xTime, yTime);
+      g.drawString(scoreText, xText, yText - 70);
+      g.drawString(timeText, xTime, yTime - 10);
       gameBarrier.gameThread = null;
     }
   }
