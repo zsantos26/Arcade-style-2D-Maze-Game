@@ -29,6 +29,7 @@ public class GameWorld {
 
       cell[1] =  new Cells();
       cell[1].image = ImageIO.read(getClass().getResourceAsStream("/images/AQ_OUTTERWALL/SFU_Portal.png"));
+      cell[1].collision = true;
 
       cell[2] = new Cells(); //road water right
       cell[2].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_left_up_2.png"));

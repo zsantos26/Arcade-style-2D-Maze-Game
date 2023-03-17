@@ -106,7 +106,7 @@ public class StaticEnemy extends Character {
 
     public void draw(Graphics2D graphics) {
         BufferedImage image = null;
-        int spriteGenerate = random.nextInt(1);
+        int spriteGenerate = random.nextInt(100);
         if (spriteGenerate == 0) {
             image = staticEnemy1;
         } else {

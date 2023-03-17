@@ -204,14 +204,27 @@ public class MovingEnemy extends Character {
      */
     public void getMovingEnemySprite() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
+            //Just tested
+            //For AQ
+            up1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon front-1.png.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon front-1.png.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_left-1.png.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_left-1.png.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
+
+            //For ClassRoom
+//            up1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
+//            up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
+//            down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
+//            down2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
+//            left1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
+//            left2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
+//            right1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
+//            right2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
+
 
         } catch (IOException e) {
             e.printStackTrace();
