@@ -108,7 +108,7 @@ public class BonusRewards extends Character {
                 expired = false;
                 visible = true;
                 duration = random.nextInt(20); // Between 200 - 400
-                setRewardAmount(100); // Set new bonus reward amount to 100;
+                setRewardAmount(200); // Set new bonus reward amount to 100;
                 spawning();
                 if (duration <= 0) {
                     expired = false;
