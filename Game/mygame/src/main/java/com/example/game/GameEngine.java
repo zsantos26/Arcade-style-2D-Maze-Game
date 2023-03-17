@@ -7,6 +7,8 @@ import com.example.characters.MainCharacter;
 import com.example.characters.MovingEnemy;
 import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 import java.awt.Dimension;
@@ -29,6 +31,11 @@ public class GameEngine extends JPanel implements Runnable {
   public int currentMap = 0;
   public int gameState;
 
+  private ArrayList<StaticEnemy> staticEnemies = new ArrayList<StaticEnemy>();
+  private ArrayList<MovingEnemy> movingEnemies = new ArrayList<MovingEnemy>();
+  private ArrayList<StaticRewards> staticRewardsList = new ArrayList<StaticRewards>();
+  private BonusRewards bonusReward;
+  
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
   public MainCharacter mainChar;
@@ -36,6 +43,7 @@ public class GameEngine extends JPanel implements Runnable {
   private StaticRewards staticRewards;
   private MovingEnemy movingEnemy;
   private StaticEnemy staticEnemy;
+
 
   // Keyboard Input
   GameInput keyBoard = new GameInput();
@@ -61,6 +69,22 @@ public class GameEngine extends JPanel implements Runnable {
     this.staticRewards = gameObjectFactory.createStaticRewards(this);
     this.movingEnemy = gameObjectFactory.createMovingEnemy(this);
     this.staticEnemy = gameObjectFactory.createStaticEnemy(this);
+
+    // Add static and moving enemies to their respective lists
+    for (int i = 0; i < 4; i++) {
+      StaticEnemy staticEnemy = gameObjectFactory.createStaticEnemy(this);
+      staticEnemies.add(staticEnemy);
+    }
+    for (int i = 0; i < 2; i++) {
+      MovingEnemy movingEnemy = gameObjectFactory.createMovingEnemy(this);
+      movingEnemies.add(movingEnemy);
+    }
+    for (int i = 0; i < 5; i++) {
+      StaticRewards staticReward = gameObjectFactory.createStaticRewards(this);
+      staticRewardsList.add(staticReward);
+    }
+    bonusReward = gameObjectFactory.createBonusRewards(this);
+
   }
 
   /*
@@ -85,10 +109,23 @@ public class GameEngine extends JPanel implements Runnable {
     // Calling MainCharacter class to draw the character
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
-    movingEnemy.draw(g2d);
-    staticEnemy.draw(g2d);
-    bonusRewards.draw(g2d);
-    staticRewards.draw(g2d);
+
+    // Draw the moving enemies
+    for (MovingEnemy movingEnemy : movingEnemies) {
+      movingEnemy.draw(g2d);
+    }
+
+    // Draw the static enemies
+    for (StaticEnemy staticEnemy : staticEnemies) {
+      staticEnemy.draw(g2d);
+    }
+
+    for (StaticRewards staticReward : staticRewardsList) {
+      staticReward.draw(g2d);
+    }
+  
+    bonusReward.draw(g2d);
+    
     ui.draw(g2d);
     g2d.dispose();
   }
@@ -134,9 +171,19 @@ public class GameEngine extends JPanel implements Runnable {
       }
       updateTime += elapsed;
       if (updateTime >= updateInterval) {
-        movingEnemy.update(updateTime, mainChar);
-        updateTime = 0;
+        for (MovingEnemy enemy : movingEnemies) {
+          enemy.update(updateTime, mainChar);
+        }
+        // update the static enemies list
+        for (StaticEnemy enemy : staticEnemies) {
+          enemy.update(mainChar);
+        }
+        for (StaticRewards staticReward : staticRewardsList) {
+          staticReward.update(mainChar);
+        }
+        bonusReward.update(mainChar);
         update(mainChar);
+        updateTime = 0;
       }
       repaint();
       try {
