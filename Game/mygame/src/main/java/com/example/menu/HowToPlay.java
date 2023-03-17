@@ -55,13 +55,15 @@ public class HowToPlay extends JFrame implements ActionListener {
         JTextArea instructionsLeft = new JTextArea();
         instructionsLeft.setBackground(new Color(204, 6, 51));
         instructionsLeft.setForeground(Color.WHITE);
-        instructionsLeft.setFont(new Font("Arial", Font.BOLD, 15));
-        instructionsLeft.setText("Objective of the Game:\n\n" +
+        instructionsLeft.setFont(new Font("Arial", Font.BOLD, 14));
+        instructionsLeft.setText("Objective of the Game:\n" +
                 "\u25CF  You control a Student enrolled at SFU\n" +
-                "\u25CF  Collect all Textbooks and Lecture Notes\n" +
+                "\u25CF  Collect all Textbooks\n" +
+                "\u25CF  Diplomas are a bonus\n" +
                 "\u25CF  Security cameras deduct points\n" +
                 "\u25CF  If your points fall negative, you lose!\n" +
-                "\u25CF  If a Professor catches you, you lose!\n" +
+                "\u25CF  If a warm-blooded Raccoon catches you,\n" +
+                "    you lose!\n" +
                 "\u25CF  Escape the Campus with all Textbooks \n" +
                 "    in your hand!");
         instructionsLeft.setMaximumSize(new Dimension(350, 200));
@@ -109,7 +111,7 @@ public class HowToPlay extends JFrame implements ActionListener {
         container.setBorder(new EmptyBorder(30, 15, 0, 15)); // add a top margin to the container
         container.setBackground(new Color(204, 6, 51));
         container.add(headerPanel);
-        container.add(Box.createVerticalStrut(10)); // add a vertical gap between the header and the instructions
+        container.add(Box.createVerticalStrut(4)); // add a vertical gap between the header and the instructions
         container.add(contentPanel);
         container.add(Box.createVerticalStrut(0)); // add a vertical gap between the instructions and the back button
         container.add(backPanel);
@@ -131,7 +133,11 @@ public class HowToPlay extends JFrame implements ActionListener {
             dispose();
         }
     }
+
+    // main method to run the game
+    public static void main(String[] args) {
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+    }
 }
-
-
 
