@@ -35,7 +35,7 @@ public class GameEngine extends JPanel implements Runnable {
   private ArrayList<MovingEnemy> movingEnemies = new ArrayList<MovingEnemy>();
   private ArrayList<StaticRewards> staticRewardsList = new ArrayList<StaticRewards>();
   private BonusRewards bonusReward;
-  
+
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
   public MainCharacter mainChar;
@@ -43,7 +43,7 @@ public class GameEngine extends JPanel implements Runnable {
   private StaticRewards staticRewards;
   private MovingEnemy movingEnemy;
   private StaticEnemy staticEnemy;
-
+  // public LevelOne gameOne = new LevelOne(this);
 
   // Keyboard Input
   GameInput keyBoard = new GameInput();
@@ -53,7 +53,7 @@ public class GameEngine extends JPanel implements Runnable {
   Random random = new Random();
   public UI ui = new UI(this);
 
-  //public EventHandler eventHandler = new EventHandler(this);
+  // public EventHandler eventHandler = new EventHandler(this);
   public boolean gameOver = false;
   public long gameTime;
 
@@ -123,9 +123,9 @@ public class GameEngine extends JPanel implements Runnable {
     for (StaticRewards staticReward : staticRewardsList) {
       staticReward.draw(g2d);
     }
-  
+
     bonusReward.draw(g2d);
-    
+
     ui.draw(g2d);
     g2d.dispose();
   }

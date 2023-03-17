@@ -24,8 +24,8 @@ public class AbstractFactory implements GameObjectFactory {
     @Override
     public MovingEnemy createMovingEnemy(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        int x = 2;
-        int y = 2;
+        int x = random.nextInt(20);
+        int y = random.nextInt(20);
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         return new MovingEnemy(x, y, 900, gameBarrier);

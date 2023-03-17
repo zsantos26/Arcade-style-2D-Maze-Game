@@ -4,16 +4,21 @@ import com.example.game.GameEngine;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
 public class MovingEnemy extends Character {
     private int damageAmount;
     GameEngine gameBarrier;
+    Random random = new Random();
 
     public MovingEnemy(int x, int y, int damage, GameEngine gameEngine) {
         super(x, y, "down");
         this.gameBarrier = gameEngine; // This is the gameBarrier object
+        if (gameBarrier.collisionDetector.checkCells(this) == true) {
+            spawning();
+        }
         getMovingEnemySprite();
     }
 
@@ -23,6 +28,21 @@ public class MovingEnemy extends Character {
 
     public void setDamageAmount(int amount) {
         damageAmount = amount;
+    }
+
+    public void spawning() {
+        x = random.nextInt(20);
+        y = random.nextInt(20);
+        x = x * gameBarrier.cellSize;
+        y = y * gameBarrier.cellSize;
+        while (gameBarrier.collisionDetector.checkCells(this) == true) {
+            x = random.nextInt(20);
+            y = random.nextInt(20);
+            x = x * gameBarrier.cellSize;
+            y = y * gameBarrier.cellSize;
+            System.out.println("X: " + x + " Y: " + y);
+            System.out.println("IT RELOCATE FOR STATIC");
+        }
     }
 
     public String moveTowards(MainCharacter mainchar) {
@@ -204,8 +224,8 @@ public class MovingEnemy extends Character {
      */
     public void getMovingEnemySprite() {
         try {
-            //if it is too hard to make two enemies we can go for one of it
-            //For AQ
+            // if it is too hard to make two enemies we can go for one of it
+            // For AQ
             up1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
             down1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon front-1.png.png"));
@@ -215,16 +235,23 @@ public class MovingEnemy extends Character {
             right1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
             right2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
 
-            //For ClassRoom
-//            up1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
-//            up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
-//            down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
-//            down2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
-//            left1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
-//            left2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
-//            right1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
-//            right2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
-
+            // For ClassRoom
+            // up1 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
+            // up2 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
+            // down1 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
+            // down2 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
+            // left1 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
+            // left2 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
+            // right1 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
+            // right2 =
+            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
