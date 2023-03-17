@@ -110,7 +110,7 @@ public class GameEngine extends JPanel implements Runnable {
     double updateInterval = 1; // set enemy update interval to 1 second
 
     double timeSinceLastMove = 0; // initialize time since last move
-    double movementInterval = 0.05; // set movement interval to 0.1 seconds
+    double movementInterval = 0.15; // set movement interval to 0.1 seconds
 
     while (gameThread != null) {
       // long currTime = System.nanoTime();
@@ -155,7 +155,7 @@ public class GameEngine extends JPanel implements Runnable {
    * class
    */
   public void update(MainCharacter mainChar) {
-    bonusRewards.update();
+    bonusRewards.update(mainChar);
     staticRewards.update(mainChar);
     staticEnemy.update();
   }

@@ -16,7 +16,7 @@ public class StaticRewards extends Character {
 
     public StaticRewards(int rewardAmount, int x, int y, GameEngine gameEngine) {
         super(x, y, "");
-        this.isCollected = true;
+        this.isCollected = false;
         this.random = new Random();
         this.gameBarrier = gameEngine;
         getStaticRewardsSprite();

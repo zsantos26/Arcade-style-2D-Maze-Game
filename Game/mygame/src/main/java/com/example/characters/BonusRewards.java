@@ -16,6 +16,7 @@ public class BonusRewards extends Character {
     private Random random;
     private GameEngine gameBarrier;
     private boolean visible;
+    private boolean isCollected;
 
     public BonusRewards(int rewardAmount, int x, int y, int duration, GameEngine gameEngine) {
         super(x, y, "");
@@ -25,6 +26,7 @@ public class BonusRewards extends Character {
         this.randomTimeBetweenBonus = 0;
         this.random = new Random();
         this.gameBarrier = gameEngine;
+        this.isCollected = false;
         getBonusRewardsSprite();
     }
 
@@ -61,13 +63,31 @@ public class BonusRewards extends Character {
         return x == charX && y == charY;
     }
 
-    public int claimReward() {
-        int scoreEarned = getRewardAmount();
-        setRewardAmount(0);
-        return scoreEarned;
+    // getters and setters for the visible field
+    public boolean isCollected() {
+        return isCollected;
     }
 
-    public void update() {
+    public void setCollecter(boolean collected) {
+        this.isCollected = collected;
+    }
+
+    public void claimReward(MainCharacter mainChar) {
+        int scoreEarned = getRewardAmount();
+        int dx = mainChar.getX() - x;
+        int dy = mainChar.getY() - y;
+        double distance = Math.sqrt(dx * dx + dy * dy);
+
+        // check if enemy is already adjacent to the main character
+        if (distance < gameBarrier.cellSize) {
+            mainChar.score += scoreEarned;
+            System.out.println("Score: " + mainChar.score);
+            isCollected = true;
+            spawning();
+        }
+    }
+
+    public void update(MainCharacter mainChar) {
         if (!isExpired() && isVisible()) {
             // Lower duration left on bonus until it becomes 0;
             duration--;
@@ -76,8 +96,9 @@ public class BonusRewards extends Character {
                 expired = true;
                 visible = false;
                 randomTimeBetweenBonus = random.nextInt(10);
-
             }
+            claimReward(mainChar);
+            isCollected = false;
             System.out.println("EXPIRED: " + expired + " DURATION: " + duration + " RANDOM: " + randomTimeBetweenBonus);
         } else {
             if (randomTimeBetweenBonus == 0) {
