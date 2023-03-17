@@ -44,6 +44,8 @@ public class GameEngine extends JPanel implements Runnable {
   Random random = new Random();
   public UI ui = new UI(this);
 
+  public long gameTime;
+
   /*
    * Constructor for GameEngine class that takes in a GameObjectFactory
    */
@@ -102,6 +104,7 @@ public class GameEngine extends JPanel implements Runnable {
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
     long lastTime = System.nanoTime();
+    int startTime = (int) System.currentTimeMillis();
 
     double updateTime = 0; // initialize enemy update time
     double updateInterval = 1; // set enemy update interval to 1 second
@@ -115,6 +118,8 @@ public class GameEngine extends JPanel implements Runnable {
       // System.out.println("Game Thread is running");
       long currentTime = System.nanoTime();
       double elapsed = (currentTime - lastTime) / 1000000000.0; // convert to seconds
+      long elapsedTime = System.currentTimeMillis() - startTime;
+      gameTime = (int) (elapsedTime);
       lastTime = currentTime;
       if (keyBoard.upPressed == true || keyBoard.leftPressed == true || keyBoard.rightPressed == true
           || keyBoard.downPressed == true) {

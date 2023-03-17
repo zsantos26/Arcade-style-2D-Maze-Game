@@ -17,6 +17,7 @@ public class UI {
     g.setFont(times_new_roman_40);
     g.setColor(Color.WHITE);
     g.drawString("Score: " + gameBarrier.mainChar.getScore(), 50, 50);
+    g.drawString("Time: " + gameBarrier.gameTime / 1000 + "s", 50, 100);
   }
 
 }
