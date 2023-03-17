@@ -64,7 +64,7 @@ public class StaticRewards extends Character {
     public void update(MainCharacter mainChar) {
         // Still thinking if I should make the Static Rewards Fixed or Randomly
         // Spawned?????
-        int amount = random.nextInt(200);
+        int amount = 100;
         setRewardAmount(amount); // Set new bonus reward amount to 100;
         claimReward(mainChar);
         isCollected = false;
