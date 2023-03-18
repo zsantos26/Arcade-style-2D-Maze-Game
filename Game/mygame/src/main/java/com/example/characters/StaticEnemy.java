@@ -21,10 +21,11 @@ public class StaticEnemy extends Character {
         this.random = new Random();
         this.gameBarrier = gameEngine;
         this.isDetected = false;
-        if (gameBarrier.collisionDetector.checkCells(this) == true || (x / gameBarrier.cellSize) < 1) {
-            spawning();
-        }
         getStaticEnemySprite();
+    }
+
+    public boolean checkCollision() {
+        return gameBarrier.collisionDetector.checkCells(this);
     }
 
     // getters and setters for the visible field

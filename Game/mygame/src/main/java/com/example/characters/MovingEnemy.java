@@ -16,10 +16,11 @@ public class MovingEnemy extends Character {
     public MovingEnemy(int x, int y, int damage, GameEngine gameEngine) {
         super(x, y, "");
         this.gameBarrier = gameEngine; // This is the gameBarrier object
-        if (gameBarrier.collisionDetector.checkCells(this) == true || (x / gameBarrier.cellSize) < 1) {
-            spawning();
-        }
         getMovingEnemySprite();
+    }
+
+    public boolean checkCollision() {
+        return gameBarrier.collisionDetector.checkCells(this);
     }
 
     public int getDamageAmount() {

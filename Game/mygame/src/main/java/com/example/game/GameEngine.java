@@ -40,12 +40,15 @@ public class GameEngine extends JPanel implements Runnable {
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
   public MainCharacter mainChar;
+  public BonusRewards bonusRewards;
+  public StaticRewards staticRewards;
+  public MovingEnemy movingEnemy;
+  public StaticEnemy staticEnemy;
   // Keyboard Input
   GameInput keyBoard = new GameInput();
   Thread gameThread;
   public CollisionDetector collisionDetector = new CollisionDetector(this);
-  GameWorld gameWorld = new LevelOneGameWorld(this);
-  LevelOne levelOne = new LevelOne(this);
+  GameWorld gameWorld = new GameWorld(this);
   Random random = new Random();
   public UI ui = new UI(this);
 
@@ -61,10 +64,10 @@ public class GameEngine extends JPanel implements Runnable {
     screenSetUp();
     this.gameObjectFactory = factoryMethod;
     this.mainChar = gameObjectFactory.createMainCharacter(this);
-    gameObjectFactory.createBonusRewards(this);
-    gameObjectFactory.createStaticRewards(this);
-    gameObjectFactory.createMovingEnemy(this);
-    gameObjectFactory.createStaticEnemy(this);
+    this.bonusRewards = gameObjectFactory.createBonusRewards(this);
+    this.staticRewards = gameObjectFactory.createStaticRewards(this);
+    this.movingEnemy = gameObjectFactory.createMovingEnemy(this);
+    this.staticEnemy = gameObjectFactory.createStaticEnemy(this);
 
     // Add static and moving enemies to their respective lists
     for (int i = 0; i < 10; i++) {
@@ -79,6 +82,7 @@ public class GameEngine extends JPanel implements Runnable {
       StaticRewards staticReward = gameObjectFactory.createStaticRewards(this);
       staticRewardsList.add(staticReward);
     }
+
     this.bonusReward = gameObjectFactory.createBonusRewards(this);
 
   }

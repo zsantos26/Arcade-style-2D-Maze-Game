@@ -15,6 +15,8 @@ public class LevelOne {
     this.gameBarrier = gameEngine;
     cell = new Cells[70];
     mapCells = new int[gameBarrier.maxMap][gameBarrier.maxScreenCol][gameBarrier.maxScreenRow];
+    drawMap("/maps/Map_AQ.txt", 0);
+    getCellImage();
   }
 
   public void getCellImage() {

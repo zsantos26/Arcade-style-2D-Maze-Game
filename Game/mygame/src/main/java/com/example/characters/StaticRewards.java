@@ -19,10 +19,11 @@ public class StaticRewards extends Character {
         this.isCollected = false;
         this.random = new Random();
         this.gameBarrier = gameEngine;
-        if (gameBarrier.collisionDetector.checkCells(this) == true) {
-            spawning();
-        }
         getStaticRewardsSprite();
+    }
+
+    public boolean checkCollision() {
+        return gameBarrier.collisionDetector.checkCells(this);
     }
 
     // getters and setters for the visible field
