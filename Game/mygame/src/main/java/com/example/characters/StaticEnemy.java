@@ -21,10 +21,11 @@ public class StaticEnemy extends Character {
         this.random = new Random();
         this.gameBarrier = gameEngine;
         this.isDetected = false;
-        if (gameBarrier.collisionDetector.checkCells(this) == true) {
-            spawning();
-        }
         getStaticEnemySprite();
+    }
+
+    public boolean checkCollision() {
+        return gameBarrier.collisionDetector.checkCells(this);
     }
 
     // getters and setters for the visible field
@@ -105,13 +106,7 @@ public class StaticEnemy extends Character {
     }
 
     public void draw(Graphics2D graphics) {
-        BufferedImage image = null;
-        int spriteGenerate = random.nextInt(100);
-        if (spriteGenerate == 0) {
-            image = staticEnemy1;
-        } else {
-            image = staticEnemy2;
-        }
+        BufferedImage image = staticEnemy1;
         graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
     }
 }

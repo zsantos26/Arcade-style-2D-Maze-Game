@@ -27,10 +27,11 @@ public class BonusRewards extends Character {
         this.random = new Random();
         this.gameBarrier = gameEngine;
         this.isCollected = false;
-        if (gameBarrier.collisionDetector.checkCells(this) == true) {
-            spawning();
-        }
         getBonusRewardsSprite();
+    }
+
+    public boolean checkCollision() {
+        return gameBarrier.collisionDetector.checkCells(this);
     }
 
     public int getDuration() {

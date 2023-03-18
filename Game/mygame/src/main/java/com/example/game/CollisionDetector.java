@@ -89,13 +89,18 @@ public class CollisionDetector {
                 cellNum = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][character.getX()
                         / gameBarrier.cellSize][character
                                 .getY() / gameBarrier.cellSize];
-                if (gameBarrier.gameWorld.cell[cellNum].collision == true) {
+                if (gameBarrier.gameWorld.cell[cellNum].collision == true
+                        && gameBarrier.gameWorld.cell[cellNum].portal == false) {
                     character.collisionOn = true;
                     // System.out.println("CHECK For Trueeeeeee");
                     return true;
+                } else if (gameBarrier.gameWorld.cell[cellNum].collision == false
+                        && gameBarrier.gameWorld.cell[cellNum].portal == true) {
+                    character.collisionOn = true;
+                    gameBarrier.gameWorld.map = 1;
+                    gameBarrier.gameWorld.cell[cellNum].portal = false;
                 } else {
                     character.collisionOn = false;
-
                     return false;
                 }
         }

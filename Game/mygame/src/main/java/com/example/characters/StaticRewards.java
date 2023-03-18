@@ -19,10 +19,11 @@ public class StaticRewards extends Character {
         this.isCollected = false;
         this.random = new Random();
         this.gameBarrier = gameEngine;
-        if (gameBarrier.collisionDetector.checkCells(this) == true) {
-            spawning();
-        }
         getStaticRewardsSprite();
+    }
+
+    public boolean checkCollision() {
+        return gameBarrier.collisionDetector.checkCells(this);
     }
 
     // getters and setters for the visible field
@@ -62,8 +63,6 @@ public class StaticRewards extends Character {
     }
 
     public void update(MainCharacter mainChar) {
-        // Still thinking if I should make the Static Rewards Fixed or Randomly
-        // Spawned?????
         int amount = 100;
         setRewardAmount(amount); // Set new bonus reward amount to 100;
         claimReward(mainChar);

@@ -10,14 +10,20 @@ public class GameWorld {
   GameEngine gameBarrier;
   Cells[] cell;
   public int mapCells[][][];
+  public int map;
 
   public GameWorld(GameEngine gameEngine) {
     this.gameBarrier = gameEngine;
     cell = new Cells[70];
     mapCells = new int[gameBarrier.maxMap][gameBarrier.maxScreenCol][gameBarrier.maxScreenRow];
-    drawMap("/maps/Map_AQ.txt", 0);
-    drawMap("/maps/Map_Class.txt", 1);
+    String map1 = "/maps/Map_AQ.txt";
+    String map2 = "/maps/Map_Class.txt";
+    drawMap(map1, 0);
     getCellImage();
+    if (map == 1) {
+      drawMap(map2, 0);
+      getCellImage();
+    }
   }
 
   public void getCellImage() {
@@ -30,6 +36,12 @@ public class GameWorld {
       cell[1] = new Cells();
       cell[1].image = ImageIO.read(getClass().getResourceAsStream("/images/AQ_OUTTERWALL/SFU_Portal.png"));
       cell[1].collision = true;
+      cell[1].portal = false;
+      // if (gameBarrier.mainChar.score > 3000) {
+      // cell[1].collision = false;
+      // cell[1].portal = true;
+      // map = 1;
+      // }
 
       cell[2] = new Cells(); // road water right
       cell[2].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_left_up_2.png"));

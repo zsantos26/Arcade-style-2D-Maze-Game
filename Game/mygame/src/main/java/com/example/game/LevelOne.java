@@ -15,6 +15,8 @@ public class LevelOne {
     this.gameBarrier = gameEngine;
     cell = new Cells[70];
     mapCells = new int[gameBarrier.maxMap][gameBarrier.maxScreenCol][gameBarrier.maxScreenRow];
+    drawMap("/maps/Map_AQ.txt", 0);
+    getCellImage();
   }
 
   public void getCellImage() {
@@ -268,22 +270,22 @@ public class LevelOne {
     }
   }
 
-  // public void draw(Graphics2D g2d, int cellSize) {
-  // int col = 0;
-  // int row = 0;
-  // int x = 0;
-  // int y = 0;
-  // while (col < gameBarrier.maxScreenCol && row < gameBarrier.maxScreenRow) {
-  // int cellNum = mapCells[gameBarrier.currentMap][col][row];
-  // g2d.drawImage(cell[cellNum].image, x, y, cellSize, cellSize, null);
-  // col++;
-  // x += gameBarrier.cellSize;
-  // if (col == gameBarrier.maxScreenCol) {
-  // col = 0;
-  // x = 0;
-  // row++;
-  // y += gameBarrier.cellSize;
-  // }
-  // }
-  // }
+  public void draw(Graphics2D g2d, int cellSize) {
+    int col = 0;
+    int row = 0;
+    int x = 0;
+    int y = 0;
+    while (col < gameBarrier.maxScreenCol && row < gameBarrier.maxScreenRow) {
+      int cellNum = mapCells[gameBarrier.currentMap][col][row];
+      g2d.drawImage(cell[cellNum].image, x, y, cellSize, cellSize, null);
+      col++;
+      x += gameBarrier.cellSize;
+      if (col == gameBarrier.maxScreenCol) {
+        col = 0;
+        x = 0;
+        row++;
+        y += gameBarrier.cellSize;
+      }
+    }
+  }
 }

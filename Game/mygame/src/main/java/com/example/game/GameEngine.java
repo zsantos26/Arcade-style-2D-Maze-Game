@@ -7,6 +7,7 @@ import com.example.characters.MainCharacter;
 import com.example.characters.MovingEnemy;
 import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
+import com.example.menu.PlayScreen;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -39,12 +40,10 @@ public class GameEngine extends JPanel implements Runnable {
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
   public MainCharacter mainChar;
-  private BonusRewards bonusRewards;
-  private StaticRewards staticRewards;
-  private MovingEnemy movingEnemy;
-  private StaticEnemy staticEnemy;
-  // public LevelOne gameOne = new LevelOne(this);
-
+  public BonusRewards bonusRewards;
+  public StaticRewards staticRewards;
+  public MovingEnemy movingEnemy;
+  public StaticEnemy staticEnemy;
   // Keyboard Input
   GameInput keyBoard = new GameInput();
   Thread gameThread;
@@ -55,6 +54,7 @@ public class GameEngine extends JPanel implements Runnable {
 
   // public EventHandler eventHandler = new EventHandler(this);
   public boolean gameOver = false;
+  public boolean victory = false;
   public long gameTime;
 
   /*
@@ -71,11 +71,11 @@ public class GameEngine extends JPanel implements Runnable {
     this.staticEnemy = gameObjectFactory.createStaticEnemy(this);
 
     // Add static and moving enemies to their respective lists
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 10; i++) {
       StaticEnemy staticEnemy = gameObjectFactory.createStaticEnemy(this);
       staticEnemies.add(staticEnemy);
     }
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 4; i++) {
       MovingEnemy movingEnemy = gameObjectFactory.createMovingEnemy(this);
       movingEnemies.add(movingEnemy);
     }
@@ -83,7 +83,8 @@ public class GameEngine extends JPanel implements Runnable {
       StaticRewards staticReward = gameObjectFactory.createStaticRewards(this);
       staticRewardsList.add(staticReward);
     }
-    bonusReward = gameObjectFactory.createBonusRewards(this);
+
+    this.bonusReward = gameObjectFactory.createBonusRewards(this);
 
   }
 
@@ -107,6 +108,7 @@ public class GameEngine extends JPanel implements Runnable {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     // Calling MainCharacter class to draw the character
+
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
 
@@ -147,10 +149,10 @@ public class GameEngine extends JPanel implements Runnable {
     int startTime = (int) System.currentTimeMillis();
 
     double updateTime = 0; // initialize enemy update time
-    double updateInterval = 1; // set enemy update interval to 1 second
+    double updateInterval = 0.4; // set enemy update interval to 1 second
 
     double timeSinceLastMove = 0; // initialize time since last move
-    double movementInterval = 0.15; // set movement interval to 0.1 seconds
+    double movementInterval = 0.2; // set movement interval to 0.1 seconds
 
     while (gameThread != null) {
       // long currTime = System.nanoTime();
@@ -182,7 +184,6 @@ public class GameEngine extends JPanel implements Runnable {
           staticReward.update(mainChar);
         }
         bonusReward.update(mainChar);
-        update(mainChar);
         updateTime = 0;
       }
       repaint();
@@ -200,17 +201,51 @@ public class GameEngine extends JPanel implements Runnable {
     }
   }
 
-  /*
-   * Update the game every frame by calling the update method in the MainCharacter
-   * class
-   */
-  public void update(MainCharacter mainChar) {
-    bonusRewards.update(mainChar);
-    staticRewards.update(mainChar);
-    staticEnemy.update(mainChar);
+  public void victory() {
+    victory = true;
+    ui.victory = true;
+    repaint();
+
+    try {
+      Thread.sleep(5000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    PlayScreen playScreen = new PlayScreen();
+    playScreen.setVisible(true);
+    // Close the current game screen
+    gameThread = null;
+    setVisible(false);
+    dispose();
   }
 
   public void gameOver() {
+    gameOver = true;
     ui.gameOver = true;
+    repaint();
+
+    // Delay the screen transition for 5 seconds
+    try {
+      Thread.sleep(5000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
+    PlayScreen playScreen = new PlayScreen();
+    playScreen.setVisible(true);
+    // Close the current game screen
+    gameThread = null;
+    setVisible(false);
+    dispose();
+  }
+
+  private void dispose() {
+    // Find the top-level JFrame
+    javax.swing.JFrame frame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    // Dispose the JFrame
+    if (frame != null) {
+      frame.dispose();
+    }
   }
 }

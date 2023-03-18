@@ -72,12 +72,18 @@ public class MainCharacter extends Character {
         try {
             up1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_back_left-1.png.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_back_right-1.png.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_front_left-1.png.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_front_right-1.png.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_left_stand-1.png.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_left_walk-1.png.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_right_stand-1.png-1.png.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_right_walk-1.png.png"));
+            down1 = ImageIO
+                    .read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_front_left-1.png.png"));
+            down2 = ImageIO
+                    .read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_front_right-1.png.png"));
+            left1 = ImageIO
+                    .read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_left_stand-1.png.png"));
+            left2 = ImageIO
+                    .read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_left_walk-1.png.png"));
+            right1 = ImageIO.read(
+                    getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_right_stand-1.png-1.png.png"));
+            right2 = ImageIO
+                    .read(getClass().getResourceAsStream("/images/Main_CHARACTER/main_char_right_walk-1.png.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,6 +137,13 @@ public class MainCharacter extends Character {
      */
     public void update(GameInput keyBoard) {
         int distance = gameBarrier.cellSize;
+        if (score < 0) {
+            gameBarrier.gameOver();
+        }
+        if (score > 3000) {
+            gameBarrier.victory();
+        }
+
         if (keyBoard.upPressed == true) {
             moveUp();
         } else if (keyBoard.downPressed == true) {
