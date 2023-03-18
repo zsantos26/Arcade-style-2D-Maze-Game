@@ -140,6 +140,10 @@ public class MainCharacter extends Character {
         if (score < 0) {
             gameBarrier.gameOver();
         }
+        if (score > 3000) {
+            gameBarrier.victory();
+        }
+
         if (keyBoard.upPressed == true) {
             moveUp();
         } else if (keyBoard.downPressed == true) {

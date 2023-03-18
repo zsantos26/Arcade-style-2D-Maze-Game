@@ -54,6 +54,7 @@ public class GameEngine extends JPanel implements Runnable {
 
   // public EventHandler eventHandler = new EventHandler(this);
   public boolean gameOver = false;
+  public boolean victory = false;
   public long gameTime;
 
   /*
@@ -198,6 +199,24 @@ public class GameEngine extends JPanel implements Runnable {
         e.printStackTrace();
       }
     }
+  }
+
+  public void victory() {
+    victory = true;
+    ui.victory = true;
+    repaint();
+
+    try {
+      Thread.sleep(5000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    PlayScreen playScreen = new PlayScreen();
+    playScreen.setVisible(true);
+    // Close the current game screen
+    gameThread = null;
+    setVisible(false);
+    dispose();
   }
 
   public void gameOver() {
