@@ -77,7 +77,7 @@ public class GameEngine extends JPanel implements Runnable {
       StaticRewards staticReward = gameObjectFactory.createStaticRewards(this);
       staticRewardsList.add(staticReward);
     }
-    bonusReward = gameObjectFactory.createBonusRewards(this);
+    this.bonusReward = gameObjectFactory.createBonusRewards(this);
 
   }
 

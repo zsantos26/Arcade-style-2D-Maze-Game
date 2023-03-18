@@ -95,7 +95,6 @@ public class CollisionDetector {
                     return true;
                 } else {
                     character.collisionOn = false;
-
                     return false;
                 }
         }
