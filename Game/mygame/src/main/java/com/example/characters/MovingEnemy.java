@@ -14,7 +14,7 @@ public class MovingEnemy extends Character {
     Random random = new Random();
 
     public MovingEnemy(int x, int y, int damage, GameEngine gameEngine) {
-        super(x, y, "down");
+        super(x, y, "");
         this.gameBarrier = gameEngine; // This is the gameBarrier object
         if (gameBarrier.collisionDetector.checkCells(this) == true) {
             spawning();
@@ -210,11 +210,6 @@ public class MovingEnemy extends Character {
                 spriteMovement = 1;
             }
             spriteCounter = 0;
-        }
-        try {
-            Thread.sleep(200); // Add a delay of 50 milliseconds
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 

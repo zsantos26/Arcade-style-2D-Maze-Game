@@ -134,7 +134,7 @@ public class GameEngine extends JPanel implements Runnable {
    */
   @Override
   public void run() {
-    int FPS = 60;
+    int FPS = 240;
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
     long lastTime = System.nanoTime();

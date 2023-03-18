@@ -105,23 +105,7 @@ public class StaticEnemy extends Character {
     }
 
     public void draw(Graphics2D graphics) {
-        BufferedImage image = null;
-        spriteCounter++;
-        if (spriteCounter > 0) {
-            if (spriteMovement == 1) {
-                spriteMovement = 2;
-                image = staticEnemy1;
-            } else if (spriteMovement == 2) {
-                spriteMovement = 1;
-                image = staticEnemy2;
-            }
-            spriteCounter = 0;
-            try {
-                Thread.sleep(100); // casting
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        BufferedImage image = staticEnemy1;
         graphics.drawImage(image, x, y, gameBarrier.cellSize, gameBarrier.cellSize, null);
     }
 }
