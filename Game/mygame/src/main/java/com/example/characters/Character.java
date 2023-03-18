@@ -16,6 +16,7 @@ public abstract class Character {
     public int spriteCounter = 0;
     public int spriteMovement = 1;
 
+    public int choice = 0;
     public Rectangle hitBox;
     public boolean collisionOn = false;
 

@@ -65,11 +65,11 @@ public class GameEngine extends JPanel implements Runnable {
     gameObjectFactory.createStaticEnemy(this);
 
     // Add static and moving enemies to their respective lists
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 10; i++) {
       StaticEnemy staticEnemy = gameObjectFactory.createStaticEnemy(this);
       staticEnemies.add(staticEnemy);
     }
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 4; i++) {
       MovingEnemy movingEnemy = gameObjectFactory.createMovingEnemy(this);
       movingEnemies.add(movingEnemy);
     }
@@ -141,10 +141,10 @@ public class GameEngine extends JPanel implements Runnable {
     int startTime = (int) System.currentTimeMillis();
 
     double updateTime = 0; // initialize enemy update time
-    double updateInterval = 1; // set enemy update interval to 1 second
+    double updateInterval = 0.4; // set enemy update interval to 1 second
 
     double timeSinceLastMove = 0; // initialize time since last move
-    double movementInterval = 0.15; // set movement interval to 0.1 seconds
+    double movementInterval = 0.2; // set movement interval to 0.1 seconds
 
     while (gameThread != null) {
       // long currTime = System.nanoTime();
