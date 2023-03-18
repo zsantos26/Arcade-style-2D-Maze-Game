@@ -6,29 +6,44 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.plaf.metal.MetalButtonUI;
 
+/**
+ * The HowToPlay class represents the screen that displays the objectives of the game the controls, and additional information.
+ * 
+ * The class extends the JFrame class and implements the ActionListener to respond to user interactions with the button.
+ * The class makes a back button and adds an action listener to it.
+ * The class also creates panels to hold the header, instructions, and back button, and adds them to the frame.
+ * When the "Back" button is clicked, it creates a MainMenu object and disposes of the current frame.
+ * The user then returns to the main menu.
+ */
 public class HowToPlay extends JFrame implements ActionListener {
 
-    // buttons
+    // Back button
     JButton backButton;
 
-    // constructor
+    /**
+     * Constructs a HowToPlay object.
+     * 
+     * Sets the title of the JFrame and sets the background colour (SFU colours) of the frame.
+     * Creates a back button with sizing and an action listener.
+     * Creates panels to hold the header, instructions, and back button, and adds them to the frame.
+     * Sets the size, minimum size, and centers the frame. Also adds the default close operation.
+     */
     public HowToPlay() {
         // set the title
         setTitle("How to Play");
 
-        // set the background color of the JFrame
+        // set the background color of the JFrame to match SFU primary colours
         getContentPane().setBackground(new Color(204, 6, 51));
 
         // create the back button
         backButton = new JButton("Back");
 
-        // set the preferred size of the button
+        // set the preferred size of the button, aswell as the UI and colours
         backButton.setUI(new MetalButtonUI());
         backButton.setPreferredSize(new Dimension(100, 50));
         backButton.setBackground(new Color(166, 25, 46));
         backButton.setForeground(Color.WHITE);
-
-        backButton.setFocusPainted(false);
+        backButton.setFocusPainted(false);  // Button does not highlight if selected (and not clicked)
 
         // add action listeners to the button
         backButton.addActionListener(this);
@@ -71,12 +86,12 @@ public class HowToPlay extends JFrame implements ActionListener {
         instructionsLeft.setPreferredSize(new Dimension(250, 180));
         
 
-       // create the blank panel
+       // Create the blank panel. This is to help with screen spacing and aesthetics. 
         JPanel blankPanel = new JPanel();
         blankPanel.setPreferredSize(new Dimension(65, 50));
         blankPanel.setMaximumSize(new Dimension(90, 50));
         blankPanel.setMinimumSize(new Dimension(35, 50));
-        blankPanel.setBackground(new Color(204, 6, 51));
+        blankPanel.setBackground(new Color(204, 6, 51));  // Colours match background of frame.
 
 
         // create the text area for the instructions on the right
@@ -94,7 +109,7 @@ public class HowToPlay extends JFrame implements ActionListener {
         instructionsRight.setPreferredSize(new Dimension(125, 100));
 
 
-        // create the panel for the text areas and the back button
+        // create the panel for the text areas, blankPanel, and the back button.
         JPanel contentPanel = new JPanel();
         contentPanel.setBackground(new Color(204, 6, 51));
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
@@ -125,7 +140,14 @@ public class HowToPlay extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    // button actions
+    /**
+     * ActionPerformed method. This responds to the buttons interacted with by the user.
+     * 
+     * This method gets called when the user clicks one the back button.
+     * When the button is clicked, it creates a MainMenu object and disposes of the current frame.
+     * 
+     * @param e The ActionEvent object that carries information regarding how the button has been interacted with
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {
             MainMenu mainMenu = new MainMenu();
@@ -134,10 +156,6 @@ public class HowToPlay extends JFrame implements ActionListener {
         }
     }
 
-    // main method to run the game
-    public static void main(String[] args) {
-        MainMenu mainMenu = new MainMenu();
-        mainMenu.setVisible(true);
-    }
+
 }
 
