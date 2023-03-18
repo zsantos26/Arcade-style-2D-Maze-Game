@@ -44,7 +44,8 @@ public class GameEngine extends JPanel implements Runnable {
   GameInput keyBoard = new GameInput();
   Thread gameThread;
   public CollisionDetector collisionDetector = new CollisionDetector(this);
-  GameWorld gameWorld = new GameWorld(this);
+  GameWorld gameWorld = new LevelOneGameWorld(this);
+  LevelOne levelOne = new LevelOne(this);
   Random random = new Random();
   public UI ui = new UI(this);
 
@@ -102,6 +103,7 @@ public class GameEngine extends JPanel implements Runnable {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     // Calling MainCharacter class to draw the character
+
     gameWorld.draw(g2d, cellSize);
     mainChar.draw(g2d);
 
