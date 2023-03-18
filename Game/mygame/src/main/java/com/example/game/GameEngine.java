@@ -135,7 +135,7 @@ public class GameEngine extends JPanel implements Runnable {
    */
   @Override
   public void run() {
-    int FPS = 240;
+    int FPS = 60;
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
     long lastTime = System.nanoTime();
@@ -201,9 +201,9 @@ public class GameEngine extends JPanel implements Runnable {
 
     // Delay the screen transition for 5 seconds
     try {
-        Thread.sleep(5000);
+      Thread.sleep(5000);
     } catch (InterruptedException e) {
-        e.printStackTrace();
+      e.printStackTrace();
     }
 
     PlayScreen playScreen = new PlayScreen();
@@ -220,7 +220,7 @@ public class GameEngine extends JPanel implements Runnable {
 
     // Dispose the JFrame
     if (frame != null) {
-        frame.dispose();
+      frame.dispose();
     }
   }
 }
