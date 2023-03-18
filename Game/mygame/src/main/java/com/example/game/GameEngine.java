@@ -39,12 +39,6 @@ public class GameEngine extends JPanel implements Runnable {
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
   public MainCharacter mainChar;
-  private BonusRewards bonusRewards;
-  private StaticRewards staticRewards;
-  private MovingEnemy movingEnemy;
-  private StaticEnemy staticEnemy;
-  // public LevelOne gameOne = new LevelOne(this);
-
   // Keyboard Input
   GameInput keyBoard = new GameInput();
   Thread gameThread;
@@ -65,10 +59,10 @@ public class GameEngine extends JPanel implements Runnable {
     screenSetUp();
     this.gameObjectFactory = factoryMethod;
     this.mainChar = gameObjectFactory.createMainCharacter(this);
-    this.bonusRewards = gameObjectFactory.createBonusRewards(this);
-    this.staticRewards = gameObjectFactory.createStaticRewards(this);
-    this.movingEnemy = gameObjectFactory.createMovingEnemy(this);
-    this.staticEnemy = gameObjectFactory.createStaticEnemy(this);
+    gameObjectFactory.createBonusRewards(this);
+    gameObjectFactory.createStaticRewards(this);
+    gameObjectFactory.createMovingEnemy(this);
+    gameObjectFactory.createStaticEnemy(this);
 
     // Add static and moving enemies to their respective lists
     for (int i = 0; i < 4; i++) {
@@ -182,7 +176,6 @@ public class GameEngine extends JPanel implements Runnable {
           staticReward.update(mainChar);
         }
         bonusReward.update(mainChar);
-        update(mainChar);
         updateTime = 0;
       }
       repaint();
@@ -198,16 +191,6 @@ public class GameEngine extends JPanel implements Runnable {
         e.printStackTrace();
       }
     }
-  }
-
-  /*
-   * Update the game every frame by calling the update method in the MainCharacter
-   * class
-   */
-  public void update(MainCharacter mainChar) {
-    bonusRewards.update(mainChar);
-    staticRewards.update(mainChar);
-    staticEnemy.update(mainChar);
   }
 
   public void gameOver() {
