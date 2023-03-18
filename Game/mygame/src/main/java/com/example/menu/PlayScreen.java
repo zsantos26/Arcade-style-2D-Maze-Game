@@ -9,13 +9,23 @@ import javax.swing.plaf.metal.MetalButtonUI;
 import com.example.abstractfactory.AbstractFactory;
 import com.example.abstractfactory.GameObjectFactory;
 import com.example.game.GameEngine;
-
+/**
+ * The PlayScreen represents the screen where the user can start the game.
+ * 
+ * This class extends the JFrame class and implements the ActionListener interface to respond to intersactions.
+ * with the buttons. The user can also go back to the main menu.
+ */
 public class PlayScreen extends JFrame implements ActionListener {
 
     // buttons
     JButton playButton, backButton;
 
-    // constructor
+    /**
+     * Constructor for the PlayScreen class.
+     * 
+     * This constructor establishes the background color of the JFrame to match SFU colours.
+     * It also makes and establishes the buttons, and adds them to the JFrame.
+     */
     public PlayScreen() {
         // set the title
         setTitle("Play");
@@ -86,16 +96,26 @@ public class PlayScreen extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
 
     }
-    // button actions
+    /**
+     * ActionPerformed method. This responds to the buttons interacted with by the user.
+     * 
+     * This method gets called when the user clicks one of the buttons, either 'Start Game', or 'Back'.
+     * If the button clicked is 'Start Game', A new game starts via the GameEngine class.
+     * If the button clicked is the back button, the user goes back to the main menu screen.
+     * 
+     * @param e The ActionEvent object that carries information regarding how the button has been interacted with
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == playButton) {
-            // create the game objects
+            
+            // Initialize gamefactory using AbstractFactory
             GameObjectFactory gameObjectFactory = new AbstractFactory();
+
+            // Setup window for game
             JFrame window = new JFrame();
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.setResizable(false);
             window.setTitle("SFU Escape");
-        
             GameEngine gameEngine = new GameEngine(gameObjectFactory);
             window.add(gameEngine);
         
