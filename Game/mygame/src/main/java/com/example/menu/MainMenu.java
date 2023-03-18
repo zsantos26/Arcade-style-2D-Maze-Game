@@ -6,13 +6,29 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.plaf.metal.MetalButtonUI;
 
+/**
+ * The MainMenu class represents the first screen displayed for the game. 
+ * 
+ * The class extends the JFrame class and implements the ActionListener to respond to user interactions with the buttons.
+ * It puts three buttons on display. The play button leads to a screen to let the user start the game.
+ * The 'How To Play' lets the user learn the objectives, controls and additional information about the game.
+ * The exit button closes the program.
+ */
 
 public class MainMenu extends JFrame implements ActionListener {
 
     // Declare 3 JButton to represent 3 buttons to appear on screen
     JButton playButton, howToPlayButton, exitButton;
 
-    // Constructor
+    /**
+     * Constructor for the MainMenu class
+     * 
+     * Sets the title of the JFrame and initializes the text to correspond the the actions if clicked.
+     * Sets the color and user interface for the buttons to correspond to SFU colours.
+     * Adds action listeners to the buttons.
+     * Creates a JPanel to hold the buttons and adds it to the screen.
+     * Sets the initial and minimum size of the frame, centers it, and sets the default close operation.
+     */
     public MainMenu() {
         // Set title
         setTitle("SFU Escape");
@@ -79,7 +95,16 @@ public class MainMenu extends JFrame implements ActionListener {
     }
 
 
-    // button actions
+    /**
+     * ActionPerformed method. This responds to the buttons interacted with by the user.
+     * 
+     * This method gets called when the user clicks one of the buttons, either 'Play', 'How to Play', or 'Exit'.
+     * If the button clicked is 'Play', a PlayScreen object is created and current frame gets disposed
+     * If the button clicked is 'How to Play', HowToPlay object is created  and current frame gets disposed
+     * If the button clicked is 'Exit', program closes.
+     * 
+     * @param e The ActionEvent object that carries information regarding how the button has been interacted with
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == playButton) {
             PlayScreen playScreen = new PlayScreen();
