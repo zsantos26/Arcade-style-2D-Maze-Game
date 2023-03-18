@@ -137,6 +137,9 @@ public class MainCharacter extends Character {
      */
     public void update(GameInput keyBoard) {
         int distance = gameBarrier.cellSize;
+        if (score < 0) {
+            gameBarrier.gameOver();
+        }
         if (keyBoard.upPressed == true) {
             moveUp();
         } else if (keyBoard.downPressed == true) {
