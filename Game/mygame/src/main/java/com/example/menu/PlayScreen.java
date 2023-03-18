@@ -6,6 +6,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.plaf.metal.MetalButtonUI;
 
+import com.example.abstractfactory.AbstractFactory;
+import com.example.abstractfactory.GameObjectFactory;
+import com.example.game.GameEngine;
+
 public class PlayScreen extends JFrame implements ActionListener {
 
     // buttons
@@ -78,22 +82,35 @@ public class PlayScreen extends JFrame implements ActionListener {
 
         // set the size and center the frame
         setSize(1280, 720);
-        setMinimumSize(new Dimension(640, 360)); // set the minimum size of the window
+        setMinimumSize(new Dimension(640, 360)); // set the minimum
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
+    }
     // button actions
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == playButton) {
-            JOptionPane.showMessageDialog(null, "The game is starting.");
-            // TODO: Start the game
+            // create the game objects
+            GameObjectFactory gameObjectFactory = new AbstractFactory();
+            JFrame window = new JFrame();
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            window.setResizable(false);
+            window.setTitle("SFU Escape");
+        
+            GameEngine gameEngine = new GameEngine(gameObjectFactory);
+            window.add(gameEngine);
+        
+            window.pack();
+        
+            window.setLocationRelativeTo(null);
+            window.setVisible(true);
+        
+            gameEngine.startGameThread();
+
+            dispose();
         } else if (e.getSource() == backButton) {
             MainMenu mainMenu = new MainMenu();
             mainMenu.setVisible(true);
             dispose();
         }
     }
-
-   
 }

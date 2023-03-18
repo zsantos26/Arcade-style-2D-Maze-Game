@@ -7,6 +7,7 @@ import com.example.characters.MainCharacter;
 import com.example.characters.MovingEnemy;
 import com.example.characters.StaticEnemy;
 import com.example.characters.StaticRewards;
+import com.example.menu.PlayScreen;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -194,6 +195,32 @@ public class GameEngine extends JPanel implements Runnable {
   }
 
   public void gameOver() {
+    gameOver = true;
     ui.gameOver = true;
+    repaint();
+
+    // Delay the screen transition for 5 seconds
+    try {
+        Thread.sleep(5000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+
+    PlayScreen playScreen = new PlayScreen();
+    playScreen.setVisible(true);
+    // Close the current game screen
+    gameThread = null;
+    setVisible(false);
+    dispose();
+  }
+
+  private void dispose() {
+    // Find the top-level JFrame
+    javax.swing.JFrame frame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    // Dispose the JFrame
+    if (frame != null) {
+        frame.dispose();
+    }
   }
 }
