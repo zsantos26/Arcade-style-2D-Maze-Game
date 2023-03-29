@@ -29,7 +29,7 @@ public class AbstractFactory implements GameObjectFactory {
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         MovingEnemy movingEnemy = new MovingEnemy(x, y, 900, gameBarrier);
-        if (movingEnemy.checkCollision() == true) {
+        if (movingEnemy.checkCollision() == true || x / gameBarrier.cellSize < 2) {
             movingEnemy.spawning();
         }
         return movingEnemy;
@@ -43,7 +43,7 @@ public class AbstractFactory implements GameObjectFactory {
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         StaticEnemy staticEnemy = new StaticEnemy(x, y, 20, gameEngine);
-        if (staticEnemy.checkCollision() == true) {
+        if (staticEnemy.checkCollision() == true || x / gameBarrier.cellSize < 2) {
             staticEnemy.spawning();
         }
         return staticEnemy;
