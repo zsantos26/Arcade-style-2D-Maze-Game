@@ -142,62 +142,76 @@ public class GameEngine extends JPanel implements Runnable {
    */
   @Override
   public void run() {
-    int FPS = 60;
-    double timePerTick = 1000000000 / FPS;
+    final int FPS = 60;
+    final double timePerTick = 1_000_000_000.0 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
     long lastTime = System.nanoTime();
     int startTime = (int) System.currentTimeMillis();
 
-    double updateTime = 0; // initialize enemy update time
-    double updateInterval = 0.4; // set enemy update interval to 1 second
+    final double updateInterval = 0.4; // set enemy update interval to 1 second
+    double timeSinceLastUpdate = 0;
 
-    double timeSinceLastMove = 0; // initialize time since last move
-    double movementInterval = 0.2; // set movement interval to 0.1 seconds
+    final double movementInterval = 0.2; // set movement interval to 0.1 seconds
+    double timeSinceLastMove = 0;
 
     while (gameThread != null) {
-      // long currTime = System.nanoTime();
-      // System.out.println(currTime);
-      // System.out.println("Game Thread is running");
       long currentTime = System.nanoTime();
-      double elapsed = (currentTime - lastTime) / 1000000000.0; // convert to seconds
-      long elapsedTime = System.currentTimeMillis() - startTime;
-      gameTime = (int) (elapsedTime);
+      double elapsedTime = (currentTime - lastTime) / 1_000_000_000.0; // convert to seconds
+      long screenTime = (System.currentTimeMillis() - startTime);
+      gameTime = (int) (screenTime);
       lastTime = currentTime;
-      if (keyBoard.upPressed == true || keyBoard.leftPressed == true || keyBoard.rightPressed == true
-          || keyBoard.downPressed == true) {
-        timeSinceLastMove += elapsed;
+
+      if (isMovementKeyPressed()) {
+        timeSinceLastMove += elapsedTime;
         if (timeSinceLastMove >= movementInterval) {
           mainChar.update(keyBoard);
           timeSinceLastMove = 0;
         }
       }
-      updateTime += elapsed;
-      if (updateTime >= updateInterval) {
-        for (MovingEnemy enemy : movingEnemies) {
-          enemy.update(updateTime, mainChar);
-        }
-        // update the static enemies list
-        for (StaticEnemy enemy : staticEnemies) {
-          enemy.update(mainChar);
-        }
-        for (StaticRewards staticReward : staticRewardsList) {
-          staticReward.update(mainChar);
-        }
-        bonusReward.update(mainChar);
-        updateTime = 0;
+
+      timeSinceLastUpdate += elapsedTime;
+      if (timeSinceLastUpdate >= updateInterval) {
+        updateEnemies(updateInterval);
+        updateTimeSensitiveObjects();
+        timeSinceLastUpdate = 0;
       }
+
       repaint();
-      try {
-        double remainingTime = nextDraw - System.nanoTime();
-        remainingTime = remainingTime / 1000000;
-        if (remainingTime < 0) {
-          remainingTime = 0;
-        }
-        Thread.sleep((long) remainingTime); // casting
-        nextDraw += timePerTick;
-      } catch (InterruptedException e) {
-        e.printStackTrace();
+
+      sleepThread(nextDraw, timePerTick);
+
+      nextDraw += timePerTick;
+    }
+  }
+
+  private boolean isMovementKeyPressed() {
+    return keyBoard.upPressed || keyBoard.leftPressed || keyBoard.rightPressed || keyBoard.downPressed;
+  }
+
+  private void updateEnemies(double updateInterval) {
+    for (MovingEnemy enemy : movingEnemies) {
+      enemy.update(updateInterval, mainChar);
+    }
+    for (StaticEnemy enemy : staticEnemies) {
+      enemy.update(mainChar);
+    }
+  }
+
+  private void updateTimeSensitiveObjects() {
+    for (StaticRewards staticReward : staticRewardsList) {
+      staticReward.update(mainChar);
+    }
+    bonusReward.update(mainChar);
+  }
+
+  private void sleepThread(double nextDraw, double timePerTick) {
+    try {
+      long remainingTime = (long) ((nextDraw - System.nanoTime()) / 1_000_000);
+      if (remainingTime > 0) {
+        Thread.sleep(remainingTime);
       }
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
   }
 

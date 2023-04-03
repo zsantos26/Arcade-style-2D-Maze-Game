@@ -157,6 +157,7 @@ public class MovingEnemy extends Character {
         direction = moveTowards(mainChar);
         collisionOn = false;
         gameBarrier.collisionDetector.checkCells(this);
+
         // Check if determined move direction leads to collision.
         if (collisionOn == false) {
             switch (direction) {
