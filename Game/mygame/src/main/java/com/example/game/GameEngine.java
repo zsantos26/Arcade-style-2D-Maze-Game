@@ -145,8 +145,8 @@ public class GameEngine extends JPanel implements Runnable {
     int FPS = 60;
     double timePerTick = 1000000000 / FPS;
     double nextDraw = System.nanoTime() + timePerTick;
-    long lastTime = System.nanoTime();
     int startTime = (int) System.currentTimeMillis();
+    long lastTime = System.nanoTime();
 
     double updateTime = 0; // initialize enemy update time
     double updateInterval = 0.4; // set enemy update interval to 1 second
@@ -155,9 +155,6 @@ public class GameEngine extends JPanel implements Runnable {
     double movementInterval = 0.2; // set movement interval to 0.1 seconds
 
     while (gameThread != null) {
-      // long currTime = System.nanoTime();
-      // System.out.println(currTime);
-      // System.out.println("Game Thread is running");
       long currentTime = System.nanoTime();
       double elapsed = (currentTime - lastTime) / 1000000000.0; // convert to seconds
       long elapsedTime = System.currentTimeMillis() - startTime;

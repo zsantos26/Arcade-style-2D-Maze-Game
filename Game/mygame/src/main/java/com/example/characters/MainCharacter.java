@@ -91,6 +91,32 @@ public class MainCharacter extends Character {
         }
     }
 
+    private void updatePosition(int distance) {
+        switch (direction) {
+            case "up":
+                y -= distance;
+                break;
+            case "down":
+                y += distance;
+                break;
+            case "left":
+                x -= distance;
+                break;
+            case "right":
+                x += distance;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void updateSpriteMovement() {
+        spriteCounter++;
+        if (spriteCounter > 0) {
+            spriteMovement = (spriteMovement == 1) ? 2 : 1;
+            spriteCounter = 0;
+        }
+    }
     /*
      * This method is called every frame to update the character's state
      */
@@ -158,31 +184,9 @@ public class MainCharacter extends Character {
         gameBarrier.collisionDetector.checkCells(this);
 
         if (collisionOn == false) {
-            switch (direction) {
-                case "up":
-                    y -= distance;
-                    break;
-                case "down":
-                    y += distance;
-                    break;
-                case "left":
-                    x -= distance;
-                    break;
-                case "right":
-                    x += distance;
-                    break;
-                default:
-                    break;
-            }
+            updatePosition(distance);
         }
-        spriteCounter++;
-        if (spriteCounter > 0) {
-            if (spriteMovement == 1) {
-                spriteMovement = 2;
-            } else if (spriteMovement == 2) {
-                spriteMovement = 1;
-            }
-            spriteCounter = 0;
-        }
+        updateSpriteMovement();
+
     }
 }
