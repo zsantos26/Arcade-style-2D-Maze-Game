@@ -79,19 +79,17 @@ public class StaticEnemy extends Character {
     }
 
     public void spawning() {
-        visible = true;
-        x = random.nextInt(20);
-        y = random.nextInt(20);
-        x = x * gameBarrier.cellSize;
-        y = y * gameBarrier.cellSize;
-        while (gameBarrier.collisionDetector.checkCells(this) == true) {
-            x = random.nextInt(20);
-            y = random.nextInt(20);
-            x = x * gameBarrier.cellSize;
-            y = y * gameBarrier.cellSize;
-            System.out.println("X: " + x + " Y: " + y);
-            System.out.println("IT RELOCATE FOR STATIC");
+        boolean collisionDetected = true;
+        while (collisionDetected) {
+            x = random.nextInt(20) * gameBarrier.cellSize;
+            y = random.nextInt(20) * gameBarrier.cellSize;
+            System.out.println("Trying to spawn at: X: " + x + " Y: " + y);
+            collisionDetected = gameBarrier.collisionDetector.checkCells(this);
+            if (collisionDetected) {
+                System.out.println("Collision detected. Relocating...");
+            }
         }
+        System.out.println("Spawned new location at: X: " + x + " Y: " + y);
     }
 
     public void getStaticEnemySprite() {

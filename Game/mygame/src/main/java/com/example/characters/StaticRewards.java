@@ -71,21 +71,17 @@ public class StaticRewards extends Character {
     }
 
     public void spawning() {
-        x = random.nextInt(20);
-        y = random.nextInt(20);
-        x = x * gameBarrier.cellSize;
-        y = y * gameBarrier.cellSize;
-        System.out.println("X: " + x + " Y: " + y);
-        System.out.println("IT RELOCATE");
-        while (gameBarrier.collisionDetector.checkCells(this) == true) {
-            System.out.println("COLLISION DETECTED");
-            x = random.nextInt(20);
-            y = random.nextInt(20);
-            x = x * gameBarrier.cellSize;
-            y = y * gameBarrier.cellSize;
-            System.out.println("Relocate : " + x + " Y: " + y);
-            System.out.println("IT RELOCATE");
+        boolean collisionDetected = true;
+        while (collisionDetected) {
+            x = random.nextInt(20) * gameBarrier.cellSize;
+            y = random.nextInt(20) * gameBarrier.cellSize;
+            System.out.println("Trying to spawn at: X: " + x + " Y: " + y);
+            collisionDetected = gameBarrier.collisionDetector.checkCells(this);
+            if (collisionDetected) {
+                System.out.println("Collision detected. Relocating...");
+            }
         }
+        System.out.println("Spawned new location at: X: " + x + " Y: " + y);
     }
 
     public void getStaticRewardsSprite() {
