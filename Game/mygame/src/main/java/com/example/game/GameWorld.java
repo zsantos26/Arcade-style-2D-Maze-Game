@@ -29,12 +29,11 @@ public class GameWorld {
   public void getCellImage() {
     try {
       // MAP AQ
-
-      cell[0] = new Cells();//AQ WALL
+      cell[0] = new Cells();// AQ WALL
       cell[0].image = ImageIO.read(getClass().getResourceAsStream("/images/AQ_OUTTERWALL/SFU_top.png"));
       cell[0].collision = true;
 
-      cell[1] = new Cells();//PORTAL
+      cell[1] = new Cells();// PORTAL
       cell[1].image = ImageIO.read(getClass().getResourceAsStream("/images/AQ_OUTTERWALL/SFU_Portal.png"));
       cell[1].collision = true;
       cell[1].portal = false;
@@ -117,19 +116,22 @@ public class GameWorld {
       cell[23].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_up.png"));
 
       cell[24] = new Cells(); // water_road_ground_left_down
-      cell[24].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_ground_left_down.png"));
+      cell[24].image = ImageIO
+          .read(getClass().getResourceAsStream("/images/background/water_road_ground_left_down.png"));
 
       cell[25] = new Cells(); // road water left
       cell[25].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_ground_left_up.png"));
 
       cell[26] = new Cells(); // road water right
-      cell[26].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_ground_right_up.png"));
+      cell[26].image = ImageIO
+          .read(getClass().getResourceAsStream("/images/background/water_road_ground_right_up.png"));
 
       cell[27] = new Cells(); // road water right
       cell[27].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_left_down.png"));
 
       cell[28] = new Cells(); // road water right_down
-      cell[28].image = ImageIO.read(getClass().getResourceAsStream("/images/background/water_road_ground_right_down.png"));
+      cell[28].image = ImageIO
+          .read(getClass().getResourceAsStream("/images/background/water_road_ground_right_down.png"));
 
       cell[29] = new Cells(); // road water left up
       cell[29].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_left_up.png"));
@@ -137,25 +139,24 @@ public class GameWorld {
       cell[30] = new Cells(); // road water left
       cell[30].image = ImageIO.read(getClass().getResourceAsStream("/images/background/roadwater_right_down.png"));
 
-
       // MAP ROOM
-      cell[40] = new Cells(); //class_floor
+      cell[40] = new Cells(); // class_floor
       cell[40].image = ImageIO.read(getClass().getResourceAsStream("/images/class/class_floor.png"));
 
-      cell[41] = new Cells(); //wall
+      cell[41] = new Cells(); // wall
       cell[41].image = ImageIO.read(getClass().getResourceAsStream("/images/class/wall.png"));
       cell[41].collision = true;
 
-      cell[42] = new Cells(); //wall_bottom
+      cell[42] = new Cells(); // wall_bottom
       cell[42].image = ImageIO.read(getClass().getResourceAsStream("/images/class/wall_bottom.png"));
 
-      cell[43] = new Cells(); //board top
+      cell[43] = new Cells(); // board top
       cell[43].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_top.png"));
 
-      cell[44] = new Cells(); //board bot
+      cell[44] = new Cells(); // board bot
       cell[44].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_bot.png"));
 
-      cell[45] = new Cells(); //board left top
+      cell[45] = new Cells(); // board left top
       cell[45].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_left_top.png"));
 
       cell[46] = new Cells(); // board right top

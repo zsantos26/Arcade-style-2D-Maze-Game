@@ -65,5 +65,4 @@ public class UI {
     // Set the game thread to null to stop the game loop
     gameBarrier.gameThread = null;
   }
-
 }
