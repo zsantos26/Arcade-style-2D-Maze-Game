@@ -16,6 +16,9 @@ import com.example.game.GameEngine;
  */
 public class PlayScreen extends JFrame implements ActionListener {
 
+    // Constant to represent SFU primary colours
+    private static final Color PRIMARY_COLOR = new Color(204, 6, 51);
+
     // buttons
     JButton playButton, backButton;
 
@@ -31,7 +34,7 @@ public class PlayScreen extends JFrame implements ActionListener {
         setTitle("Play");
 
         // set the background color of the JFrame
-        getContentPane().setBackground(new Color(204, 6, 51));
+        getContentPane().setBackground(PRIMARY_COLOR);
 
         // create the buttons
         playButton = new JButton("Start Game");
@@ -50,20 +53,20 @@ public class PlayScreen extends JFrame implements ActionListener {
 
         // create the panel for the buttons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 65, 10)); // set the layout manager to FlowLayout and center the buttons
-        buttonPanel.setBackground(new Color(204, 6, 51));
+        buttonPanel.setBackground(PRIMARY_COLOR);
         buttonPanel.add(playButton);
         buttonPanel.setMinimumSize(new Dimension(Integer.MAX_VALUE, 100));  // Prevent UI structure from breaking down
         buttonPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,100));
         
         // create the panel for the back button
         JPanel backPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        backPanel.setBackground(new Color(204, 6, 51));
+        backPanel.setBackground(PRIMARY_COLOR);
         backPanel.add(backButton);
         backPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, 500));
 
         // create the panel for the header
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        headerPanel.setBackground(new Color(204, 6, 51));
+        headerPanel.setBackground(PRIMARY_COLOR);
         JLabel headerLabel = new JLabel("Play");
         headerLabel.setFont(new Font("Arial", Font.BOLD, 50));
         headerLabel.setForeground(Color.WHITE);
@@ -74,7 +77,7 @@ public class PlayScreen extends JFrame implements ActionListener {
         // add the panels to the frame
         Box container = Box.createVerticalBox(); // create a vertical box container
         container.setBorder(new EmptyBorder(30, 0, 5, 0)); // add a top margin to the container
-        container.setBackground(new Color(204, 6, 51));
+        container.setBackground(PRIMARY_COLOR);
         container.add(headerPanel);
         container.add(Box.createVerticalStrut(30)); // add a vertical gap between the header and the buttons
         container.add(buttonPanel);
