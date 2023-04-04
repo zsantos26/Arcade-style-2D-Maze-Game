@@ -15,6 +15,8 @@ import java.awt.event.*;
 
 public class MainMenu extends JFrame implements ActionListener {
 
+    private static final Color PRIMARY_COLOR = new Color(204, 6, 51);
+
     // Declare 3 JButton instances to represent interactable buttons on the screen
     JButton playButton, howToPlayButton, exitButton;
 
@@ -32,7 +34,7 @@ public class MainMenu extends JFrame implements ActionListener {
         setTitle("SFU Escape");
 
         // Set the background colour of the JFrame to SFU Primary colours
-        getContentPane().setBackground(new Color(204, 6, 51));
+        getContentPane().setBackground(PRIMARY_COLOR);
 
         // Initialize buttons with representative text
         playButton = new JButton("Play");
@@ -51,7 +53,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
         // Create the buttonPanel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 65, 20)); // Set the layout manager to FlowLayout and center the buttons
-        buttonPanel.setBackground(new Color(204, 6, 51));  // Set to match background colours
+        buttonPanel.setBackground(PRIMARY_COLOR);  // Set to match background colours
         JLabel header = new JLabel("SFU Break");
         header.setFont(new Font("Arial", Font.BOLD, 50));
         header.setForeground(Color.WHITE);
@@ -65,7 +67,7 @@ public class MainMenu extends JFrame implements ActionListener {
         // Add the panel to the frame
         Box container = Box.createVerticalBox(); // create a vertical box container
         container.setBorder(new EmptyBorder(75, 50, 0, 50)); // Add top, left and right margins to the container
-        container.setBackground(new Color(204, 6, 51));
+        container.setBackground(PRIMARY_COLOR);
         container.add(header);  // Add header
         container.add(Box.createVerticalStrut(110)); // Add vertical gap between the header and the buttons
         container.add(buttonPanel);
