@@ -30,6 +30,7 @@ public class MainMenu extends JFrame implements ActionListener {
      * Sets the initial and minimum size of the frame, centers it, and sets the default close operation.
      */
     public MainMenu() {
+
         // Set title
         setTitle("SFU Escape");
 
@@ -59,6 +60,7 @@ public class MainMenu extends JFrame implements ActionListener {
         header.setForeground(Color.WHITE);
         header.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the header horizontally
         header.setHorizontalAlignment(SwingConstants.CENTER); // Center the header text
+
         // Add buttons to panel
         buttonPanel.add(playButton);
         buttonPanel.add(howToPlayButton);
@@ -75,7 +77,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
         // Set the initial. and minimum, size of the frame
         setSize(1280, 720);
-        setMinimumSize(new Dimension(640, 360)); 
+        setMinimumSize(new Dimension(640, 360));  // Prevent UI structure from breaking down
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

@@ -30,6 +30,7 @@ public class HowToPlay extends JFrame implements ActionListener {
      * Sets the size, minimum size, and centers the frame. Also adds the default close operation.
      */
     public HowToPlay() {
+
         // set the title
         setTitle("How to Play");
 
@@ -55,7 +56,7 @@ public class HowToPlay extends JFrame implements ActionListener {
         JPanel headerPanel = new JPanel();
         headerPanel.setBackground(PRIMARY_COLOR);
         headerPanel.setPreferredSize(new Dimension(500, 70));
-        headerPanel.setMinimumSize(new Dimension(500, 70));
+        headerPanel.setMinimumSize(new Dimension(500, 70));  // Prevent UI structure from breaking down
         JLabel header = new JLabel("How to Play");
         header.setFont(new Font("Arial", Font.BOLD, 50));
         header.setForeground(Color.WHITE);
@@ -79,7 +80,7 @@ public class HowToPlay extends JFrame implements ActionListener {
                 "\u25CF  Escape the Campus with all Textbooks \n" +
                 "    in your hand!");
         objectiveInstructions.setMaximumSize(new Dimension(350, 200));
-        objectiveInstructions.setMinimumSize(new Dimension(250, 55));
+        objectiveInstructions.setMinimumSize(new Dimension(250, 55));  // Prevent UI structure from breaking down
         objectiveInstructions.setPreferredSize(new Dimension(250, 180));
         
 
@@ -87,7 +88,7 @@ public class HowToPlay extends JFrame implements ActionListener {
         JPanel blankPanel = new JPanel();
         blankPanel.setPreferredSize(new Dimension(65, 50));
         blankPanel.setMaximumSize(new Dimension(90, 50));
-        blankPanel.setMinimumSize(new Dimension(35, 50));
+        blankPanel.setMinimumSize(new Dimension(35, 50));  // Prevent UI structure from breaking down
         blankPanel.setBackground(PRIMARY_COLOR);  // Colours match background of frame.
 
 
@@ -119,7 +120,7 @@ public class HowToPlay extends JFrame implements ActionListener {
         
 
         // add the panels and back button to the frame
-        Box container = Box.createVerticalBox(); // create a vertical box container
+        Box container = Box.createVerticalBox(); // create a vertical box container. 
         container.setBorder(new EmptyBorder(30, 15, 0, 15)); // add a top margin to the container
         container.setBackground(PRIMARY_COLOR);
         container.add(headerPanel);
@@ -132,7 +133,7 @@ public class HowToPlay extends JFrame implements ActionListener {
 
         // set the size and center the frame
         setSize(1280, 720);
-        setMinimumSize(new Dimension(640, 360)); // set the minimum size of the window
+        setMinimumSize(new Dimension(640, 360)); // Prevent UI structure from breaking down
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
