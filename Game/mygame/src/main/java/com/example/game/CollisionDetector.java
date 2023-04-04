@@ -40,10 +40,15 @@ public class CollisionDetector {
                 }
                 break;
             case "down":
+                int newBottomRow = (charBottomY + gameBarrier.cellSize) / gameBarrier.cellSize;
+                if (newBottomRow >= gameBarrier.gameWorld.mapCells[0].length) {
+                    character.collisionOn = true;
+                    return true;
+                }
                 if (charBottomRow >= 0 && charBottomRow < gameBarrier.maxScreenRow &&
                         charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol &&
                         charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol) {
-                    charBottomRow = (charBottomY + gameBarrier.cellSize) / gameBarrier.cellSize;
+                    charBottomRow = newBottomRow;
                     cellNum1 = gameBarrier.gameWorld.mapCells[charLeftCol][charBottomRow];
                     cellNum2 = gameBarrier.gameWorld.mapCells[charRightCol][charBottomRow];
                     if (gameBarrier.gameWorld.cell[cellNum1].collision
@@ -56,6 +61,7 @@ public class CollisionDetector {
                     return true;
                 }
                 break;
+
             case "left":
                 charLeftCol = (charLeftX - gameBarrier.cellSize) / gameBarrier.cellSize;
                 if (charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol) {
