@@ -33,10 +33,10 @@ public class CollisionDetector {
                             || gameBarrier.gameWorld.cell[cellNum2].collision) {
                         character.collisionOn = true;
                         return true;
-                    } else {
-                        character.collisionOn = false;
-                        return false;
                     }
+                } else {
+                    character.collisionOn = true;
+                    return true;
                 }
                 break;
             case "down":
@@ -50,10 +50,10 @@ public class CollisionDetector {
                             || gameBarrier.gameWorld.cell[cellNum2].collision) {
                         character.collisionOn = true;
                         return true;
-                    } else {
-                        character.collisionOn = false;
-                        return false;
                     }
+                } else {
+                    character.collisionOn = true;
+                    return true;
                 }
                 break;
             case "left":
