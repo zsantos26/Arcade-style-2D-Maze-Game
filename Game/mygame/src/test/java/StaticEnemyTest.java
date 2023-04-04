@@ -79,7 +79,46 @@ public class StaticEnemyTest {
         mainChar.setX(50); // move main character to (50, 0)
         mainChar.setY(50); // move main character to (50, 50)
         enemy.update(mainChar); // should relocate to a different position
-        assertFalse(enemy.checkCollision()); // Should not collide 
+        assertFalse(enemy.checkCollision()); // should not collide 
     }
-    
+
+    @Test
+    public void testPunishmentNegative() {
+        // set up the enemy and main character objects
+        enemy.setX(50);
+        enemy.setY(50);
+        mainChar.setX(50);
+        mainChar.setY(50);
+        mainChar.score = 0;
+
+        // make sure the main character's score is initially zero
+        assertEquals(0, mainChar.score);
+
+        // call the punishment method and make sure the main character's score is reduced
+        enemy.setDamageAmount(50);
+        enemy.punishment(mainChar);
+        assertTrue(mainChar.score < 0);
+    }
+    @Test
+    public void testPunishmentPositive() {
+        // set up the enemy and main character objects
+        enemy.setX(50);
+        enemy.setY(50);
+        mainChar.setX(50);
+        mainChar.setY(50);
+        mainChar.score = 250;
+
+        // make sure the main character's score is initially zero
+        assertEquals(250, mainChar.score);
+
+        // call the punishment method and make sure the main character's score is reduced
+        enemy.setDamageAmount(50);
+        enemy.punishment(mainChar);
+        assertFalse(mainChar.score != 200);
+    }
+
 }
+
+
+    
+
