@@ -123,17 +123,19 @@ public class BonusRewards extends Character {
     }
 
     public void spawning() {
-        boolean collisionDetected = true;
-        while (collisionDetected) {
-            x = random.nextInt(20) * gameBarrier.cellSize;
-            y = random.nextInt(20) * gameBarrier.cellSize;
-            System.out.println("Trying to spawn at: X: " + x + " Y: " + y);
-            collisionDetected = gameBarrier.collisionDetector.checkCells(this);
-            if (collisionDetected) {
-                System.out.println("Collision detected. Relocating...");
-            }
+        relocate();
+        while (gameBarrier.collisionDetector.checkCells(this) == true) {
+            relocate();
+            System.out.println("X: " + x + " Y: " + y);
+            System.out.println("IT RELOCATE FOR STATIC");
         }
-        System.out.println("Spawned new location at: X: " + x + " Y: " + y);
+    }
+
+    private void relocate() {
+        x = random.nextInt(20);
+        y = random.nextInt(20);
+        x = x * gameBarrier.cellSize;
+        y = y * gameBarrier.cellSize;
     }
 
     public void getBonusRewardsSprite() {

@@ -6,23 +6,56 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
 
+import com.example.characters.MainCharacter;
+
 public class GameWorld {
   GameEngine gameBarrier;
   Cells[] cell;
-  public int mapCells[][][];
-  public int map;
+  public int mapCells[][];
+  public int map = 0;
 
   public GameWorld(GameEngine gameEngine) {
     this.gameBarrier = gameEngine;
     cell = new Cells[70];
-    mapCells = new int[gameBarrier.maxMap][gameBarrier.maxScreenCol][gameBarrier.maxScreenRow];
-    String map1 = "/maps/Map_AQ.txt";
-    String map2 = "/maps/Map_Class.txt";
-    drawMap(map1, 0);
+    mapCells = new int[gameBarrier.maxScreenCol][gameBarrier.maxScreenRow];
+    String map1 = "/maps/Map_Class.txt";
+    drawMap(map1);
     getCellImage();
-    if (map == 1) {
-      drawMap(map2, 0);
-      getCellImage();
+  }
+
+  public void changeMap() {
+    map = 1;
+    String map2 = "/maps/Map_AQ.txt";
+    drawMap(map2);
+    getCellImage();
+
+  }
+
+  public boolean updateCellProperties(MainCharacter mainChar) {
+    int dx = mainChar.getX();
+    int dy = mainChar.getY();
+
+    // check if enemy is already adjacent to the main character
+    if (mainChar.getScore() > 500) {
+      cell[1].collision = false;
+      cell[1].portal = true;
+      System.out.println("Portal is open");
+      System.out.println("dx: " + dx + " dy: " + dy);
+      if (map == 0 && dx == 912 && dy == 864) {
+        return true;
+      } else if (mainChar.getScore() > 1000) {
+        cell[61].collision = false;
+        cell[61].portal = true;
+        if (map == 1 && dx == 432 && dy == 0) {
+          map = 1;
+          gameBarrier.victory();
+        }
+      }
+      return false;
+    } else {
+      cell[1].collision = true;
+      cell[1].portal = false;
+      return false;
     }
   }
 
@@ -149,24 +182,31 @@ public class GameWorld {
 
       cell[42] = new Cells(); // wall_bottom
       cell[42].image = ImageIO.read(getClass().getResourceAsStream("/images/class/wall_bottom.png"));
+      cell[42].collision = true;
 
       cell[43] = new Cells(); // board top
       cell[43].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_top.png"));
+      cell[43].collision = true;
 
       cell[44] = new Cells(); // board bot
       cell[44].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_bot.png"));
+      cell[44].collision = true;
 
       cell[45] = new Cells(); // board left top
       cell[45].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_left_top.png"));
+      cell[45].collision = true;
 
       cell[46] = new Cells(); // board right top
       cell[46].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_right_top.png"));
+      cell[46].collision = true;
 
       cell[47] = new Cells(); // board right bot
       cell[47].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_right_bot.png"));
+      cell[47].collision = true;
 
       cell[48] = new Cells(); // board left bot
       cell[48].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_left_bot.png"));
+      cell[48].collision = true;
 
       cell[49] = new Cells(); // table left
       cell[49].image = ImageIO.read(getClass().getResourceAsStream("/images/class/table_left.png"));
@@ -190,6 +230,7 @@ public class GameWorld {
 
       cell[54] = new Cells(); // board paper
       cell[54].image = ImageIO.read(getClass().getResourceAsStream("/images/class/board_paper.png"));
+      cell[54].collision = true;
       //
       cell[55] = new Cells(); // bigtable top
       cell[55].image = ImageIO.read(getClass().getResourceAsStream("/images/class/bigtable_top.png"));
@@ -215,12 +256,17 @@ public class GameWorld {
       cell[60].image = ImageIO.read(getClass().getResourceAsStream("/images/class/bigtable_left_bot.png"));
       cell[60].collision = true;
 
+      cell[61] = new Cells(); // bigtable left bot
+      cell[61].image = ImageIO.read(getClass().getResourceAsStream("/images/AQ_OUTTERWALL/SFU_Portal.png"));
+      cell[61].collision = true;
+      cell[61].portal = false;
+
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  public void drawMap(String filePath, int map) {
+  public void drawMap(String filePath) {
     try {
       InputStream is = getClass().getResourceAsStream(filePath);
       BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -231,7 +277,7 @@ public class GameWorld {
         while (col < gameBarrier.maxScreenCol) {
           String numbers[] = line.split(" ");
           int num = Integer.parseInt(numbers[col]);
-          mapCells[map][col][row] = num;
+          mapCells[col][row] = num;
           col++;
         }
         if (col == gameBarrier.maxScreenCol) {
@@ -251,7 +297,7 @@ public class GameWorld {
     int x = 0;
     int y = 0;
     while (col < gameBarrier.maxScreenCol && row < gameBarrier.maxScreenRow) {
-      int cellNum = mapCells[gameBarrier.currentMap][col][row];
+      int cellNum = mapCells[col][row];
       g2d.drawImage(cell[cellNum].image, x, y, cellSize, cellSize, null);
       col++;
       x += gameBarrier.cellSize;

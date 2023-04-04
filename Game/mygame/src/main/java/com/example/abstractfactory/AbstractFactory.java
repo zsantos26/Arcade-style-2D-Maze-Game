@@ -18,7 +18,7 @@ public class AbstractFactory implements GameObjectFactory {
     @Override
     public MainCharacter createMainCharacter(GameEngine gameEngine) {
         this.gameBarrier = gameEngine;
-        return new MainCharacter(0, 48, gameBarrier);
+        return new MainCharacter(0, 96, gameBarrier);
     }
 
     @Override
@@ -29,7 +29,8 @@ public class AbstractFactory implements GameObjectFactory {
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         MovingEnemy movingEnemy = new MovingEnemy(x, y, 900, gameBarrier);
-        if (movingEnemy.checkCollision() == true || x / gameBarrier.cellSize < 2) {
+        if (movingEnemy.checkCollision() == true || x / gameBarrier.cellSize < 2 || y / gameBarrier.cellSize < 2
+                || x / gameBarrier.cellSize > 17 || y / gameBarrier.cellSize > 17) {
             movingEnemy.spawning();
         }
         return movingEnemy;
@@ -43,7 +44,8 @@ public class AbstractFactory implements GameObjectFactory {
         x = x * gameEngine.cellSize;
         y = y * gameEngine.cellSize;
         StaticEnemy staticEnemy = new StaticEnemy(x, y, 20, gameEngine);
-        if (staticEnemy.checkCollision() == true || x / gameBarrier.cellSize < 2) {
+        if (staticEnemy.checkCollision() == true || x / gameBarrier.cellSize < 2 || y / gameBarrier.cellSize < 2
+                || x / gameBarrier.cellSize > 17 || y / gameBarrier.cellSize > 17) {
             staticEnemy.spawning();
         }
         return staticEnemy;

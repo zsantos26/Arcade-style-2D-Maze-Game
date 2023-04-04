@@ -27,8 +27,8 @@ public class CollisionDetector {
                         charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol &&
                         charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol) {
                     charTopRow = (charTopY - gameBarrier.cellSize) / gameBarrier.cellSize;
-                    cellNum1 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charLeftCol][charTopRow];
-                    cellNum2 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charRightCol][charTopRow];
+                    cellNum1 = gameBarrier.gameWorld.mapCells[charLeftCol][charTopRow];
+                    cellNum2 = gameBarrier.gameWorld.mapCells[charRightCol][charTopRow];
                     if (gameBarrier.gameWorld.cell[cellNum1].collision
                             || gameBarrier.gameWorld.cell[cellNum2].collision) {
                         character.collisionOn = true;
@@ -44,8 +44,8 @@ public class CollisionDetector {
                         charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol &&
                         charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol) {
                     charBottomRow = (charBottomY + gameBarrier.cellSize) / gameBarrier.cellSize;
-                    cellNum1 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charLeftCol][charBottomRow];
-                    cellNum2 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charRightCol][charBottomRow];
+                    cellNum1 = gameBarrier.gameWorld.mapCells[charLeftCol][charBottomRow];
+                    cellNum2 = gameBarrier.gameWorld.mapCells[charRightCol][charBottomRow];
                     if (gameBarrier.gameWorld.cell[cellNum1].collision
                             || gameBarrier.gameWorld.cell[cellNum2].collision) {
                         character.collisionOn = true;
@@ -59,8 +59,8 @@ public class CollisionDetector {
             case "left":
                 charLeftCol = (charLeftX - gameBarrier.cellSize) / gameBarrier.cellSize;
                 if (charLeftCol >= 0 && charLeftCol < gameBarrier.maxScreenCol) {
-                    cellNum1 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charLeftCol][charTopRow];
-                    cellNum2 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charLeftCol][charBottomRow];
+                    cellNum1 = gameBarrier.gameWorld.mapCells[charLeftCol][charTopRow];
+                    cellNum2 = gameBarrier.gameWorld.mapCells[charLeftCol][charBottomRow];
                     if (gameBarrier.gameWorld.cell[cellNum1].collision == true
                             || gameBarrier.gameWorld.cell[cellNum2].collision == true) {
                         character.collisionOn = true;
@@ -74,8 +74,8 @@ public class CollisionDetector {
             case "right":
                 charRightCol = (charRightX + gameBarrier.cellSize) / gameBarrier.cellSize;
                 if (charRightCol >= 0 && charRightCol < gameBarrier.maxScreenCol) {
-                    cellNum1 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charRightCol][charTopRow];
-                    cellNum2 = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][charRightCol][charBottomRow];
+                    cellNum1 = gameBarrier.gameWorld.mapCells[charRightCol][charTopRow];
+                    cellNum2 = gameBarrier.gameWorld.mapCells[charRightCol][charBottomRow];
                     if (gameBarrier.gameWorld.cell[cellNum1].collision == true
                             || gameBarrier.gameWorld.cell[cellNum2].collision == true) {
                         character.collisionOn = true;
@@ -86,7 +86,7 @@ public class CollisionDetector {
                 }
                 break;
             default:
-                cellNum = gameBarrier.gameWorld.mapCells[gameBarrier.currentMap][character.getX()
+                cellNum = gameBarrier.gameWorld.mapCells[character.getX()
                         / gameBarrier.cellSize][character
                                 .getY() / gameBarrier.cellSize];
                 if (gameBarrier.gameWorld.cell[cellNum].collision == true

@@ -1,6 +1,9 @@
 package com.example.game;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import com.example.abstractfactory.GameObjectFactory;
 import com.example.characters.BonusRewards;
 import com.example.characters.MainCharacter;
@@ -48,7 +51,7 @@ public class GameEngine extends JPanel implements Runnable {
   GameInput keyBoard = new GameInput();
   Thread gameThread;
   public CollisionDetector collisionDetector = new CollisionDetector(this);
-  GameWorld gameWorld = new GameWorld(this);
+  public GameWorld gameWorld = new GameWorld(this);
   Random random = new Random();
   public UI ui = new UI(this);
 
@@ -65,6 +68,11 @@ public class GameEngine extends JPanel implements Runnable {
     screenSetUp();
     this.gameObjectFactory = factoryMethod;
     this.mainChar = gameObjectFactory.createMainCharacter(this);
+    objectsCreator(factoryMethod);
+  }
+
+  public void objectsCreator(GameObjectFactory factoryMethod) {
+    this.gameObjectFactory = factoryMethod;
     this.bonusRewards = gameObjectFactory.createBonusRewards(this);
     this.staticRewards = gameObjectFactory.createStaticRewards(this);
     this.movingEnemy = gameObjectFactory.createMovingEnemy(this);
@@ -85,7 +93,6 @@ public class GameEngine extends JPanel implements Runnable {
     }
 
     this.bonusReward = gameObjectFactory.createBonusRewards(this);
-
   }
 
   /*
@@ -178,10 +185,32 @@ public class GameEngine extends JPanel implements Runnable {
 
       repaint();
 
+      if (gameWorld.updateCellProperties(mainChar) == true) {
+        gameWorld.map = 1;
+        gameWorld.changeMap();
+        resetGame();
+
+      }
+
       sleepThread(nextDraw, timePerTick);
 
       nextDraw += timePerTick;
     }
+  }
+
+  public void resetGame() {
+    clearObjects();
+    objectsCreator(gameObjectFactory);
+  }
+
+  public void clearObjects() {
+    this.bonusRewards = null;
+    this.staticRewards = null;
+    this.movingEnemy = null;
+    this.staticEnemy = null;
+    this.staticEnemies.clear();
+    this.movingEnemies.clear();
+    this.staticRewardsList.clear();
   }
 
   private boolean isMovementKeyPressed() {
@@ -262,4 +291,5 @@ public class GameEngine extends JPanel implements Runnable {
       frame.dispose();
     }
   }
+
 }

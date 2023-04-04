@@ -32,17 +32,19 @@ public class MovingEnemy extends Character {
     }
 
     public void spawning() {
-        boolean collisionDetected = true;
-        while (collisionDetected) {
-            x = random.nextInt(20) * gameBarrier.cellSize;
-            y = random.nextInt(20) * gameBarrier.cellSize;
-            System.out.println("Trying to spawn at: X: " + x + " Y: " + y);
-            collisionDetected = gameBarrier.collisionDetector.checkCells(this);
-            if (collisionDetected) {
-                System.out.println("Collision detected. Relocating...");
-            }
+        relocate();
+        while (gameBarrier.collisionDetector.checkCells(this) == true) {
+            relocate();
+            System.out.println("X: " + x + " Y: " + y);
+            System.out.println("IT RELOCATE FOR STATIC");
         }
-        System.out.println("Spawned new location at: X: " + x + " Y: " + y);
+    }
+
+    private void relocate() {
+        x = random.nextInt(20);
+        y = random.nextInt(20);
+        x = x * gameBarrier.cellSize;
+        y = y * gameBarrier.cellSize;
     }
 
     public String moveTowards(MainCharacter mainchar) {
@@ -222,32 +224,31 @@ public class MovingEnemy extends Character {
         try {
             // if it is too hard to make two enemies we can go for one of it
             // For AQ
-            up1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon front-1.png.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon front-1.png.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_left-1.png.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_left-1.png.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
-
-            // For ClassRoom
-            // up1 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
-            // up2 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
-            // down1 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
-            // down2 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
-            // left1 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
-            // left2 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
-            // right1 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
-            // right2 =
-            // ImageIO.read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
+            if (gameBarrier.gameWorld.map == 1) {
+                up1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
+                up2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccooon back-1.png.png"));
+                down1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon front-1.png.png"));
+                down2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon front-1.png.png"));
+                left1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_left-1.png.png"));
+                left2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_left-1.png.png"));
+                right1 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
+                right2 = ImageIO.read(getClass().getResourceAsStream("/images/Raccoon/raccoon_right-1.png.png"));
+            } else {
+                // For ClassRoom
+                up1 = ImageIO
+                        .read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
+                up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
+                down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
+                down2 = ImageIO
+                        .read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
+                left1 = ImageIO
+                        .read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
+                left2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
+                right1 = ImageIO
+                        .read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
+                right2 = ImageIO
+                        .read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
