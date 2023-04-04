@@ -5,12 +5,16 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
 /**
- * The MainMenu class represents the first screen displayed for the game. 
+ * The MainMenu class represents the first screen displayed and the main menu screen for the game.
  * 
  * The class extends the JFrame class and implements the ActionListener to respond to user interactions with the buttons.
- * It puts three buttons on display. The play button leads to a screen to let the user start the game.
+ * 
+ * It puts three buttons on display. 
+ * The play button leads to a screen to let the user start the game.
  * The 'How To Play' lets the user learn the objectives, controls and additional information about the game.
  * The exit button closes the program.
+ * 
+ * The buttons are styled using ButtonStyler class to represent SFU colours
  */
 
 public class MainMenu extends JFrame implements ActionListener {

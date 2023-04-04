@@ -13,6 +13,8 @@ import com.example.game.GameEngine;
  * 
  * This class extends the JFrame class and implements the ActionListener interface to respond to intersactions.
  * with the buttons. The user can also go back to the main menu.
+ * 
+ * The buttons are styled using ButtonStyler class to represent SFU colours
  */
 public class PlayScreen extends JFrame implements ActionListener {
 
@@ -30,13 +32,13 @@ public class PlayScreen extends JFrame implements ActionListener {
      */
     public PlayScreen() {
         
-        // set the title
+        // Set the title to "Play"
         setTitle("Play");
 
         // set the background color of the JFrame
         getContentPane().setBackground(PRIMARY_COLOR);
 
-        // create the buttons
+        // Declare 2 JButton instances to represent interactable buttons on the screen.
         playButton = new JButton("Start Game");
         backButton = new JButton("Back");
 
