@@ -1,8 +1,6 @@
 package com.example.game;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import com.example.abstractfactory.GameObjectFactory;
 import com.example.characters.BonusRewards;
