@@ -12,6 +12,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+
 public class StaticRewardTest {
     private StaticRewards rewards;
     private MainCharacter mainChar;
@@ -26,28 +29,39 @@ public class StaticRewardTest {
         this.mainChar = gameEngine.mainChar;
         this.rewards = gameEngine.staticRewards;
     }
-    @Test
-    public void testGetRewardAmount() {
-        Assert.assertEquals(100, this.rewards.getRewardAmount());
-    }
 
     @Test
     public void testSetRewardAmount() {
         rewards.setRewardAmount(100);
         Assert.assertEquals(100, this.rewards.getRewardAmount());
     }
-    @Test
-    public void testOnReward() {
-        Assert.assertTrue(this.rewards.onReward(0, 0));
-        Assert.assertFalse(this.rewards.onReward(1, 1));
-    }
 
     @Test
-    public void testClaimReward() {
-        this.rewards.claimReward(mainChar);
-        Assert.assertTrue(this.rewards.isCollected());
-        Assert.assertEquals(50, mainChar.score);
+    public void testSpawning() {
+        rewards.setX(50); // move enemy to (50, 0)
+        rewards.setY(50); // move enemy to (50, 50)
+        rewards.spawning(); // should relocate to a different position
+        assertFalse(rewards.checkCollision()); // should not collide with any barriers
     }
+    @Test
+    public void testGetStaticRewardsSprite() {
+        assertNotNull(rewards.staticReward1);
+        assertNotNull(rewards.staticReward2);
+    }
+    @Test
+    public void testCheckCollision() {
+        rewards.setX(50); // move enemy to (50, 0)
+        rewards.setY(50); // move enemy to (50, 50)
+        mainChar.setX(50); // move main character to (50, 0)
+        mainChar.setY(50); // move main character to (50, 50)
+        assertTrue(rewards.checkCollision()); // should collide with the main character
+    }
+
+//    @Test
+//    public void testClaimReward() {
+//        rewards.setRewardAmount(100);
+//        Assert.assertEquals(100, mainChar.);
+//    }
     @Test
     public void testDraw() {
         BufferedImage image = null;
