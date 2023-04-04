@@ -215,6 +215,11 @@ public class GameWorld {
       cell[60].image = ImageIO.read(getClass().getResourceAsStream("/images/class/bigtable_left_bot.png"));
       cell[60].collision = true;
 
+      cell[61] = new Cells();// PORTAL
+      cell[61].image = ImageIO.read(getClass().getResourceAsStream("/images/class/class_floor_portal-1.png.png"));
+      cell[61].collision = true;
+      cell[61].portal = false;
+
     } catch (Exception e) {
       e.printStackTrace();
     }
