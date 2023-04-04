@@ -4,8 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.plaf.metal.MetalButtonUI;
-
 /**
  * The MainMenu class represents the first screen displayed for the game. 
  * 
@@ -17,7 +15,9 @@ import javax.swing.plaf.metal.MetalButtonUI;
 
 public class MainMenu extends JFrame implements ActionListener {
 
-    // Declare 3 JButton to represent 3 buttons to appear on screen
+    private static final Color PRIMARY_COLOR = new Color(204, 6, 51);
+
+    // Declare 3 JButton instances to represent interactable buttons on the screen
     JButton playButton, howToPlayButton, exitButton;
 
     /**
@@ -30,35 +30,22 @@ public class MainMenu extends JFrame implements ActionListener {
      * Sets the initial and minimum size of the frame, centers it, and sets the default close operation.
      */
     public MainMenu() {
+
         // Set title
         setTitle("SFU Escape");
 
         // Set the background colour of the JFrame to SFU Primary colours
-        getContentPane().setBackground(new Color(204, 6, 51));
+        getContentPane().setBackground(PRIMARY_COLOR);
 
         // Initialize buttons with representative text
         playButton = new JButton("Play");
         howToPlayButton = new JButton("How to Play");
         exitButton = new JButton("Exit");
 
-        // Set the colour and UI of the buttons, aswell as the preferred size of the buttons
-        playButton.setUI(new MetalButtonUI());
-        playButton.setPreferredSize(new Dimension(100, 50));
-        playButton.setBackground(new Color(166, 25, 46));  // Set the background colour to SFU secondary colour
-        playButton.setForeground(Color.WHITE);
-        playButton.setFocusPainted(false);  // When a button is selected (but not clicked), disables visual cue
-
-        howToPlayButton.setUI(new MetalButtonUI());
-        howToPlayButton.setPreferredSize(new Dimension(130, 50));
-        howToPlayButton.setBackground(new Color(166, 25, 46));  // Set the background colour to SFU secondary colour
-        howToPlayButton.setForeground(Color.WHITE);
-        howToPlayButton.setFocusPainted(false);  // When a button is selected (but not clicked), disables visual cue
-
-        exitButton.setUI(new MetalButtonUI());
-        exitButton.setPreferredSize(new Dimension(100, 50));  // Set the background colour to SFU secondary colour
-        exitButton.setBackground(new Color(166, 25, 46));
-        exitButton.setForeground(Color.WHITE);
-        exitButton.setFocusPainted(false);  // When a button is selected (but not clicked), disables visual cue
+        // Use ButtonStyler to style buttons
+        ButtonStyler.styleButton(playButton, 100, 50, 14);
+        ButtonStyler.styleButton(howToPlayButton, 130, 50, 14);
+        ButtonStyler.styleButton(exitButton, 100, 50, 14);
 
         // Add action listeners. Allows for program to respond to button clicks.
         playButton.addActionListener(this);
@@ -67,12 +54,13 @@ public class MainMenu extends JFrame implements ActionListener {
 
         // Create the buttonPanel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 65, 20)); // Set the layout manager to FlowLayout and center the buttons
-        buttonPanel.setBackground(new Color(204, 6, 51));  // Set to match background colours
+        buttonPanel.setBackground(PRIMARY_COLOR);  // Set to match background colours
         JLabel header = new JLabel("SFU Break");
         header.setFont(new Font("Arial", Font.BOLD, 50));
         header.setForeground(Color.WHITE);
         header.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the header horizontally
         header.setHorizontalAlignment(SwingConstants.CENTER); // Center the header text
+
         // Add buttons to panel
         buttonPanel.add(playButton);
         buttonPanel.add(howToPlayButton);
@@ -81,7 +69,7 @@ public class MainMenu extends JFrame implements ActionListener {
         // Add the panel to the frame
         Box container = Box.createVerticalBox(); // create a vertical box container
         container.setBorder(new EmptyBorder(75, 50, 0, 50)); // Add top, left and right margins to the container
-        container.setBackground(new Color(204, 6, 51));
+        container.setBackground(PRIMARY_COLOR);
         container.add(header);  // Add header
         container.add(Box.createVerticalStrut(110)); // Add vertical gap between the header and the buttons
         container.add(buttonPanel);
@@ -89,7 +77,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
         // Set the initial. and minimum, size of the frame
         setSize(1280, 720);
-        setMinimumSize(new Dimension(640, 360)); 
+        setMinimumSize(new Dimension(640, 360));  // Prevent UI structure from breaking down
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

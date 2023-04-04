@@ -280,12 +280,11 @@ public class GameWorld {
           mapCells[col][row] = num;
           col++;
         }
-        if (col == gameBarrier.maxScreenCol) {
-          col = 0;
-          row++;
+        String[] numbers = line.trim().split("\\s+");
+        for (col = 0; col < Math.min(gameBarrier.maxScreenCol, numbers.length); col++) {
+          mapCells[col][row] = Integer.parseInt(numbers[col]);
         }
       }
-      br.close();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -309,4 +308,5 @@ public class GameWorld {
       }
     }
   }
+
 }

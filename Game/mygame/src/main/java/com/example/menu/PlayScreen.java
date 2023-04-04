@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.plaf.metal.MetalButtonUI;
 
 import com.example.abstractfactory.AbstractFactory;
 import com.example.abstractfactory.GameObjectFactory;
@@ -27,6 +26,7 @@ public class PlayScreen extends JFrame implements ActionListener {
      * It also makes and establishes the buttons, and adds them to the JFrame.
      */
     public PlayScreen() {
+        
         // set the title
         setTitle("Play");
 
@@ -37,17 +37,9 @@ public class PlayScreen extends JFrame implements ActionListener {
         playButton = new JButton("Start Game");
         backButton = new JButton("Back");
 
-        // set the preferred size of the buttons
-        playButton.setUI(new MetalButtonUI());
-        playButton.setPreferredSize(new Dimension(200, 75));
-        playButton.setBackground(new Color(166, 25, 46));
-        playButton.setForeground(Color.WHITE);
-        playButton.setFont(new Font(null, Font.PLAIN, 24));
-
-        backButton.setUI(new MetalButtonUI());
-        backButton.setPreferredSize(new Dimension(100, 50));
-        backButton.setBackground(new Color(166, 25, 46));
-        backButton.setForeground(Color.WHITE);
+        // Use ButtonStyler to style buttons
+        ButtonStyler.styleButton(playButton, 200, 75, 24);
+        ButtonStyler.styleButton(backButton, 100, 50, 16);
 
         playButton.setFocusPainted(false);
         backButton.setFocusPainted(false);
@@ -60,7 +52,7 @@ public class PlayScreen extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 65, 10)); // set the layout manager to FlowLayout and center the buttons
         buttonPanel.setBackground(new Color(204, 6, 51));
         buttonPanel.add(playButton);
-        buttonPanel.setMinimumSize(new Dimension(Integer.MAX_VALUE, 100));
+        buttonPanel.setMinimumSize(new Dimension(Integer.MAX_VALUE, 100));  // Prevent UI structure from breaking down
         buttonPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,100));
         
         // create the panel for the back button
@@ -76,7 +68,7 @@ public class PlayScreen extends JFrame implements ActionListener {
         headerLabel.setFont(new Font("Arial", Font.BOLD, 50));
         headerLabel.setForeground(Color.WHITE);
         headerPanel.add(headerLabel);
-        headerPanel.setMinimumSize(new Dimension(200, 70));
+        headerPanel.setMinimumSize(new Dimension(200, 70));  // Prevent UI structure from breaking down
         headerPanel.setPreferredSize(new Dimension(200, 300));
         
         // add the panels to the frame
@@ -92,7 +84,7 @@ public class PlayScreen extends JFrame implements ActionListener {
 
         // set the size and center the frame
         setSize(1280, 720);
-        setMinimumSize(new Dimension(640, 360)); // set the minimum
+        setMinimumSize(new Dimension(640, 360)); // Prevent UI structure from breaking down
         setLocationRelativeTo(null);
 
     }
