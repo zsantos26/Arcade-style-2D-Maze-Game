@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: StaticRewardTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 2.169 s <<< FAILURE! - in StaticRewardTest
+testOnReward(StaticRewardTest)  Time elapsed: 0.852 s  <<< FAILURE!
+java.lang.AssertionError
+	at StaticRewardTest.testOnReward(StaticRewardTest.java:41)
+
+testGetRewardAmount(StaticRewardTest)  Time elapsed: 0.227 s  <<< FAILURE!
+java.lang.AssertionError: expected:<100> but was:<0>
+	at StaticRewardTest.testGetRewardAmount(StaticRewardTest.java:31)
+
+testClaimReward(StaticRewardTest)  Time elapsed: 0.253 s  <<< FAILURE!
+java.lang.AssertionError
+	at StaticRewardTest.testClaimReward(StaticRewardTest.java:48)
+
