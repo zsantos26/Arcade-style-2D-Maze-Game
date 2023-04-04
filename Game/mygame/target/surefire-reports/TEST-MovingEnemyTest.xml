@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.mygame.AppTest" time="0" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="MovingEnemyTest" time="15.188" tests="5" errors="2" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,5 +58,52 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.example.mygame.AppTest" time="0"/>
+  <testcase name="testMoveTowards" classname="MovingEnemyTest" time="8.225"/>
+  <testcase name="testSpawning" classname="MovingEnemyTest" time="0.314"/>
+  <testcase name="testMoveTowardsAlt" classname="MovingEnemyTest" time="0.316">
+    <error message="Cannot invoke &quot;String.equals(Object)&quot; because &quot;direction&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because "direction" is null
+	at MovingEnemyTest.testMoveTowardsAlt(MovingEnemyTest.java:53)
+</error>
+    <system-out><![CDATA[X: 336 Y: 144
+IT RELOCATE FOR STATIC
+X: 96 Y: 336
+IT RELOCATE FOR STATIC
+]]></system-out>
+  </testcase>
+  <testcase name="testDamageAmountGetterAndSetter" classname="MovingEnemyTest" time="0.746"/>
+  <testcase name="testUpdate" classname="MovingEnemyTest" time="5.263">
+    <error message="Cannot invoke &quot;String.hashCode()&quot; because &quot;&lt;local13&gt;&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "String.hashCode()" because "<local13>" is null
+	at MovingEnemyTest.testUpdate(MovingEnemyTest.java:60)
+]]></error>
+    <system-out><![CDATA[EXPIRED: true DURATION: 0 RANDOM: 3
+X: 384 Y: 576
+IT RELOCATE FOR STATIC
+X: 816 Y: 432
+IT RELOCATE FOR STATIC
+EXPIRED: false DURATION: 1 RANDOM: 0
+X: 480 Y: 384
+EXPIRED: false DURATION: 1 RANDOM: 0
+EXPIRED: true DURATION: 0 RANDOM: 4
+X: 480 Y: 384
+EXPIRED: true DURATION: 0 RANDOM: 8
+X: 0 Y: 288
+X: 480 Y: 384
+X: 768 Y: 240
+X: 0 Y: 288
+X: 768 Y: 240
+X: 0 Y: 288
+EXPIRED: true DURATION: -1 RANDOM: 7
+X: 768 Y: 240
+X: 0 Y: 288
+X: 144 Y: 240
+X: 768 Y: 240
+X: 144 Y: 240
+X: 144 Y: 240
+X: 144 Y: 240
+X: 144 Y: 240
+EXPIRED: false DURATION: 1 RANDOM: 0
+X: 144 Y: 240
+X: 144 Y: 240
+]]></system-out>
+  </testcase>
 </testsuite>
