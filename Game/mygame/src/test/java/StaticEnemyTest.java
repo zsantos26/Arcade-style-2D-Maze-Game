@@ -49,10 +49,19 @@ public class StaticEnemyTest {
     }
     
     @Test
-    public void testSpawning() {
+    public void testSpawningInBounds() {
         assertFalse(enemy.isVisible()); // should not be visible at the beginning
-        enemy.setX(50); // move enemy to (50, 0)
-        enemy.setY(50); // move enemy to (50, 50)
+        enemy.setX(5); // move enemy to (50, 0)
+        enemy.setY(5); // move enemy to (50, 50)
+        enemy.spawning(); // should relocate to a different position
+        assertFalse(enemy.checkCollision()); // should not collide with any barriers
+    }
+
+    @Test
+    public void testSpawningOutOfBounds() {
+        assertFalse(enemy.isVisible()); // should not be visible at the beginning
+        enemy.setX(10000); // move enemy to (1000, 0)
+        enemy.setY(10000); // move enemy to (1000, 1000)
         enemy.spawning(); // should relocate to a different position
         assertFalse(enemy.checkCollision()); // should not collide with any barriers
     }
@@ -83,7 +92,7 @@ public class StaticEnemyTest {
     }
 
     @Test
-    public void testPunishmentNegative() {
+    public void testPunishmentNegativeTrue() {
         // set up the enemy and main character objects
         enemy.setX(50);
         enemy.setY(50);
@@ -100,7 +109,7 @@ public class StaticEnemyTest {
         assertTrue(mainChar.score < 0);
     }
     @Test
-    public void testPunishmentPositive() {
+    public void testPunishmentPositiveFalse() {
         // set up the enemy and main character objects
         enemy.setX(50);
         enemy.setY(50);
