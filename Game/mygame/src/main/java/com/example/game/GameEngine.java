@@ -81,7 +81,7 @@ public class GameEngine extends JPanel implements Runnable {
       StaticEnemy staticEnemy = gameObjectFactory.createStaticEnemy(this);
       staticEnemies.add(staticEnemy);
     }
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 0; i++) {
       MovingEnemy movingEnemy = gameObjectFactory.createMovingEnemy(this);
       movingEnemies.add(movingEnemy);
     }
@@ -184,10 +184,8 @@ public class GameEngine extends JPanel implements Runnable {
       repaint();
 
       if (gameWorld.updateCellProperties(mainChar) == true) {
-        gameWorld.map = 1;
         gameWorld.changeMap();
         resetGame();
-
       }
 
       sleepThread(nextDraw, timePerTick);

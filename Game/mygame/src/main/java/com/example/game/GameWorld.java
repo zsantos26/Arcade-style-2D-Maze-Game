@@ -47,15 +47,15 @@ public class GameWorld {
         cell[1].collision = false;
         cell[1].portal = true;
         if (map == 1 && dx == 432 && dy == 0) {
-          map = 1;
           gameBarrier.victory();
         }
-        return true;
       }
       return false;
     } else {
       cell[1].collision = true;
       cell[1].portal = false;
+      cell[61].collision = true;
+      cell[61].portal = false;
       return false;
     }
   }
