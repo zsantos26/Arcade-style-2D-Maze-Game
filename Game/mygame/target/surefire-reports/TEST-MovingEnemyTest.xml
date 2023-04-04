@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="StaticEnemyTest" time="1.817" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="MovingEnemyTest" time="13.223" tests="5" errors="2" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,11 +58,82 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testCheckCollision" classname="StaticEnemyTest" time="0.33"/>
-  <testcase name="testSpawning" classname="StaticEnemyTest" time="0.279"/>
-  <testcase name="testGetStaticEnemySprite" classname="StaticEnemyTest" time="0.299"/>
-  <testcase name="testIsDetectedGetterAndSetter" classname="StaticEnemyTest" time="0.232"/>
-  <testcase name="testDamageAmountGetterAndSetter" classname="StaticEnemyTest" time="0.232"/>
-  <testcase name="testUpdate" classname="StaticEnemyTest" time="0.24"/>
-  <testcase name="testVisibleGetterAndSetter" classname="StaticEnemyTest" time="0.204"/>
+  <testcase name="testMoveTowards" classname="MovingEnemyTest" time="6.585"/>
+  <testcase name="testSpawning" classname="MovingEnemyTest" time="0.397"/>
+  <testcase name="testMoveTowardsAlt" classname="MovingEnemyTest" time="0.365">
+    <error message="Cannot invoke &quot;String.equals(Object)&quot; because &quot;direction&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because "direction" is null
+	at MovingEnemyTest.testMoveTowardsAlt(MovingEnemyTest.java:53)
+</error>
+    <system-out><![CDATA[X: 0 Y: 192
+IT RELOCATE FOR STATIC
+X: 336 Y: 96
+IT RELOCATE FOR STATIC
+]]></system-out>
+  </testcase>
+  <testcase name="testDamageAmountGetterAndSetter" classname="MovingEnemyTest" time="0.344"/>
+  <testcase name="testUpdate" classname="MovingEnemyTest" time="5.46">
+    <error message="Cannot invoke &quot;String.hashCode()&quot; because &quot;&lt;local13&gt;&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "String.hashCode()" because "<local13>" is null
+	at MovingEnemyTest.testUpdate(MovingEnemyTest.java:60)
+]]></error>
+    <system-out><![CDATA[EXPIRED: false DURATION: 1 RANDOM: 0
+EXPIRED: true DURATION: 0 RANDOM: 7
+X: 144 Y: 720
+IT RELOCATE FOR STATIC
+X: 528 Y: 144
+IT RELOCATE FOR STATIC
+X: 240 Y: 624
+IT RELOCATE FOR STATIC
+X: 816 Y: 288
+IT RELOCATE FOR STATIC
+X: 336 Y: 0
+IT RELOCATE FOR STATIC
+X: 384 Y: 768
+IT RELOCATE FOR STATIC
+X: 864 Y: 864
+IT RELOCATE FOR STATIC
+EXPIRED: false DURATION: 1 RANDOM: 0
+X: 816 Y: 672
+IT RELOCATE FOR STATIC
+X: 288 Y: 336
+IT RELOCATE FOR STATIC
+X: 336 Y: 528
+IT RELOCATE FOR STATIC
+X: 48 Y: 96
+IT RELOCATE FOR STATIC
+EXPIRED: true DURATION: 0 RANDOM: 8
+X: 0 Y: 432
+EXPIRED: true DURATION: 0 RANDOM: 6
+EXPIRED: false DURATION: 1 RANDOM: 0
+X: 672 Y: 528
+X: 480 Y: 336
+EXPIRED: true DURATION: 0 RANDOM: 9
+X: 672 Y: 528
+X: 480 Y: 336
+X: 672 Y: 528
+X: 48 Y: 96
+X: 480 Y: 336
+X: 672 Y: 528
+X: 48 Y: 96
+X: 480 Y: 336
+X: 48 Y: 96
+X: 672 Y: 528
+X: 480 Y: 336
+X: 48 Y: 96
+X: 672 Y: 528
+X: 48 Y: 96
+X: 480 Y: 336
+X: 672 Y: 528
+X: 48 Y: 96
+X: 624 Y: 864
+IT RELOCATE FOR STATIC
+X: 672 Y: 528
+EXPIRED: false DURATION: 16 RANDOM: 0
+EXPIRED: false DURATION: 15 RANDOM: 0
+EXPIRED: false DURATION: 18 RANDOM: 0
+EXPIRED: false DURATION: 14 RANDOM: 0
+EXPIRED: false DURATION: 17 RANDOM: 0
+EXPIRED: false DURATION: 13 RANDOM: 0
+EXPIRED: false DURATION: 16 RANDOM: 0
+]]></system-out>
+  </testcase>
 </testsuite>

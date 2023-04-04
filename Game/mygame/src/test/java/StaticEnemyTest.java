@@ -64,13 +64,22 @@ public class StaticEnemyTest {
     }
 
     @Test
+    public void testCheckCollision() {
+        enemy.setX(50); // move enemy to (50, 0)
+        enemy.setY(50); // move enemy to (50, 50)
+        mainChar.setX(50); // move main character to (50, 0)
+        mainChar.setY(50); // move main character to (50, 50)
+        assertTrue(enemy.checkCollision()); // should collide with the main character
+    }
+
+    @Test
     public void testUpdate() {
         enemy.setX(50); // move enemy to (50, 0)
         enemy.setY(50); // move enemy to (50, 50)
-        mainChar.setX(40); // move main character to (40, 0)
-        mainChar.setY(40); // move main character to (40, 40)
+        mainChar.setX(50); // move main character to (50, 0)
+        mainChar.setY(50); // move main character to (50, 50)
         enemy.update(mainChar); // should relocate to a different position
-        assertTrue(enemy.checkCollision()); // should collide with the main character
+        assertFalse(enemy.checkCollision()); // Should not collide 
     }
     
 }
