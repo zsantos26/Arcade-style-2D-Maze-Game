@@ -15,7 +15,8 @@ import java.awt.event.*;
  * The user then returns to the main menu.
  */
 public class HowToPlay extends JFrame implements ActionListener {
-
+    
+    // Constant to represent SFU primary colours
     private static final Color PRIMARY_COLOR = new Color(204, 6, 51);
 
     // Back button

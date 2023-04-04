@@ -50,6 +50,7 @@ public class GameWorld {
           map = 1;
           gameBarrier.victory();
         }
+        return true;
       }
       return false;
     } else {

@@ -15,6 +15,7 @@ import java.awt.event.*;
 
 public class MainMenu extends JFrame implements ActionListener {
 
+    // Constant to represent SFU primary colours
     private static final Color PRIMARY_COLOR = new Color(204, 6, 51);
 
     // Declare 3 JButton instances to represent interactable buttons on the screen
