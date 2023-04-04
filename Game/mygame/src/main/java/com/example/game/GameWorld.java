@@ -37,15 +37,15 @@ public class GameWorld {
 
     // check if enemy is already adjacent to the main character
     if (mainChar.getScore() > 500) {
-      cell[1].collision = false;
-      cell[1].portal = true;
+      cell[61].collision = false;
+      cell[61].portal = true;
       System.out.println("Portal is open");
       System.out.println("dx: " + dx + " dy: " + dy);
       if (map == 0 && dx == 912 && dy == 864) {
         return true;
       } else if (mainChar.getScore() > 1000) {
-        cell[61].collision = false;
-        cell[61].portal = true;
+        cell[1].collision = false;
+        cell[1].portal = true;
         if (map == 1 && dx == 432 && dy == 0) {
           map = 1;
           gameBarrier.victory();
