@@ -236,18 +236,18 @@ public class MovingEnemy extends Character {
             } else {
                 // For ClassRoom
                 up1 = ImageIO
-                        .read(getClass().getResourceAsStream("/images/professor/professorbackrightfoot-1.png.png"));
-                up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorbackleft-1.png.png"));
-                down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professor_front.png-1.png.png"));
+                        .read(getClass().getResourceAsStream("/images/professor/prof_back_right-1.png.png"));
+                up2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/prof_back_left-1.png.png"));
+                down1 = ImageIO.read(getClass().getResourceAsStream("/images/professor/prof-front-left-1.png.png"));
                 down2 = ImageIO
-                        .read(getClass().getResourceAsStream("/images/professor/professor_front_right-1.png.png"));
+                        .read(getClass().getResourceAsStream("/images/professor/prof-front-right-1.png.png"));
                 left1 = ImageIO
-                        .read(getClass().getResourceAsStream("/images/professor/professorleftwalking-1.png.png"));
-                left2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/professorleftstand-1.png.png"));
+                        .read(getClass().getResourceAsStream("/images/professor/prof_left_walk-1.png.png"));
+                left2 = ImageIO.read(getClass().getResourceAsStream("/images/professor/prof_left_stand-1.png.png"));
                 right1 = ImageIO
-                        .read(getClass().getResourceAsStream("/images/professor/professorrightwalking-1.png.png"));
+                        .read(getClass().getResourceAsStream("/images/professor/prof_right_walk-1.png.png"));
                 right2 = ImageIO
-                        .read(getClass().getResourceAsStream("/images/professor/professorrightstand-1.png.png"));
+                        .read(getClass().getResourceAsStream("/images/professor/prof_right_stand-1.png.png"));
             }
 
         } catch (IOException e) {
