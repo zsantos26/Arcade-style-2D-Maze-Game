@@ -63,12 +63,12 @@ public class HowToPlay extends JFrame implements ActionListener {
         header.setHorizontalAlignment(SwingConstants.CENTER);
         headerPanel.add(header);
 
-        // create the text area for the instructions on the left
-        JTextArea instructionsLeft = new JTextArea();
-        instructionsLeft.setBackground(PRIMARY_COLOR);
-        instructionsLeft.setForeground(Color.WHITE);
-        instructionsLeft.setFont(new Font("Arial", Font.BOLD, 14));
-        instructionsLeft.setText("Objective of the Game:\n" +
+        // create the text area for the objective Instructions
+        JTextArea objectiveInstructions = new JTextArea();
+        objectiveInstructions.setBackground(PRIMARY_COLOR);
+        objectiveInstructions.setForeground(Color.WHITE);
+        objectiveInstructions.setFont(new Font("Arial", Font.BOLD, 14));
+        objectiveInstructions.setText("Objective of the Game:\n" +
                 "\u25CF  You control a Student enrolled at SFU\n" +
                 "\u25CF  Collect all Textbooks\n" +
                 "\u25CF  Diplomas are a bonus\n" +
@@ -78,9 +78,9 @@ public class HowToPlay extends JFrame implements ActionListener {
                 "    you lose!\n" +
                 "\u25CF  Escape the Campus with all Textbooks \n" +
                 "    in your hand!");
-        instructionsLeft.setMaximumSize(new Dimension(350, 200));
-        instructionsLeft.setMinimumSize(new Dimension(250, 55));
-        instructionsLeft.setPreferredSize(new Dimension(250, 180));
+        objectiveInstructions.setMaximumSize(new Dimension(350, 200));
+        objectiveInstructions.setMinimumSize(new Dimension(250, 55));
+        objectiveInstructions.setPreferredSize(new Dimension(250, 180));
         
 
        // Create the blank panel. This is to help with screen spacing and aesthetics. 
@@ -91,19 +91,19 @@ public class HowToPlay extends JFrame implements ActionListener {
         blankPanel.setBackground(PRIMARY_COLOR);  // Colours match background of frame.
 
 
-        // create the text area for the instructions on the right
-        JTextArea instructionsRight = new JTextArea();
-        instructionsRight.setBackground(PRIMARY_COLOR);
-        instructionsRight.setForeground(Color.WHITE);
-        instructionsRight.setFont(new Font("Arial", Font.BOLD, 15));
-        instructionsRight.setText("Controls:\n\n" +
+        // create the text area contro lInstructions
+        JTextArea controlInstructions = new JTextArea();
+        controlInstructions.setBackground(PRIMARY_COLOR);
+        controlInstructions.setForeground(Color.WHITE);
+        controlInstructions.setFont(new Font("Arial", Font.BOLD, 15));
+        controlInstructions.setText("Controls:\n\n" +
                 "    Movement\t          -         Key\n\n" +
                 "      Move Up\t\t↑\n" +
                 "      Move Left\t\t←\n" +
                 "      Move Right\t\t→\n" +
                 "      Move Down\t↓\n");
-        instructionsRight.setMaximumSize(new Dimension(350, 200));
-        instructionsRight.setPreferredSize(new Dimension(125, 100));
+        controlInstructions.setMaximumSize(new Dimension(350, 200));
+        controlInstructions.setPreferredSize(new Dimension(125, 100));
 
 
         // create the panel for the text areas, blankPanel, and the back button.
@@ -111,10 +111,10 @@ public class HowToPlay extends JFrame implements ActionListener {
         contentPanel.setBackground(PRIMARY_COLOR);
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
         contentPanel.add(Box.createHorizontalStrut(8));
-        contentPanel.add(instructionsLeft);
+        contentPanel.add(objectiveInstructions);
         contentPanel.add(Box.createHorizontalStrut(0));
         contentPanel.add(blankPanel);
-        contentPanel.add(instructionsRight);
+        contentPanel.add(controlInstructions);
         contentPanel.add(Box.createHorizontalStrut(4));
         
 
