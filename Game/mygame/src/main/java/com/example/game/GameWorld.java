@@ -257,8 +257,8 @@ public class GameWorld {
       cell[60].image = ImageIO.read(getClass().getResourceAsStream("/images/class/bigtable_left_bot.png"));
       cell[60].collision = true;
 
-      cell[61] = new Cells(); // bigtable left bot
-      cell[61].image = ImageIO.read(getClass().getResourceAsStream("/images/AQ_OUTTERWALL/SFU_Portal.png"));
+      cell[61] = new Cells();// PORTAL
+      cell[61].image = ImageIO.read(getClass().getResourceAsStream("/images/class/class_floor_portal-1.png.png"));
       cell[61].collision = true;
       cell[61].portal = false;
 
@@ -268,21 +268,16 @@ public class GameWorld {
   }
 
   public void drawMap(String filePath) {
-    try {
-      InputStream is = getClass().getResourceAsStream(filePath);
-      BufferedReader br = new BufferedReader(new InputStreamReader(is));
-      int col = 0;
-      int row = 0;
-      while (col < gameBarrier.maxScreenCol && row < gameBarrier.maxScreenRow) {
+    try (InputStream is = getClass().getResourceAsStream(filePath);
+        BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+
+      for (int row = 0; row < gameBarrier.maxScreenRow; row++) {
         String line = br.readLine();
-        while (col < gameBarrier.maxScreenCol) {
-          String numbers[] = line.split(" ");
-          int num = Integer.parseInt(numbers[col]);
-          mapCells[col][row] = num;
-          col++;
+        if (line == null) {
+          break; // end of file
         }
         String[] numbers = line.trim().split("\\s+");
-        for (col = 0; col < Math.min(gameBarrier.maxScreenCol, numbers.length); col++) {
+        for (int col = 0; col < Math.min(gameBarrier.maxScreenCol, numbers.length); col++) {
           mapCells[col][row] = Integer.parseInt(numbers[col]);
         }
       }
@@ -292,22 +287,14 @@ public class GameWorld {
   }
 
   public void draw(Graphics2D g2d, int cellSize) {
-    int col = 0;
-    int row = 0;
-    int x = 0;
-    int y = 0;
-    while (col < gameBarrier.maxScreenCol && row < gameBarrier.maxScreenRow) {
-      int cellNum = mapCells[col][row];
-      g2d.drawImage(cell[cellNum].image, x, y, cellSize, cellSize, null);
-      col++;
-      x += gameBarrier.cellSize;
-      if (col == gameBarrier.maxScreenCol) {
-        col = 0;
-        x = 0;
-        row++;
-        y += gameBarrier.cellSize;
+    for (int row = 0; row < gameBarrier.maxScreenRow; row++) {
+      for (int col = 0; col < gameBarrier.maxScreenCol; col++) {
+        int cellNum = mapCells[col][row];
+        int x = col * gameBarrier.cellSize;
+        int y = row * gameBarrier.cellSize;
+        g2d.drawImage(cell[cellNum].image, x, y, cellSize, cellSize, null);
       }
     }
-  }
 
+  }
 }

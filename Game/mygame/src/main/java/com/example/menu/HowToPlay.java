@@ -13,13 +13,15 @@ import java.awt.event.*;
  * The class also creates panels to hold the header, instructions, and back button, and adds them to the frame.
  * When the "Back" button is clicked, it creates a MainMenu object and disposes of the current frame.
  * The user then returns to the main menu.
+ * 
+ * The buttons are styled using ButtonStyler class to represent SFU colours
  */
 public class HowToPlay extends JFrame implements ActionListener {
-    
+
     // Constant to represent SFU primary colours
     private static final Color PRIMARY_COLOR = new Color(204, 6, 51);
 
-    // Back button
+     // Declare JButton instances to represent interactable buttons back button that returns user to MainMenu screen.
     JButton backButton;
 
     /**
