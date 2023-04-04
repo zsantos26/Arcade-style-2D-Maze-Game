@@ -15,7 +15,7 @@ import java.awt.event.*;
 
 public class MainMenu extends JFrame implements ActionListener {
 
-    // Declare 3 JButton to represent 3 buttons to appear on screen
+    // Declare 3 JButton instances to represent interactable buttons on the screen
     JButton playButton, howToPlayButton, exitButton;
 
     /**
