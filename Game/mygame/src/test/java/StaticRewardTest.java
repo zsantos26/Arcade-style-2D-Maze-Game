@@ -38,8 +38,8 @@ public class StaticRewardTest {
 
     @Test
     public void testSpawning() {
-        rewards.setX(50); // move enemy to (50, 0)
-        rewards.setY(50); // move enemy to (50, 50)
+        rewards.setX(50); // move rewards to (50, 0)
+        rewards.setY(50); // move rewards to (50, 50)
         rewards.spawning(); // should relocate to a different position
         assertFalse(rewards.checkCollision()); // should not collide with any barriers
     }
@@ -50,18 +50,25 @@ public class StaticRewardTest {
     }
     @Test
     public void testCheckCollision() {
-        rewards.setX(50); // move enemy to (50, 0)
-        rewards.setY(50); // move enemy to (50, 50)
+        rewards.setX(50); // move rewards to (50, 0)
+        rewards.setY(50); // move rewards to (50, 50)
         mainChar.setX(50); // move main character to (50, 0)
         mainChar.setY(50); // move main character to (50, 50)
         assertTrue(rewards.checkCollision()); // should collide with the main character
     }
 
-//    @Test
-//    public void testClaimReward() {
-//        rewards.setRewardAmount(100);
-//        Assert.assertEquals(100, mainChar.);
-//    }
+    @Test
+    public void testClaimReward() {
+        rewards.setRewardAmount(100);
+        rewards.setX(50); // move rewards to (50, 0)
+        rewards.setY(50); // move rewards to (50, 50)
+        mainChar.setX(50); // move main character to (50, 0)
+        mainChar.setY(50); // move main character to (50, 50)
+        mainChar.score = 0;
+        rewards.update(mainChar);
+        Assert.assertEquals(100, mainChar.score);
+    }
+
     @Test
     public void testDraw() {
         BufferedImage image = null;
