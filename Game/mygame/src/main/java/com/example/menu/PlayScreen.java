@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.plaf.metal.MetalButtonUI;
 
 import com.example.abstractfactory.AbstractFactory;
 import com.example.abstractfactory.GameObjectFactory;
@@ -37,17 +36,9 @@ public class PlayScreen extends JFrame implements ActionListener {
         playButton = new JButton("Start Game");
         backButton = new JButton("Back");
 
-        // set the preferred size of the buttons
-        playButton.setUI(new MetalButtonUI());
-        playButton.setPreferredSize(new Dimension(200, 75));
-        playButton.setBackground(new Color(166, 25, 46));
-        playButton.setForeground(Color.WHITE);
-        playButton.setFont(new Font(null, Font.PLAIN, 24));
-
-        backButton.setUI(new MetalButtonUI());
-        backButton.setPreferredSize(new Dimension(100, 50));
-        backButton.setBackground(new Color(166, 25, 46));
-        backButton.setForeground(Color.WHITE);
+        // Use ButtonStyler to style buttons
+        ButtonStyler.styleButton(playButton, 200, 75, 24);
+        ButtonStyler.styleButton(backButton, 100, 50, 16);
 
         playButton.setFocusPainted(false);
         backButton.setFocusPainted(false);

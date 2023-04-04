@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.plaf.metal.MetalButtonUI;
 
 /**
  * The HowToPlay class represents the screen that displays the objectives of the game the controls, and additional information.
@@ -38,12 +37,8 @@ public class HowToPlay extends JFrame implements ActionListener {
         // create the back button
         backButton = new JButton("Back");
 
-        // set the preferred size of the button, aswell as the UI and colours
-        backButton.setUI(new MetalButtonUI());
-        backButton.setPreferredSize(new Dimension(100, 50));
-        backButton.setBackground(new Color(166, 25, 46));
-        backButton.setForeground(Color.WHITE);
-        backButton.setFocusPainted(false);  // Button does not highlight if selected (and not clicked)
+        // set the button style
+        ButtonStyler.styleButton(backButton, 100, 50, 16);
 
         // add action listeners to the button
         backButton.addActionListener(this);
