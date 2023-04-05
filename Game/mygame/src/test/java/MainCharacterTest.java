@@ -47,58 +47,62 @@ public class MainCharacterTest {
 
     @Test
     public void testUpdateMoveUp() {
-        // create a mock GameInput object with upPressed = true and other properties = false
+        // create a mock GameInput object with upPressed = true and other properties =
+        // false
         GameInput mockInput = new GameInput();
         mockInput.upPressed = true;
 
         mainChar.setX(5);
         mainChar.setY(5);
         mainChar.update(mockInput);
-    
+
         // check that the moveUp method was called
         assertEquals("up", mainChar.direction);
     }
+
     @Test
     public void testUpdateMoveDown() {
-        // create a mock GameInput object with upPressed = true and other properties = false
+        // create a mock GameInput object with upPressed = true and other properties =
+        // false
         GameInput mockInput = new GameInput();
         mockInput.downPressed = true;
 
         mainChar.setX(5);
         mainChar.setY(5);
         mainChar.update(mockInput);
-    
+
         // check that the moveDown method was called
         assertEquals("down", mainChar.direction);
     }
+
     @Test
     public void testUpdateMoveLeft() {
-        // create a mock GameInput object with upPressed = true and other properties = false
+        // create a mock GameInput object with upPressed = true and other properties =
+        // false
         GameInput mockInput = new GameInput();
         mockInput.leftPressed = true;
 
         mainChar.setX(5);
         mainChar.setY(5);
         mainChar.update(mockInput);
-    
+
         // check that the moveLeft method was called
         assertEquals("left", mainChar.direction);
     }
 
     @Test
     public void testUpdateMoveRight() {
-        // create a mock GameInput object with upPressed = true and other properties = false
+        // create a mock GameInput object with upPressed = true and other properties =
+        // false
         GameInput mockInput = new GameInput();
         mockInput.rightPressed = true;
 
         mainChar.setX(5);
         mainChar.setY(5);
         mainChar.update(mockInput);
-    
+
         // check that the moveRight method was called
         assertEquals("right", mainChar.direction);
     }
-
-
 
 }
