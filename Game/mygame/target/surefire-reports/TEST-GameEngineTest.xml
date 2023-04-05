@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="StaticEnemyTest" time="2.645" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="GameEngineTest" time="13.848" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,14 +58,12 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testCheckCollision" classname="StaticEnemyTest" time="0.423"/>
-  <testcase name="testSpawningOutOfBounds" classname="StaticEnemyTest" time="0.19"/>
-  <testcase name="testSpawningInBounds" classname="StaticEnemyTest" time="0.206"/>
-  <testcase name="testPunishmentPositiveFalse" classname="StaticEnemyTest" time="0.361"/>
-  <testcase name="testGetStaticEnemySprite" classname="StaticEnemyTest" time="0.279"/>
-  <testcase name="testIsDetectedGetterAndSetter" classname="StaticEnemyTest" time="0.222"/>
-  <testcase name="testPunishmentNegativeTrue" classname="StaticEnemyTest" time="0.193"/>
-  <testcase name="testDamageAmountGetterAndSetter" classname="StaticEnemyTest" time="0.352"/>
-  <testcase name="testUpdate" classname="StaticEnemyTest" time="0.239"/>
-  <testcase name="testVisibleGetterAndSetter" classname="StaticEnemyTest" time="0.178"/>
+  <testcase name="testResetGame" classname="GameEngineTest" time="0.357"/>
+  <testcase name="testUpdateEnemies" classname="GameEngineTest" time="0.84"/>
+  <testcase name="testGameOver" classname="GameEngineTest" time="5.594"/>
+  <testcase name="testObjectsCreator" classname="GameEngineTest" time="0.564"/>
+  <testcase name="testScreenSetUp" classname="GameEngineTest" time="0.193"/>
+  <testcase name="testClearObjects" classname="GameEngineTest" time="0.215"/>
+  <testcase name="testPaintComponent" classname="GameEngineTest" time="0.684"/>
+  <testcase name="testVictory" classname="GameEngineTest" time="5.398"/>
 </testsuite>

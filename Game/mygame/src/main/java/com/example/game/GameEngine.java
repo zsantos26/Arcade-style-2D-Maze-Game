@@ -33,10 +33,10 @@ public class GameEngine extends JPanel implements Runnable {
   public int currentMap = 0;
   public int gameState;
 
-  private ArrayList<StaticEnemy> staticEnemies = new ArrayList<StaticEnemy>();
-  private ArrayList<MovingEnemy> movingEnemies = new ArrayList<MovingEnemy>();
-  private ArrayList<StaticRewards> staticRewardsList = new ArrayList<StaticRewards>();
-  private BonusRewards bonusReward;
+  public ArrayList<StaticEnemy> staticEnemies = new ArrayList<StaticEnemy>();
+  public ArrayList<MovingEnemy> movingEnemies = new ArrayList<MovingEnemy>();
+  public ArrayList<StaticRewards> staticRewardsList = new ArrayList<StaticRewards>();
+  public BonusRewards bonusReward;
 
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;
@@ -213,7 +213,7 @@ public class GameEngine extends JPanel implements Runnable {
     return keyBoard.upPressed || keyBoard.leftPressed || keyBoard.rightPressed || keyBoard.downPressed;
   }
 
-  private void updateEnemies(double updateInterval) {
+  public void updateEnemies(double updateInterval) {
     for (MovingEnemy enemy : movingEnemies) {
       enemy.update(updateInterval, mainChar);
     }
