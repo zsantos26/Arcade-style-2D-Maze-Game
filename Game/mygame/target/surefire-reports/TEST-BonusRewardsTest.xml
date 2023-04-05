@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="StaticRewardTest" time="2.2" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="BonusRewardsTest" time="1.817" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,10 +58,11 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testCheckCollision" classname="StaticRewardTest" time="0.904"/>
-  <testcase name="testSpawning" classname="StaticRewardTest" time="0.254"/>
-  <testcase name="testDraw" classname="StaticRewardTest" time="0.239"/>
-  <testcase name="testSetRewardAmount" classname="StaticRewardTest" time="0.247"/>
-  <testcase name="testGetStaticRewardsSprite" classname="StaticRewardTest" time="0.217"/>
-  <testcase name="testClaimReward" classname="StaticRewardTest" time="0.268"/>
+  <testcase name="testCheckCollision" classname="BonusRewardsTest" time="0.233"/>
+  <testcase name="testSpawning" classname="BonusRewardsTest" time="0.283"/>
+  <testcase name="testDraw" classname="BonusRewardsTest" time="0.249"/>
+  <testcase name="testSetRewardAmount" classname="BonusRewardsTest" time="0.311"/>
+  <testcase name="testGetBonusRewardsSprite" classname="BonusRewardsTest" time="0.235"/>
+  <testcase name="reAllocateClaimReward" classname="BonusRewardsTest" time="0.226"/>
+  <testcase name="testClaimReward" classname="BonusRewardsTest" time="0.279"/>
 </testsuite>

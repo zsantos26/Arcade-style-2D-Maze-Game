@@ -3,7 +3,7 @@
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame/target/test-classes:/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame/target/classes:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-mac.jar:/Users/odiesantos/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/odiesantos/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="java.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/test-classes:/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/classes:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-mac.jar:/Users/odiesantos/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/odiesantos/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="java.vm.vendor" value="Homebrew"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
@@ -12,10 +12,10 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame/target/surefire/surefirebooter15661010532681586206.jar /Users/odiesantos/Desktop/sfuBreak/project/Game/mygame/target/surefire 2023-04-04T15-29-01_723-jvmRun1 surefire9096614479488011128tmp surefire_08704562124998484952tmp"/>
+    <property name="sun.java.command" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10636478012639801568.jar /Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire 2023-04-04T21-45-17_212-jvmRun1 surefire18331324528868184979tmp surefire_03298199729949587238tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame/target/test-classes:/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame/target/classes:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-mac.jar:/Users/odiesantos/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/odiesantos/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="surefire.test.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/test-classes:/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/classes:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-mac.jar:/Users/odiesantos/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/odiesantos/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/Users/odiesantos"/>
     <property name="user.language" value="en"/>
@@ -23,13 +23,13 @@
     <property name="java.version.date" value="2023-01-17"/>
     <property name="java.home" value="/usr/local/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home"/>
     <property name="file.separator" value="/"/>
-    <property name="basedir" value="/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame"/>
+    <property name="basedir" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame/target/surefire/surefirebooter15661010532681586206.jar"/>
+    <property name="surefire.real.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10636478012639801568.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="19.0.2"/>
@@ -45,7 +45,7 @@
     <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
     <property name="java.io.tmpdir" value="/var/folders/lx/l9p6011j6jj2fg0wn4554ftr0000gn/T/"/>
     <property name="java.version" value="19.0.2"/>
-    <property name="user.dir" value="/Users/odiesantos/Desktop/sfuBreak/project/Game/mygame"/>
+    <property name="user.dir" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="native.encoding" value="UTF-8"/>

@@ -1,8 +1,5 @@
 import static org.junit.Assert.*;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
 import org.junit.Before;
 import org.junit.Test;
 
