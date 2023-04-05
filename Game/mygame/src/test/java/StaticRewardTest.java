@@ -70,19 +70,19 @@ public class StaticRewardTest {
         rewards.update(mainChar);
         assertTrue(mainChar.score == 100);
     }
-    public void reAllocateClaimReward() {
-
-        rewards.setX(50); // move rewards to (50, 0)
-        rewards.setY(50); // move rewards to (50, 50)
-        mainChar.setX(50); // move main character to (50, 0)
-        mainChar.setY(50); // move main character to (50, 50)
-        mainChar.score = 0;
-        Assert.assertEquals(0, mainChar.score);
-        rewards.setRewardAmount(100);
-        rewards.update(mainChar);
-        assertTrue(mainChar.score == 100);
-
-    }
+//    public void reAllocateClaimReward() {
+//
+//        rewards.setX(50); // move rewards to (50, 0)
+//        rewards.setY(50); // move rewards to (50, 50)
+//        mainChar.setX(50); // move main character to (50, 0)
+//        mainChar.setY(50); // move main character to (50, 50)
+//        mainChar.score = 0;
+//        Assert.assertEquals(0, mainChar.score);
+//        rewards.setRewardAmount(100);
+//        rewards.update(mainChar);
+//        assertTrue(mainChar.score == 100);
+//
+//    }
 
 
 
