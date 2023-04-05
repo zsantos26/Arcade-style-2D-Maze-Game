@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: MovingEnemyTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 14.195 s <<< FAILURE! - in MovingEnemyTest
-testMoveTowardsAlt(MovingEnemyTest)  Time elapsed: 0.76 s  <<< ERROR!
+Tests run: 5, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 12.03 s <<< FAILURE! - in MovingEnemyTest
+testMoveTowardsAlt(MovingEnemyTest)  Time elapsed: 0.21 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because "direction" is null
 	at MovingEnemyTest.testMoveTowardsAlt(MovingEnemyTest.java:53)
 
-testUpdate(MovingEnemyTest)  Time elapsed: 5.389 s  <<< ERROR!
-java.lang.NullPointerException: Cannot invoke "String.hashCode()" because "<local13>" is null
+testUpdate(MovingEnemyTest)  Time elapsed: 5.226 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "String.hashCode()" because "character.direction" is null
 	at MovingEnemyTest.testUpdate(MovingEnemyTest.java:60)
 

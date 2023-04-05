@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="StaticRewardTest" time="2.169" tests="5" errors="0" skipped="0" failures="3">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="StaticRewardTest" time="2.781" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter14527481996697244778.jar /Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire 2023-04-04T16-16-44_734-jvmRun1 surefire5371895091365101336tmp surefire_06858534891987479167tmp"/>
+    <property name="sun.java.command" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10806299665966063387.jar /Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire 2023-04-04T22-06-49_819-jvmRun1 surefire7713416180975735065tmp surefire_03849869362698572090tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/test-classes:/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/classes:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-mac.jar:/Users/odiesantos/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/odiesantos/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter14527481996697244778.jar"/>
+    <property name="surefire.real.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10806299665966063387.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="19.0.2"/>
@@ -58,54 +58,10 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testOnReward" classname="StaticRewardTest" time="0.852">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at StaticRewardTest.testOnReward(StaticRewardTest.java:41)
-</failure>
-    <system-out><![CDATA[X: 720 Y: 528
-IT RELOCATE FOR STATIC
-X: 96 Y: 192
-IT RELOCATE FOR STATIC
-X: 432 Y: 480
-IT RELOCATE FOR STATIC
-X: 912 Y: 288
-IT RELOCATE FOR STATIC
-X: 0 Y: 624
-IT RELOCATE FOR STATIC
-]]></system-out>
-  </testcase>
-  <testcase name="testGetRewardAmount" classname="StaticRewardTest" time="0.227">
-    <failure message="expected:&lt;100&gt; but was:&lt;0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<100> but was:<0>
-	at StaticRewardTest.testGetRewardAmount(StaticRewardTest.java:31)
-]]></failure>
-    <system-out><![CDATA[X: 96 Y: 240
-IT RELOCATE FOR STATIC
-X: 96 Y: 240
-IT RELOCATE FOR STATIC
-X: 864 Y: 912
-IT RELOCATE FOR STATIC
-X: 384 Y: 528
-IT RELOCATE FOR STATIC
-X: 816 Y: 672
-IT RELOCATE FOR STATIC
-]]></system-out>
-  </testcase>
-  <testcase name="testDraw" classname="StaticRewardTest" time="0.405"/>
-  <testcase name="testSetRewardAmount" classname="StaticRewardTest" time="0.328"/>
-  <testcase name="testClaimReward" classname="StaticRewardTest" time="0.253">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at StaticRewardTest.testClaimReward(StaticRewardTest.java:48)
-</failure>
-    <system-out><![CDATA[EXPIRED: false DURATION: 1 RANDOM: 0
-EXPIRED: true DURATION: 0 RANDOM: 0
-X: 912 Y: 720
-IT RELOCATE FOR STATIC
-X: 576 Y: 96
-IT RELOCATE FOR STATIC
-X: 864 Y: 240
-IT RELOCATE FOR STATIC
-X: 480 Y: 384
-IT RELOCATE FOR STATIC
-]]></system-out>
-  </testcase>
+  <testcase name="testCheckCollision" classname="StaticRewardTest" time="1.124"/>
+  <testcase name="testSpawning" classname="StaticRewardTest" time="0.23"/>
+  <testcase name="testDraw" classname="StaticRewardTest" time="0.259"/>
+  <testcase name="testSetRewardAmount" classname="StaticRewardTest" time="0.434"/>
+  <testcase name="testGetStaticRewardsSprite" classname="StaticRewardTest" time="0.427"/>
+  <testcase name="testClaimReward" classname="StaticRewardTest" time="0.257"/>
 </testsuite>
