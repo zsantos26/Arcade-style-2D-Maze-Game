@@ -10,7 +10,7 @@ import com.example.characters.MainCharacter;
 
 public class GameWorld {
   GameEngine gameBarrier;
-  Cells[] cell;
+  public Cells[] cell;
   public int mapCells[][];
   public int map = 0;
 

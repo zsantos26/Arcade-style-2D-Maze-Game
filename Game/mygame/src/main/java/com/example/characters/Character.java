@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 import javafx.scene.shape.Rectangle;
 
 public abstract class Character {
-    protected int x; // x coordinate of the character
-    protected int y; // y coordinate of the character // speed of the character
+    public int x; // x coordinate of the character
+    public int y; // y coordinate of the character // speed of the character
     public String direction;
     // protected int score; // current score of the character
     // Sprite Animations
