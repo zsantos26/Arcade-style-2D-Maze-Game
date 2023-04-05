@@ -1,7 +1,6 @@
 
 import static org.junit.Assert.*;
 import org.junit.*;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -28,7 +27,7 @@ public class CollisionDetectorTest {
 
     @Test
     public void testCheckCellsNoCollision() {
-        MainCharacter mainChar = new MainCharacter(0, 0, gameEngine);
+        MainCharacter mainChar = new MainCharacter(48, 48, gameEngine);
         boolean result = collisionDetector.checkCells(mainChar);
         assertFalse(result);
     }
@@ -56,17 +55,27 @@ public class CollisionDetectorTest {
 
     @Test
     public void testCheckCellsPortal() {
-        // Set up a portal cell in the game world
-        gameWorld.mapCells[0][0] = 1;
-        Cells cell = new Cells();
-        cell.portal = true;
-        gameWorld.cell[1] = cell;
+        // Set up a portal cell in the game worl
+        gameWorld.getCellImage();
 
         // Test portal behavior
-        MainCharacter character = new MainCharacter(0, 0, gameEngine);
+        MainCharacter character = new MainCharacter(912, 864, gameEngine);
+        character.setScore(0);
+        boolean result = collisionDetector.checkCells(character);
+        assertTrue(result);
+        assertFalse(gameWorld.updateCellProperties(character));
+    }
+
+    @Test
+    public void testCheckCellsPortalOver500() {
+        // Set up a portal cell in the game worl
+        gameWorld.getCellImage();
+
+        // Test portal behavior
+        MainCharacter character = new MainCharacter(912, 864, gameEngine);
+        character.setScore(600);
         boolean result = collisionDetector.checkCells(character);
         assertFalse(result);
-        assertEquals(1, gameWorld.map);
-        assertFalse(cell.portal);
+        assertTrue(gameWorld.updateCellProperties(character));
     }
 }
