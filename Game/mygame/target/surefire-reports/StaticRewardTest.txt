@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: StaticRewardTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.2 s - in StaticRewardTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.781 s - in StaticRewardTest

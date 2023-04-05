@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: MainCharacterTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.634 s - in MainCharacterTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.797 s - in MainCharacterTest

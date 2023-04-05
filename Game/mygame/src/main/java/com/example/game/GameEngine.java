@@ -35,8 +35,8 @@ public class GameEngine extends JPanel implements Runnable {
 
   public ArrayList<StaticEnemy> staticEnemies = new ArrayList<StaticEnemy>();
   public ArrayList<MovingEnemy> movingEnemies = new ArrayList<MovingEnemy>();
-  private ArrayList<StaticRewards> staticRewardsList = new ArrayList<StaticRewards>();
-  private BonusRewards bonusReward;
+  public ArrayList<StaticRewards> staticRewardsList = new ArrayList<StaticRewards>();
+  public BonusRewards bonusReward;
 
   // Abstract Factory
   private GameObjectFactory gameObjectFactory;

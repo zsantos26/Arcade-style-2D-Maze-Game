@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="GameEngineTest" time="2.55" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="GameEngineTest" time="13.848" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10636478012639801568.jar /Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire 2023-04-04T21-45-17_212-jvmRun1 surefire18331324528868184979tmp surefire_03298199729949587238tmp"/>
+    <property name="sun.java.command" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10806299665966063387.jar /Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire 2023-04-04T22-06-49_819-jvmRun1 surefire7713416180975735065tmp surefire_03849869362698572090tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/test-classes:/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/classes:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-mac.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/Users/odiesantos/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-mac.jar:/Users/odiesantos/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/odiesantos/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10636478012639801568.jar"/>
+    <property name="surefire.real.class.path" value="/Users/odiesantos/Desktop/SFUBreak1/project/Game/mygame/target/surefire/surefirebooter10806299665966063387.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="19.0.2"/>
@@ -58,8 +58,12 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testResetGame" classname="GameEngineTest" time="0.652"/>
-  <testcase name="testUpdateEnemies" classname="GameEngineTest" time="0.712"/>
-  <testcase name="testScreenSetUp" classname="GameEngineTest" time="0.406"/>
-  <testcase name="testPaintComponent" classname="GameEngineTest" time="0.78"/>
+  <testcase name="testResetGame" classname="GameEngineTest" time="0.357"/>
+  <testcase name="testUpdateEnemies" classname="GameEngineTest" time="0.84"/>
+  <testcase name="testGameOver" classname="GameEngineTest" time="5.594"/>
+  <testcase name="testObjectsCreator" classname="GameEngineTest" time="0.564"/>
+  <testcase name="testScreenSetUp" classname="GameEngineTest" time="0.193"/>
+  <testcase name="testClearObjects" classname="GameEngineTest" time="0.215"/>
+  <testcase name="testPaintComponent" classname="GameEngineTest" time="0.684"/>
+  <testcase name="testVictory" classname="GameEngineTest" time="5.398"/>
 </testsuite>
