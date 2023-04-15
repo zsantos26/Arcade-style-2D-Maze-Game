@@ -1,5 +1,8 @@
 **SFU Break**
 
+<details><summary>Tutorial Video Link</summary>
+[](https://www.youtube.com/watch?v=_xqhko1xM-s&ab_channel=%EC%A1%B0%EC%84%B1%ED%99%98)
+</details>
 <details><summary>How to Build, Run and Test Game</summary>
 To build the project, navigate to the project directory where the pom.xml file is located: 
     `game/mygame'
