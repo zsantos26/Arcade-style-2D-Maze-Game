@@ -23,8 +23,27 @@ To build the project, navigate to the project directory where the pom.xml file i
 Run the following command:
     `mvn clean install`
 
+To generate the JAR file including all dependencies, run the following command:
+    `mvn clean compile assembly:single`
+This command will create a JAR file named `mygame-1.0-SNAPSHOT-jar-with-dependencies.jar` in the `target` directory.
+
 To run the project with JavaFX, run the following command:
     `mvn javafx:run`
+
+To execute the generated JAR file, run the following command from the `target` directory:
+    `java -jar mygame-1.0-SNAPSHOT-jar-with-dependencies.jar`
 </details>
+
+<details><summary>How to Generate and View Javadocs</summary>
+To generate Javadocs, run the following command from the project directory:
+    `mvn javadoc:javadoc`
+
+This command will generate Javadocs in the `target/site/apidocs` directory.
+
+To view the generated Javadocs, open the `index.html` file located in the `target/site/apidocs` directory using a web browser.
+</details>
+
+
+
 
 
