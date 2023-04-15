@@ -40,9 +40,7 @@ To generate Javadocs, run the following command from the project directory:
 
 This command will generate Javadocs in the `target/site/apidocs` directory.
 
-To view the generated Javadocs, open the `index.html` file located in the `target/site/apidocs` directory using a web browser.
-</details>
-
+To view the generated Javadocs, the `index.html` file is located at `target/site/apidocs` directory.
 
 
 
